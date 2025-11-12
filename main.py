@@ -1,7 +1,7 @@
 import sort
 import numpy as np
 from numba import njit
-
+#test data for different item types
 helmets = {
     'Iron Helmet': {'defense': 5, 'weight': 10},
     'Steel Helmet': {'defense': 8, 'weight': 12},
