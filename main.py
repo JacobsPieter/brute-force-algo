@@ -1,49 +1,58 @@
 import sort
+import filtering
 import numpy as np
 from numba import njit
+
+
 #test data for different item types
 helmets = {
-    'Iron Helmet': {'defense': 5, 'weight': 10},
-    'Steel Helmet': {'defense': 8, 'weight': 12},
-    'Golden Helmet': {'defense': 6, 'weight': 9},
-    'Diamond Helmet': {'defense': 12, 'weight': 15},
+    'Iron Helmet': {'defense': 5, 'weight': 10, 'durability': 50},
+    'Steel Helmet': {'defense': 8, 'weight': 12, 'durability': 70},
+    'Golden Helmet': {'defense': 6, 'weight': 9, 'magic_resistance': 5},
+    'Diamond Helmet': {'defense': 12, 'weight': 15, 'durability': 100},
 }
 armors = {
-    'Leather Armor': {'defense': 15, 'weight': 25},
-    'Chainmail Armor': {'defense': 25, 'weight': 40},
-    'Plate Armor': {'defense': 40, 'weight': 60},
+    'Leather Armor': {'defense': 15, 'weight': 25, 'agility': 5},
+    'Chainmail Armor': {'defense': 25, 'weight': 40, 'knockback_resistance': 5},
+    'Plate Armor': {'defense': 40, 'weight': 60, 'strength': 10},
 }
 leggings = {
-    'Cloth Leggings': {'defense': 3, 'weight': 5},
-    'Leather Leggings': {'defense': 7, 'weight': 15},
-    'Iron Leggings': {'defense': 12, 'weight': 30},
+    'Cloth Leggings': {'defense': 3, 'weight': 5, 'flexibility': 7},
+    'Leather Leggings': {'defense': 7, 'weight': 15, 'agility': 4},
+    'Iron Leggings': {'defense': 12, 'weight': 30, 'durability': 40},
 }
 boots = {
-    'Cloth Boots': {'defense': 2, 'weight': 4},
-    'Leather Boots': {'defense': 5, 'weight': 10},
-    'Iron Boots': {'defense': 10, 'weight': 20},
+    'Cloth Boots': {'defense': 2, 'weight': 4, 'speed': 5},
+    'Leather Boots': {'defense': 5, 'weight': 10, 'agility': 3},
+    'Iron Boots': {'defense': 10, 'weight': 20, 'durability': 30},
 }
 rings = {
-    'Silver Ring': {'magic': 5, 'weight': 1},
-    'Gold Ring': {'magic': 10, 'weight': 2},
-    'Platinum Ring': {'magic': 15, 'weight': 3},
+    'Silver Ring': {'magic': 5, 'weight': 1, 'mana_regeneration': 2},
+    'Gold Ring': {'magic': 10, 'weight': 2, 'mana_regeneration': 5},
+    'Platinum Ring': {'magic': 15, 'weight': 3, 'main_attack_boost': 3},
 }
 bracelets = {
-    'Silver Bracelet': {'magic': 3, 'weight': 1},
-    'Gold Bracelet': {'magic': 7, 'weight': 2},
-    'Platinum Bracelet': {'magic': 12, 'weight': 3},
+    'Silver Bracelet': {'magic': 3, 'weight': 1, 'durability': 5},
+    'Gold Bracelet': {'magic': 7, 'weight': 2, 'strength': 4},
+    'Platinum Bracelet': {'magic': 12, 'weight': 3, 'defense': 6},
 }
 necklaces = {
-    'Silver Necklace': {'magic': 4, 'weight': 1},
-    'Gold Necklace': {'magic': 9, 'weight': 2},
-    'Platinum Necklace': {'magic': 14, 'weight': 3},
+    'Silver Necklace': {'magic': 4, 'weight': 1, 'health_regeneration': 3},
+    'Gold Necklace': {'magic': 9, 'weight': 2, 'health_boost': 5},
+    'Platinum Necklace': {'magic': 14, 'weight': 3, 'resistance': 4},
 }
 
 def get_stat_to_optimize() -> str:
     stat = input('Enter the stat to optimize: ').strip().lower()
     return stat
 
-
+def get_required_stats(stat_to_optimise: str) -> list[str]:
+    stats_input = input('Enter the required stats (comma-separated): ').strip().lower()
+    if stats_input == '':
+        return [stat_to_optimise]
+    required_stats = [stat.strip() for stat in stats_input.split(',')]
+    required_stats.append(stat_to_optimise)
+    return required_stats
 
 
 def combine_stats(item_1: dict[str, int], item_2: dict[str, int]) -> dict[str, int]:
@@ -72,12 +81,7 @@ def get_all_combinations() -> dict[str, dict[str, int]]:
     all_combinations = get_stats_for_item_groups(protections, jewelry_combinations)
     return all_combinations
 
-def filter_combinations_by_stat(combinations: dict[str, dict[str, int]], stat: str) -> dict[str, dict[str, int]]:
-    filtered: dict[str, dict[str, int]] = {}
-    for combo_name, stats in combinations.items():
-        if stat in stats:
-            filtered[combo_name] = stats
-    return filtered
+
 
 def sort_combinations_by_stat(combinations: dict[str, dict[str, int]], stat: str) -> list[str]:
     stat_values: dict[str, int] = {}
@@ -89,8 +93,9 @@ def sort_combinations_by_stat(combinations: dict[str, dict[str, int]], stat: str
 
 def main():
     stat_to_optimize = get_stat_to_optimize()
+    required_stats = get_required_stats(stat_to_optimize)
     all_combinations = get_all_combinations()
-    filtered_combinations = filter_combinations_by_stat(all_combinations, stat_to_optimize)
+    filtered_combinations = filtering.filter(all_combinations, required_stats)
     sorted_names = sort_combinations_by_stat(filtered_combinations, stat_to_optimize)
     for name in sorted_names:
         stats = filtered_combinations[name]

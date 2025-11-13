@@ -37,9 +37,9 @@ def sort_dict(unsorted_dict: dict[str, int]) -> tuple[list[str], list[int]]:
     sorted_keys, sorted_values = bubbleSort(keys_list, values_list)
     return (sorted_keys, sorted_values)
 
-
+""" 
 dictionary = {'a': 5, 'b': 3, 'c': 8, 'd': 1}
 sorted_keys, sorted_values = sort_dict(dictionary)
 print("Sorted Keys:", sorted_keys)
-print("Sorted Values:", sorted_values)
+print("Sorted Values:", sorted_values) """
 
