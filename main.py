@@ -3,6 +3,7 @@ import filtering
 import parse_items
 import numpy as np
 from numba import njit
+import json
 
 
 #test data for different item types
@@ -95,13 +96,33 @@ def combine_stats(item_1: dict, item_2: dict) -> dict:
     return combined
 
 
-def get_stats_for_item_groups(items_type_1: dict[str, dict[str, int]], items_type_2: dict[str, dict[str, int]]) -> dict[str, dict[str, int]]:
-    combinations: dict[str, dict[str, int]] = {}
-    for item_type_1 in items_type_1:
-        for item_type_2 in items_type_2:
-            combination: dict[str, int] = combine_stats(items_type_1[item_type_1], items_type_2[item_type_2])
+def get_stats_for_item_groups(items_type_1: dict, items_type_2: dict) -> dict:
+    combinations: dict = {}
+    for item_type_1 in items_type_1.keys():
+        for item_type_2 in items_type_2.keys():
+            combination: dict = combine_stats(items_type_1[item_type_1], items_type_2[item_type_2])
             combinations[f'{item_type_1} + {item_type_2}'] = combination
     return combinations
+
+
+
+def load_combinations_from_file(file_name: str, parts: int, part_of_group: int):
+    with open(file_name, 'r') as file:
+        combinations = json.load(file)
+    combinations_keys = list(combinations.keys())
+    combinations_values = list(combinations.values())
+    length_combinations = len(combinations_keys)
+    length_combinations_group = length_combinations//parts
+    selection_first = part_of_group * length_combinations_group
+    selection_last = part_of_group * length_combinations_group + length_combinations_group
+    part_of_combinations  = {}.fromkeys(combinations_keys[selection_first:selection_last], (value for value in combinations_values[selection_first: selection_last]))
+    return part_of_combinations
+
+
+
+
+
+
 
 
 def get_all_combinations() -> dict[str, dict[str, int]]:
@@ -110,31 +131,43 @@ def get_all_combinations() -> dict[str, dict[str, int]]:
     print('This may take a while depending on the number of items...')
     print('starting the top parts of the armour...')
     top_parts = get_stats_for_item_groups(items[0], items[1])
+    with open("top_parts.json", "w") as outfile:
+        json.dump(top_parts, outfile, indent=4)
+    top_parts = {}
     print('now the bottom parts of the armour...')
     bottom_parts = get_stats_for_item_groups(items[2], items[3])
+    with open("bottom_parts.json", "w") as outfile:
+        json.dump(bottom_parts, outfile, indent=4)
+    bottom_parts = {}
     print('now the jewelry...')
     print('first the rings...')
     rings_combinations = get_stats_for_item_groups(items[4], items[5])
-    print('then the big jewels (bracelets and necklaces)...')
-    big_jewels = get_stats_for_item_groups(items[6], items[7])
+    with open("ring_combinations.json", "w") as outfile:
+        json.dump(rings_combinations, outfile, indent=4)
+    rings_combinations = {}
+    print('then the big jewelry (bracelets and necklaces)...')
+    big_jewelry = get_stats_for_item_groups(items[6], items[7])
+    with open("big_jewelry.json", "w") as outfile:
+        json.dump(big_jewelry, outfile, indent=4)
+    big_jewelry = {}
     print('combining rings with big jewels...')
-    rings_combinations1  = {}
-    rings_combinations_keys = list(rings_combinations.keys())
-    for i in range(len(rings_combinations_keys)//2):
-        rings_combinations1[rings_combinations_keys[i]] = rings_combinations[rings_combinations_keys[i]]
-    jewelry_combinations1 = get_stats_for_item_groups(rings_combinations1, big_jewels)
+    rings_combinations1 = load_combinations_from_file('ring_combinations.json', 4, 0)
+    big_jewelry1 = load_combinations_from_file('big_jewelry.json', 4, 0)
+    jewelry_combinations1 = get_stats_for_item_groups(rings_combinations1, big_jewelry1)
+    with open("jewelry_combinations1.json", 'w') as outfile:
+        json.dump(jewelry_combinations1, outfile, indent=4)
     print('finished first run')
-    rings_combinations2  = {}
+    """     rings_combinations2  = {}
     rings_combinations_keys = list(rings_combinations.keys())
     for i in range(len(rings_combinations_keys)//2):
         rings_combinations2[rings_combinations_keys[i]] = rings_combinations[rings_combinations_keys[i]]
-    jewelry_combinations2 = get_stats_for_item_groups(rings_combinations2, big_jewels)
+    jewelry_combinations2 = get_stats_for_item_groups(rings_combinations2, big_jewelry)
     jewelry_combinations = jewelry_combinations1
-    jewelry_combinations.update(jewelry_combinations2)
+    jewelry_combinations.update(jewelry_combinations2)"""
     print('combining armour parts...')
     protections = get_stats_for_item_groups(top_parts, bottom_parts)
     print('now the total of armour and jewelry...')
-    equipment_combinations = get_stats_for_item_groups(protections, jewelry_combinations)
+    equipment_combinations = get_stats_for_item_groups(protections, jewelry_combinations1)
     print('finally adding the weapons...')
     weapons = {}
     for weapon_group in items[8:12]:
