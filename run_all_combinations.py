@@ -1,14 +1,7 @@
 import numpy as np
 from numba import njit, prange
-from parse_items import (
-    load_items_from_json,
-    make_required_stats_array,
-    reconstruct_combination_name
-)
+from parse_items import load_items_from_json, make_required_stats_array, reconstruct_combination_name
 
-# ----------------------------
-# Numba-compatibele validatie
-# ----------------------------
 @njit
 def fast_valid(stats: np.ndarray, required: np.ndarray) -> bool:
     for i in range(len(stats)):
@@ -16,16 +9,12 @@ def fast_valid(stats: np.ndarray, required: np.ndarray) -> bool:
             return False
     return True
 
-# ----------------------------
-# Parallel & memory-efficient Numba-loop
-# ----------------------------
 @njit(parallel=True)
 def find_best_combinations(
     weapon_stats, helmet_stats, chest_stats, legging_stats,
     boot_stats, ring_stats, bracelet_stats, necklace_stats,
     required_stats, best_amount
 ):
-    # -- Fallback voor lege categorieën: altijd vaste arrays teruggeven --
     if (
         weapon_stats.shape[0] == 0 or helmet_stats.shape[0] == 0 or
         chest_stats.shape[0] == 0 or legging_stats.shape[0] == 0 or
@@ -45,7 +34,6 @@ def find_best_combinations(
     n_bracelet = bracelet_stats.shape[0]
     n_necklace = necklace_stats.shape[0]
 
-    # Top best_amount combinaties opslaan
     scores = np.full(best_amount, -9223372036854775808, dtype=np.int64)
     comb_indices = np.zeros((best_amount, 9), dtype=np.int64)
 
@@ -99,10 +87,8 @@ def find_best_combinations(
                                         if not fast_valid(final_stats, required_stats):
                                             continue
 
-                                        # score: bv. eerste stat
                                         score = final_stats[0]
 
-                                        # min-heap logic voor top best_amount
                                         min_idx = 0
                                         min_val = scores[0]
                                         for t in range(1, best_amount):
@@ -123,9 +109,6 @@ def find_best_combinations(
 
     return scores, comb_indices
 
-# ----------------------------
-# Hoofdfunctie
-# ----------------------------
 def run_all_combinations(json_path: str, required_stats: dict, best_amount: int = 10):
     _, numba_structs = load_items_from_json(json_path)
     stat_order = numba_structs["stat_order"]
@@ -134,7 +117,7 @@ def run_all_combinations(json_path: str, required_stats: dict, best_amount: int 
     scores, comb_indices = find_best_combinations(
         numba_structs["weapon_stats"],
         numba_structs["helmet_stats"],
-        numba_structs["chest_stats"],
+        numba_structs["chestplate_stats"],
         numba_structs["legging_stats"],
         numba_structs["boot_stats"],
         numba_structs["ring_stats"],
@@ -144,22 +127,19 @@ def run_all_combinations(json_path: str, required_stats: dict, best_amount: int 
         best_amount
     )
 
-    # Controleer of lege arrays zijn teruggekomen
     if scores[0] == -9223372036854775808:
         return {}
 
     best_combinations = {}
     for i in range(scores.shape[0]):
         if scores[i] == -9223372036854775808:
-            continue  # nooit ingevulde slot
+            continue
         idxs = comb_indices[i]
-
-        # Veilige reconstructie van namen
         name = reconstruct_combination_name(idxs, numba_structs)
         total_stats = (
             numba_structs["weapon_stats"][idxs[0]] +
             numba_structs["helmet_stats"][idxs[1]] +
-            numba_structs["chest_stats"][idxs[2]] +
+            numba_structs["chestplate_stats"][idxs[2]] +
             numba_structs["legging_stats"][idxs[3]] +
             numba_structs["boot_stats"][idxs[4]] +
             numba_structs["ring_stats"][idxs[5]] +
@@ -170,12 +150,9 @@ def run_all_combinations(json_path: str, required_stats: dict, best_amount: int 
         best_combinations[name] = total_stats
     return best_combinations
 
-# ----------------------------
-# Test
-# ----------------------------
 if __name__ == "__main__":
     JSON_PATH = "items.json"
-    REQUIRED_STATS = {"strength": 10, "dexterity": 5, "intelligence": 0, "defense": 8, "agility": 0}
+    REQUIRED_STATS = {"strength": 10, "dex": 5, "int": 0, "def": 8, "agi": 0}
     BEST_AMOUNT = 5
 
     best_combos = run_all_combinations(JSON_PATH, REQUIRED_STATS, BEST_AMOUNT)
