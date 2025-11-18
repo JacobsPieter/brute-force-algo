@@ -1,2 +1,2 @@
-# bute-force-algo
+# brute-force-algo
 
