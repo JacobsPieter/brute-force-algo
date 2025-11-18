@@ -4,8 +4,14 @@ import numba.typed
 from numba import njit
 
 
-MAX_SKILL_POINTS = 595
-#MAX_STRREQ =
+MAX_SKILL_POINTS: int = 595
+MAX_STRREQ: int = 320
+MAX_DEXREQ: int = 317
+MAX_INTREQ: int = 283
+MAX_DEFREQ: int = 284
+MAX_AGIREQ: int = 333
+
+
 
 def get_stat_to_optimize() -> str:
     stat = input('Enter the stat to optimize: ').strip().lower()
