@@ -2,3 +2,5 @@ big_jewelry.json
 bottom_parts.json
 ring_combinations.json
 top_parts.json
+.vs
+__pycache__
