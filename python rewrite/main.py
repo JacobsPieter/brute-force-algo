@@ -1,3 +1,7 @@
+#!.\pypy3.11-v7.3.20-win64\pypy3.11-v7.3.20-win64\pypy.exe
+
+
+
 import parser
 import itertools
 
