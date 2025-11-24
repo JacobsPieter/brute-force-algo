@@ -1,9 +1,9 @@
-#!.\pypy3.11-v7.3.20-win64\pypy3.11-v7.3.20-win64\pypy.exe
-
-
-
 import parser
 import itertools
+import multiprocessing as mp
+from concurrent.futures import ProcessPoolExecutor
+import heapq
+
 
 
 MAX_SKILL_POINTS: int = 595
@@ -87,7 +87,42 @@ def dict_from_map_object(to_convert) -> dict[str, dict[str, int]]:
 
 
 
+def process_hccombo(hccombo, leggings_boots, all_rings, bracelets_necklaces, stat_to_optimise, max_best_length):
+    local_best_list = []
+    worst_best_value = 0
+    i = 0
+    
+    for lbcombo in leggings_boots:
+        hclbcombo = combine(hccombo, lbcombo)
+        if not skill_point_fast_check(list(hclbcombo.values())[0]):
+            continue
+        for rrcombo in all_rings:
+            hclbrrcombo = combine(hclbcombo, rrcombo)
+            if not skill_point_fast_check(list(hclbrrcombo.values())[0]):
+                continue
+            for bncombo in bracelets_necklaces:
+                hclbrrbncombo = combine(hclbrrcombo, bncombo)
+                final_combo = hclbrrbncombo
+                values = list(final_combo.values())[0]
+                if not skill_point_fast_check(values):
+                    continue
+                current_value = values.get(stat_to_optimise, 0)
+                if current_value <= worst_best_value:
+                    continue
+                
+                local_best_list.append(final_combo)
+                if len(local_best_list) > max_best_length:
+                    local_best_list.sort(key=lambda x: x[list(x.keys())[0]][stat_to_optimise])
+                    local_best_list = local_best_list[1:]
+                    worst_best_value = list(local_best_list[0].values())[0].get(stat_to_optimise, 0)
+            if i > 100:
+                print('here already!')
+                i = 0
+            else:
+                i += 1
 
+        print('here!')
+    return local_best_list
 
 
 
@@ -108,31 +143,29 @@ def get_permutations(database_path):
     bracelets_necklaces = [x for x in precompute(bracelets, necklaces)]
 
     
-    for hccombo in helmets_chestplates:
-        for lbcombo in leggings_boots:
-            hclbcombo = combine(hccombo, lbcombo)
-            if not skill_point_fast_check(list(hclbcombo.values())[0]):
-                continue
-            for rrcombo in all_rings:
-                hclbrrcombo = combine(hclbcombo, rrcombo)
-                if not skill_point_fast_check(list(hclbrrcombo.values())[0]):
-                    continue
-                for bncombo in bracelets_necklaces:
-                    hclbrrbncombo = combine(hclbrrcombo, bncombo)
-                    final_combo = hclbrrbncombo
-                    values = list(final_combo.values())[0]
-                    if not skill_point_fast_check(values):
-                        continue
-                    #TODO: Need to add more fast checks before this one (validitychecks)
-                    if values.get(stat_to_optimise, 0) <= worst_best_value:
-                        continue
-                    #worst_best_value = values.get(stat_to_optimise, 0)
-                    best_list.append(final_combo)
-                    if len(best_list) > max_best_length:
-                        best_list.sort(key= lambda x: x[list(x.keys())[0]][stat_to_optimise])
-                        best_list = best_list[1:]
-                        worst_best_value = list(best_list[0].values())[0].get(stat_to_optimise, 0)
-                    print(best_list)
+    with ProcessPoolExecutor(max_workers=mp.cpu_count()) as executor:
+        # Submit all hccombo processing tasks
+        futures = [
+            executor.submit(
+                process_hccombo, 
+                hccombo, 
+                leggings_boots, 
+                all_rings, 
+                bracelets_necklaces, 
+                stat_to_optimise, 
+                max_best_length
+            ) 
+            for hccombo in helmets_chestplates
+        ]
+        
+        # Collect results from all workers
+        all_results = []
+        for future in futures:
+            all_results.extend(future.result())
+        
+        # Merge and sort final results
+        all_results.sort(key=lambda x: x[list(x.keys())[0]][stat_to_optimise], reverse=True)
+        best_list = all_results[:max_best_length]
 
                     
 
