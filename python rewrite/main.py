@@ -89,7 +89,7 @@ def dict_from_map_object(to_convert) -> dict[str, dict[str, int]]:
     return converted
 
 
-@njit
+#@njit
 def process_hccombo(hccombo, leggings_boots, all_rings, bracelets_necklaces, stat_to_optimise, max_best_length, index, total, skill_points_req_array_pos: tuple):
     local_heap = []
     len_lb = len(leggings_boots)
@@ -180,7 +180,27 @@ def get_permutations(database_path):
                     
 
 
+def precompile_numba():
+    print('compiling functions')
+    print('this might take a while...')
+    # Precompile Numba functions
+    skill_point_fast_check(np.zeros(108, dtype=np.float64), (0,1,2,3,4))
+    combine(('test', np.zeros(108)), ('test', np.zeros(108)))
+    """ # Precompile process_hccombo (sample small, no loops in this call)
+    sample_hc = ('Helmet', np.zeros(108, dtype=np.float64))
+    sample_lb = [('Boots1', np.zeros(108, dtype=np.float64)), ('Boots2', np.zeros(108, dtype=np.float64))]
+    sample_rr = [('Ring1', np.zeros(108, dtype=np.float64))]
+    sample_bn = [('Bracelet1', np.zeros(108, dtype=np.float64))]
+    sample_idx = 1
+    sample_total = 1
+    sample_stat = 40  # hp index
+    sample_max = 1
+    sample_req = (89, 19, 46, 17, 9)  # strReq etc tuples
 
+
+    print('now a very heavy function...')
+    process_hccombo(sample_hc, sample_lb, sample_rr, sample_bn, sample_stat, sample_max, sample_idx, sample_total, sample_req) """
+    print('Done!')
 
 
 
@@ -196,6 +216,7 @@ def get_permutations(database_path):
 
 
 def main():
+    precompile_numba()
     database_path = "data\\items.json"
     get_permutations(database_path)
 
