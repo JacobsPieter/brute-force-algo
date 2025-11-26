@@ -3,11 +3,12 @@ import human_readable_stat_names_and_indices as names_and_indices
 
 import itertools
 import numpy as np
-from numba import njit
 import multiprocessing as mp
 from concurrent.futures import ProcessPoolExecutor
-import heapq
 import time
+
+# Import Cython optimized functions
+from cython_main import skill_point_fast_check, combine, precompute, process_hccombo
 
 
 
@@ -36,93 +37,6 @@ def get_max_best_length():
         new_input = input('Give the max amount of best results to give (lower = faster): ')
         numerical_input = int(new_input.strip().lower())
         return numerical_input
-
-@njit
-def skill_point_fast_check(stats: np.ndarray, required_stats: tuple[int, int, int, int, int]) -> bool:
-    str_req = stats[required_stats[0]]
-    dex_req = stats[required_stats[1]]
-    int_req = stats[required_stats[2]]
-    def_req = stats[required_stats[3]]
-    agi_req = stats[required_stats[4]]
-    if str_req + dex_req + int_req + def_req + agi_req > MAX_SKILL_POINTS:
-        return False
-    if str_req > MAX_STRREQ:
-        return False
-    if dex_req > MAX_DEXREQ:
-        return False
-    if int_req > MAX_INTREQ:
-        return False
-    if def_req > MAX_DEFREQ:
-        return False
-    if agi_req > MAX_AGIREQ:
-        return False
-    return True
-
-
-@njit
-def combine(combo1: tuple[str, np.ndarray], combo2: tuple[str, np.ndarray]):
-    combo1_values = combo1[1]
-    combo2_values = combo2[1]
-    resulting_stats = np.add(combo1_values, combo2_values)
-    resulting_name = f'{combo1[0]}, {combo2[0]}'
-    return resulting_name, resulting_stats
-
-
-
-def precompute(items1: list[tuple[str, np.ndarray]], items2: list[tuple[str, np.ndarray]], skill_points_req_array_pos: tuple):
-    combinations = itertools.product(items1, items2)
-    for i, combination in enumerate(combinations):
-        name_1, name_2 = combination[0][0], combination[1][0]
-        combination_values_1, combination_values_2 = combination[0][1], combination[1][1]
-        resulting_stats = np.add(combination_values_1, combination_values_2)
-        resulting_name = f'{name_1}, {name_2}'
-        if not skill_point_fast_check(resulting_stats, skill_points_req_array_pos):
-            continue
-        yield (resulting_name, resulting_stats)
-
-
-
-def dict_from_map_object(to_convert) -> dict[str, dict[str, int]]:
-    converted = {}
-    for dictionary in to_convert:
-        converted.update(dictionary)
-    return converted
-
-
-#@njit
-def process_hccombo(hccombo, leggings_boots, all_rings, bracelets_necklaces, stat_to_optimise, max_best_length, index, total, skill_points_req_array_pos: tuple):
-    local_heap = []
-    len_lb = len(leggings_boots)
-    count = 0
-    print(f"Starting process {index}/{total} for combos")
-
-    for lbcombo in leggings_boots:
-        hclbcombo = combine(hccombo, lbcombo)
-        if not skill_point_fast_check(hclbcombo[1], skill_points_req_array_pos):
-            continue
-        for rrcombo in all_rings:
-            hclbrrcombo = combine(hclbcombo, rrcombo)
-            if not skill_point_fast_check(hclbrrcombo[1], skill_points_req_array_pos):
-                continue
-            for bncombo in bracelets_necklaces:
-                hclbrrbncombo = combine(hclbrrcombo, bncombo)
-                final_combo = hclbrrbncombo
-                values = final_combo[1]
-                if not skill_point_fast_check(values, skill_points_req_array_pos):
-                    continue
-                current_value = values[stat_to_optimise]
-                heapq.heappush(local_heap, (-current_value, final_combo))
-                if len(local_heap) > max_best_length:
-                    heapq.heappop(local_heap)
-        count += 1
-        if count % 20 == 0:
-            print(f"Process {index}/{total}: {count}/{len_lb} leggings_boots processed")
-
-    print(f"Process {index}/{total} completed")
-    return [combo for _, combo in local_heap]
-
-
-
 
 def get_permutations(database_path):
     stat_to_optimise = get_stat_to_optimise()
