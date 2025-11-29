@@ -181,8 +181,6 @@ def get_permutations(database_path):
                 skill_points_req_array_pos
             )
             futures.append(future)
-        print('finished muliprocessing everything')
-        print('collecting results')
         # Collect results from all workers
         all_results = []
         total = len(futures)
