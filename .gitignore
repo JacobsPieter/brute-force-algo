@@ -6,4 +6,5 @@ top_parts.json
 __pycache__
 pypy3.11-v7.3.20-win64/pypy3.11-v7.3.20-win64/Lib
 pypy3.11-v7.3.20-win64/pypy3.11-v7.3.20-win64/Scripts
+.vscode/tasks.json
 .vscode
