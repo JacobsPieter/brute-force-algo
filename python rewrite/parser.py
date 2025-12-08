@@ -75,7 +75,7 @@ def make_lists_from_dicts(input_dict: dict) -> tuple[list, list]:
     keys = list(input_dict.keys())
     values = list(input_dict.values())
     return (keys, values)
-    
+
 
 
 

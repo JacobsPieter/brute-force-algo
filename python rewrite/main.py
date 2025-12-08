@@ -135,7 +135,7 @@ def get_permutations(database_path):
     items = parser.parse_items(database_path)
     helmets, chestplates, leggings, boots, rings, bracelets, necklaces, spears, bows, daggers, wands, reliks = items
     weapons = dict(**spears, **bows, **daggers ,**wands, **reliks)
-    
+
     best_list = []
     worst_best_value = 0
 
@@ -161,7 +161,7 @@ def get_permutations(database_path):
                 len(helmets_chestplates)
             )
             futures.append(future)
-        
+
         # Collect results from all workers
         all_results = []
         total = len(futures)
@@ -170,14 +170,14 @@ def get_permutations(database_path):
             all_results.extend(future.result())
             done += 1
             print(f"Progress: {done}/{total} combinations processed")
-        
+
         # Merge and sort final results
         all_results.sort(key=lambda x: x[list(x.keys())[0]][stat_to_optimise], reverse=True)
         best_list = all_results[:max_best_length]
 
         print(f"Total execution time: {time.time() - start_time:.2f} seconds")
 
-                    
+
 
 
 
