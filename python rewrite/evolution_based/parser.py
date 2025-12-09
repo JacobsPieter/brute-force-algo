@@ -81,7 +81,7 @@ def parse_items(data_file):
     for keys in keys_generator:
         all_stat_keys |= keys
     ordered_stats = sorted(all_stat_keys)
-    
+
     new_helmets = [(name, np.array([values.get(stat_key, 0) for stat_key in ordered_stats])) for name, values in helmets.items()]
     new_chestplates = [(name, np.array([values.get(stat_key, 0) for stat_key in ordered_stats])) for name, values in chestplates.items()]
     new_leggings = [(name, np.array([values.get(stat_key, 0) for stat_key in ordered_stats])) for name, values in leggings.items()]
@@ -108,4 +108,4 @@ def make_numpy_arrays_stat_keys(category: dict[str, dict[str, int]]):
 
 
 if __name__ == "__main__":
-    get_data('data\\items.json')
+    parse_items('data\\items.json')
