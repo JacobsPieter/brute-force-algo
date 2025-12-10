@@ -1,6 +1,7 @@
 import parser
-import human_readable_stat_names_and_indices as names_and_indices
+import human_readable_stat_names_and_indices as stat_indices
 import check_skill_points
+import encoder
 
 import itertools
 import numpy as np
@@ -49,11 +50,11 @@ min_optimised_stat_req = 0
 
 def get_stat_to_optimise():
     if BENCHMARK:
-        return names_and_indices.STAT_INDICES['hp']
+        return stat_indices.get_stat_pos('hp')
     else:
         new_input = input('Give stat to optimize: ')
         new_input.strip().lower()
-        return names_and_indices.STAT_INDICES[new_input]
+        return stat_indices.get_stat_pos(new_input)
 
 def get_max_generations():
     if BENCHMARK:
@@ -292,13 +293,20 @@ def evolution_steps(keep_per_step: int, steps_to_go: int, current_builds: list[l
 
 
 def main():
-    items = parser.parse_items('data\\items.json')
+    items= parser.parse_items('data\\items.json')
+
     helmets, chestplates, leggings, boots, rings, bracelets, necklaces, spears, bows, daggers, wands, reliks = items
     weapons = spears + bows + daggers + wands + reliks
-    weapons = [item for item in spears if item[0] == 'Guardian']
 
-    skill_points_req_array_pos = (names_and_indices.STAT_INDICES['strength_requirement'], names_and_indices.STAT_INDICES['dexterity_requirement'], names_and_indices.STAT_INDICES['intelligence_requirement'], names_and_indices.STAT_INDICES['defense_requirement'], names_and_indices.STAT_INDICES['agility_requirement'])
-    added_skill_points_pos = (names_and_indices.STAT_INDICES['strength'], names_and_indices.STAT_INDICES['dexterity'], names_and_indices.STAT_INDICES['intelligence'], names_and_indices.STAT_INDICES['defense'], names_and_indices.STAT_INDICES['agility'])
+
+
+    weapons = [item for item in weapons if item[0] == 'Guardian']
+
+    sp_requirements_list = ['strength_requirement', 'dexterity_requirement', 'intelligence_requirement', 'defense_requirement', 'agility_requirement']
+    sp_adding_list = ['strength', 'dexterity', 'intelligence', 'defense', 'agility']
+
+    skill_points_req_array_pos = tuple(stat_indices.get_stats_pos_list(sp_requirements_list))
+    added_skill_points_pos = tuple(stat_indices.get_stats_pos_list(sp_adding_list))
     
     stat_to_optimise = get_stat_to_optimise()
     generations = get_max_generations()
@@ -323,6 +331,7 @@ def main():
         combined_stats = combine_build_stats(build)
         item_names = [item[0] for item in build]
         print(f'Build: {item_names}')
+        print(encoder.encode_build(build))
         #print(f'Stats: {combined_stats}')
         if i > 9:
             break

@@ -1,7 +1,29 @@
 import itertools
 from collections import defaultdict
-import human_readable_stat_names_and_indices
+import human_readable_stat_names_and_indices as stat_indices
 import numpy as np
+
+
+#########################################################################################
+#########################################################################################
+#########################################################################################
+#
+# This file has been taken from wynnbuilder.github.io's codebase and adapted to python by AI.
+# Later further adapted for this project by the autor of the project.
+# Original code can be found at: https://github.com/wynnbuilder/wynnbuilder.github.io (please tell me I did this right)
+# 
+# First edited 2025-12-09
+# Last edited 2025-12-10
+#
+#
+#########################################################################################
+#########################################################################################
+#########################################################################################
+
+
+
+
+
 
 
 def combine_skill_point_requirements(build: list[tuple[str, np.ndarray]], skill_points_req_array_pos: tuple) -> tuple:
@@ -21,16 +43,16 @@ def check_skillpoints(build):
     weapon_item = build[-1]
     equipment_items = build[:-1]
 
-    skill_indices = [human_readable_stat_names_and_indices.STAT_INDICES['strength'],
-                     human_readable_stat_names_and_indices.STAT_INDICES['dexterity'],
-                     human_readable_stat_names_and_indices.STAT_INDICES['intelligence'],
-                     human_readable_stat_names_and_indices.STAT_INDICES['defense'],
-                     human_readable_stat_names_and_indices.STAT_INDICES['agility']]
-    req_indices = [human_readable_stat_names_and_indices.STAT_INDICES['strength_requirement'],
-                   human_readable_stat_names_and_indices.STAT_INDICES['dexterity_requirement'],
-                   human_readable_stat_names_and_indices.STAT_INDICES['intelligence_requirement'],
-                   human_readable_stat_names_and_indices.STAT_INDICES['defense_requirement'],
-                   human_readable_stat_names_and_indices.STAT_INDICES['agility_requirement']]
+    skill_indices = [stat_indices.get_stat_pos('strength'),
+                     stat_indices.get_stat_pos('dexterity'),
+                     stat_indices.get_stat_pos('intelligence'),
+                     stat_indices.get_stat_pos('defense'),
+                     stat_indices.get_stat_pos('agility')]
+    req_indices = [stat_indices.get_stat_pos('strength_requirement'),
+                   stat_indices.get_stat_pos('dexterity_requirement'),
+                   stat_indices.get_stat_pos('intelligence_requirement'),
+                   stat_indices.get_stat_pos('defense_requirement'),
+                   stat_indices.get_stat_pos('agility_requirement')]
     
     weapon_item_sp = (weapon_item[0], ([int(weapon_item[1][i]) for i in skill_indices], [int(weapon_item[1][i]) for i in req_indices]))
     equipment_items_sp = [(name, ([int(stats[i]) for i in skill_indices], [int(stats[i]) for i in req_indices])) for name, stats in equipment_items]
@@ -106,76 +128,3 @@ def check_skillpoints(build):
     return False
 
 
-
-
-
-
-
-
-
-
-
-def apply_skillpoints(skillpoints, item, activeSetCounts):
-    for i in range(5):
-        skillpoints[i] += item['skillpoints'][i]
-    if item['set']:
-        activeSetCounts[item['set']] += 1
-    return skillpoints, activeSetCounts
-
-def apply_to_fit(skillpoints, item, has_skillpoint, activeSetCounts):
-    needed = [0] * 5
-    for i in range(5):
-        req = item['reqs'][i]
-        current = skillpoints[i]
-        if current < req:
-            needed[i] = req - current
-    return needed
-
-def construct_scc_graph(consider):
-    nodes = []
-    terminal_node = {
-        'item': None,
-        'children': [],
-        'parents': nodes
-    }
-    root_node = {
-        'item': None,
-        'children': nodes,
-        'parents': []
-    }
-    skp_order = ['strength', 'dexterity', 'intelligence', 'defense', 'agility']
-    for item in consider:
-        set_neg = [False] * 5
-        set_pos = [False] * 5
-        # Assuming no sets for now
-        nodes.append({
-            'item': item,
-            'children': [terminal_node],
-            'parents': [root_node],
-            'set_pos': set_pos,
-            'set_neg': set_neg
-        })
-    # Dependency graph construction.
-    for node_a in nodes:
-        a = node_a['item']
-        a_children = node_a['children']
-        a_set_pos = node_a['set_pos']
-        for node_b in nodes:
-            b = node_b['item']
-            b_parents = node_b['parents']
-            b_set_neg = node_b['set_neg']
-            for i in range(5):
-                if (a['skillpoints'][i] > 0 or a_set_pos[i]) and (a['reqs'][i] < b['reqs'][i] or b['skillpoints'][i] < 0 or b_set_neg[i]):
-                    if node_b not in a_children:
-                        a_children.append(node_b)
-                    if node_a not in b_parents:
-                        b_parents.append(node_a)
-                    break
-    # Placeholder for SCC computation: assume no cycles, each node is its own SCC
-    sccs = [{'nodes': [node], 'children': []} for node in nodes]
-    root = root_node
-    terminal = terminal_node
-    return root, terminal, sccs
-
-# Note: This is a direct translation, but construct_scc_graph and perm are placeholders.
-# The original JS likely has more complex logic for SCC.
