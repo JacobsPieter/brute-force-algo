@@ -4,25 +4,6 @@ import human_readable_stat_names_and_indices as stat_indices
 import numpy as np
 
 
-#########################################################################################
-#########################################################################################
-#########################################################################################
-#
-# This file has been taken from wynnbuilder.github.io's codebase and adapted to python by AI.
-# Later further adapted for this project by the autor of the project.
-# Original code can be found at: https://github.com/wynnbuilder/wynnbuilder.github.io (please tell me I did this right)
-# 
-# First edited 2025-12-09
-# Last edited 2025-12-10
-#
-#
-#########################################################################################
-#########################################################################################
-#########################################################################################
-
-
-
-
 
 
 
