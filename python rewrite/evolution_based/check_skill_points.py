@@ -93,7 +93,7 @@ def check_skillpoints(build):
         total_reqs = combine_skill_point_requirements(build, tuple(req_indices))
         needed_extra_sp = [0, 0, 0, 0, 0]
         for i, sp in enumerate(current_sp):
-            if sp < total_reqs[i]:
+            if sp < total_reqs[i] and total_reqs[i] > 0:
                 needed_extra_sp[i] += total_reqs[i] - current_sp[i]
                 total_applied += needed_extra_sp[i]
                 current_sp[i] += needed_extra_sp[i]

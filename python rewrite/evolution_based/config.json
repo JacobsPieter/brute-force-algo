@@ -1,7 +1,7 @@
 {
     "algorithm": {
-        "generations": 250,
-        "subjects": 500
+        "generations": 100,
+        "subjects": 250
     },
     "return_length": 10,
     "items_used": {
@@ -12,13 +12,14 @@
         "boots": [],
         "rings": [],
         "bracelets": [],
-        "necklaces": []
+        "necklaces": [],
+        "state": "This part is not implemented yet"
     },
     "required_stats":{
-        "required_stats_names": ["hp", "mana_regen", "jump_height"],
-        "required_stats_minimums": {"hp": 1000},
-        "required_stats_maximums": {"jump_height": 0},
-        "required_stats_weights": {"hp": 200, "mana_regen": 29, "jump_height": 68},
+        "required_stats_names": ["spell_damage_percent", "thunder_damage_percent", "mana_regen", "spell_cost_percent_3", "defense", "agility"],
+        "required_stats_minimums": {},
+        "required_stats_maximums": {"defense": 0, "agility": 0},
+        "required_stats_weights": {"spell_damage_percent": 100, "thunder_damage_percent": 100, "mana_regen": 50, "spell_cost_percent_3": 10, "defense": 1, "agility": 1},
         "required_stats_explanation_DO_NOT_USE_as_key": {"stat1": "minimum value of the stat as an integer", "stat2": "minimum value of the stat as an integer"}
     }
 }

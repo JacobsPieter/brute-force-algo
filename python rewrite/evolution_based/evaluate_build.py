@@ -37,7 +37,7 @@ LARGE_POS = 1000000000000
 
 
 
-@njit
+
 def combine_build_stats(build1: list[tuple[str, np.ndarray]]) -> np.ndarray:
     combined_stats = np.zeros_like(build1[0][1])
     for item in build1:
@@ -135,12 +135,11 @@ def calculate_fitness_wrapper(build, config):
     required_stats_weights_list = [required_stats_weights[stat] for stat in required_stats_names]
     pos_in_build_stats = stat_indices.get_stats_pos_list(required_stats_names)
     fitness = calculate_fitness(build, required_stats_names, required_stats_minimums_list, required_stats_maximums_list, required_stats_weights_list, pos_in_build_stats)
-    return fitness
+    return fitness  
 
 
 
 
-@njit
 def calculate_fitness(build, required_stats_names: list[str], required_stats_minimums: list[float], required_stats_maximums: list[float], required_stats_weights: list[int], pos_in_build_stats: list[int]) -> float:
     make_value_zero_no_more: float = 0.01
     build_stats = combine_build_stats(build)
@@ -169,7 +168,8 @@ def calculate_fitness(build, required_stats_names: list[str], required_stats_min
         minimum: float = required_stats_minimums[stat]
         maximum: float = required_stats_maximums[stat]
 
-        value = value + make_value_zero_no_more if value == 0 else value
+        if value < 0.1 or value > -0.1:
+            value = value + make_value_zero_no_more
 
         if minimum > LARGE_NEG and maximum < LARGE_POS:
             if minimum > maximum:

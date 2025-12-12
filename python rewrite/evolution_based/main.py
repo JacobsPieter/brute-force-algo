@@ -141,11 +141,15 @@ def main():
     items= parser.parse_items('data\\items.json')
 
     helmets, chestplates, leggings, boots, rings, bracelets, necklaces, spears, bows, daggers, wands, reliks = items
-    weapons = spears + bows + daggers + wands + reliks
+    weapons = spears
+    weapons.extend(bows)
+    weapons.extend(daggers)
+    weapons.extend(wands)
+    weapons.extend(reliks)
 
 
 
-    #weapons = [item for item in weapons if item[0] == 'Guardian']
+    weapons = [item for item in weapons if item[0] == "Divzer"]
 
     sp_requirements_list = ['strength_requirement', 'dexterity_requirement', 'intelligence_requirement', 'defense_requirement', 'agility_requirement']
     sp_adding_list = ['strength', 'dexterity', 'intelligence', 'defense', 'agility']
@@ -188,6 +192,7 @@ def main():
         #print(f'Stats: {combined_stats}')
         if i > return_amount:
             break
+    input()
 
 
 

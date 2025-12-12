@@ -48,7 +48,7 @@ STAT_NAMES: dict[str, str] = {
                 'intelligence_requirement':'intReq',
                 'jump_height':'jh',
                 'knockback':'kb',
-                'level_bonus':'lb',
+                'loot_bonus':'lb',
                 'life_steal':'ls',
                 'level':'lvl',
                 'main_attack_range':'mainAttackRange',
