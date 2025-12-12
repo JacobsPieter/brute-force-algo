@@ -1,4 +1,4 @@
-import human_readable_stat_names_and_indices
+import human_readable_stat_names_and_indices as stat_indices
 
 import json
 import numpy as np
@@ -104,7 +104,7 @@ def parse_items(data_file):
     all_stat_keys = set()
     for keys in keys_generator:
         all_stat_keys |= keys
-    ordered_stats = sorted(all_stat_keys)
+    ordered_stats = sorted(stat_indices.STAT_NAMES.values())
 
     #print(ordered_stats)
 

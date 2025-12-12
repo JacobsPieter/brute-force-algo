@@ -1,10 +1,8 @@
 import itertools
-from collections import defaultdict
-import human_readable_stat_names_and_indices as stat_indices
+from numba import njit
 import numpy as np
 
-
-
+import human_readable_stat_names_and_indices as stat_indices
 
 
 def combine_skill_point_requirements(build: list[tuple[str, np.ndarray]], skill_points_req_array_pos: tuple) -> tuple:
@@ -76,36 +74,34 @@ def check_skillpoints(build):
                     current_sp[i] += skillpoints[i]
         if not feasible:
             continue
-        else:
-            for name, (skillpoints, reqs) in noboost + [weapon_item_sp]:
-                needed_sp = [0, 0, 0, 0, 0]
-                for i in range(5):
-                    if current_sp[i] < reqs[i]:
-                        needed_sp[i] += reqs[i] - current_sp[i]
-                        total_applied += needed_sp[i]
-                        current_sp[i] += needed_sp[i]
-                        applied_sp[i] += needed_sp[i]
-                if not all(sp_applied <= 100 for sp_applied in applied_sp) or total_applied > 200:
-                    feasible = False
-                    break
-                else:
-                    for i in range(5):
-                        current_sp[i] += skillpoints[i]
-            if not feasible:
-                continue
+        for name, (skillpoints, reqs) in noboost + [weapon_item_sp]:
+            needed_sp = [0, 0, 0, 0, 0]
+            for i in range(5):
+                if current_sp[i] < reqs[i]:
+                    needed_sp[i] += reqs[i] - current_sp[i]
+                    total_applied += needed_sp[i]
+                    current_sp[i] += needed_sp[i]
+                    applied_sp[i] += needed_sp[i]
+            if not all(sp_applied <= 100 for sp_applied in applied_sp) or total_applied > 200:
+                feasible = False
+                break
             else:
-                total_reqs = combine_skill_point_requirements(build, tuple(req_indices))
-                needed_extra_sp = [0, 0, 0, 0, 0]
-                for i, sp in enumerate(current_sp):
-                    if sp < total_reqs[i]:
-                        needed_extra_sp[i] += total_reqs[i] - current_sp[i]
-                        total_applied += needed_extra_sp[i]
-                        current_sp[i] += needed_extra_sp[i]
-                        applied_sp[i] += needed_extra_sp[i]
-                if not all(sp_applied <= 100 for sp_applied in applied_sp) or sum(sp_applied for sp_applied in applied_sp) > 200:
-                    continue
-                else:
-                    return True
+                for i in range(5):
+                    current_sp[i] += skillpoints[i]
+        if not feasible:
+            continue
+        total_reqs = combine_skill_point_requirements(build, tuple(req_indices))
+        needed_extra_sp = [0, 0, 0, 0, 0]
+        for i, sp in enumerate(current_sp):
+            if sp < total_reqs[i]:
+                needed_extra_sp[i] += total_reqs[i] - current_sp[i]
+                total_applied += needed_extra_sp[i]
+                current_sp[i] += needed_extra_sp[i]
+                applied_sp[i] += needed_extra_sp[i]
+        if not all(sp_applied <= 100 for sp_applied in applied_sp) or sum(sp_applied for sp_applied in applied_sp) > 200:
+            continue
+        else:
+            return True
     return False
 
 

@@ -1,0 +1,24 @@
+{
+    "algorithm": {
+        "generations": 250,
+        "subjects": 500
+    },
+    "return_length": 10,
+    "items_used": {
+        "weapons": [],
+        "helmets": [],
+        "chestplates": [],
+        "leggings": [],
+        "boots": [],
+        "rings": [],
+        "bracelets": [],
+        "necklaces": []
+    },
+    "required_stats":{
+        "required_stats_names": ["hp", "mana_regen", "jump_height"],
+        "required_stats_minimums": {"hp": 1000},
+        "required_stats_maximums": {"jump_height": 0},
+        "required_stats_weights": {"hp": 200, "mana_regen": 29, "jump_height": 68},
+        "required_stats_explanation_DO_NOT_USE_as_key": {"stat1": "minimum value of the stat as an integer", "stat2": "minimum value of the stat as an integer"}
+    }
+}
