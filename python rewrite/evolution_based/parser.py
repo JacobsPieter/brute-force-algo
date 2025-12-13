@@ -18,12 +18,6 @@ def get_data(file_path):
         return data
 
 
-def get_items_and_sets(data_file):
-    data = get_data(data_file)
-    items: dict = data['items']
-    sets: dict = data['sets']
-    return items, sets
-
 
 def get_data_keys(item: dict, lookup=False) -> dict:
     if not lookup:
@@ -33,9 +27,22 @@ def get_data_keys(item: dict, lookup=False) -> dict:
         return dict(zip([key for key in item.keys() if key != 'name'], [value for (key, value) in item.items() if key != 'name']))
 
 
+def make_numpy_arrays_stat_keys(category: dict[str, dict[str, int]]):
+    all_keys = set()
+    for stats in category.values():
+        all_keys |= set(stats.keys())
+    return all_keys
 
 
-def actual_parsing(data_file, lookup=False):
+
+def get_items_and_sets(data_file):
+    data = get_data(data_file)
+    items: dict = data['items']
+    sets: dict = data['sets']
+    return items, sets
+
+
+def actual_item_parsing(data_file, lookup=False):
     items, sets = get_items_and_sets(data_file)
     helmets = {}
     chestplates = {}
@@ -82,7 +89,7 @@ def actual_parsing(data_file, lookup=False):
 
 def get_lookup_dicts_of_items(data_file, lookup = True):
     keys = ['helmets', 'chestplates', 'leggings', 'boots', 'rings', 'bracelets', 'necklaces', 'spears', 'bows', 'daggers', 'wands', 'reliks']
-    values = actual_parsing(data_file, lookup)
+    values = actual_item_parsing(data_file, lookup)
     lookup_dict = dict(zip(keys, values))
     def merge_all_dictionaries(dictionaries: list[dict]):
         if len(dictionaries) > 2:
@@ -96,10 +103,8 @@ def get_lookup_dicts_of_items(data_file, lookup = True):
     return lookup_dict, items
 
 
-
-
 def parse_items(data_file):
-    helmets, chestplates, leggings, boots, rings, bracelets, necklaces, spears, bows, daggers, wands, reliks = actual_parsing(data_file)
+    helmets, chestplates, leggings, boots, rings, bracelets, necklaces, spears, bows, daggers, wands, reliks = actual_item_parsing(data_file)
     keys_generator = map(make_numpy_arrays_stat_keys, [helmets, chestplates, leggings, boots, rings, bracelets, necklaces, spears, bows, daggers, wands, reliks])
     all_stat_keys = set()
     for keys in keys_generator:
@@ -124,13 +129,69 @@ def parse_items(data_file):
     return new_helmets, new_chestplates, new_leggings, new_boots, new_rings, new_bracelets, new_necklaces, new_spears, new_bows, new_daggers, new_wands, new_reliks
 
 
-def make_numpy_arrays_stat_keys(category: dict[str, dict[str, int]]):
-    all_keys = set()
-    for stats in category.values():
-        all_keys |= set(stats.keys())
-    return all_keys
-    
 
+def actual_tome_parsing(data_file, lookup=False):
+    tomes = get_data(data_file)
+    armour = {}
+    weapon = {}
+    marathon = {}
+    expertise = {}
+    mysticism = {}
+    lootrunning = {}
+    guild = {}
+    for tome in tomes["tomes"]:
+        match tome['type']:
+            case 'armour':
+                armour[tome['name']] = get_data_keys(tome, lookup)
+            case 'weapon':
+                weapon[tome['name']] = get_data_keys(tome, lookup)
+            case 'marathon':
+                marathon[tome['name']] = get_data_keys(tome, lookup)
+            case 'expertise':
+                expertise[tome['name']] = get_data_keys(tome, lookup)
+            case 'mysticism':
+                mysticism[tome['name']] = get_data_keys(tome, lookup)
+            case 'lootrunning':
+                lootrunning[tome['name']] = get_data_keys(tome, lookup)
+            case 'guild':
+                guild[tome['name']] = get_data_keys(tome, lookup)
+            case _:
+                print(f"Unknown tome type: {tome['type']}")
+    return armour, weapon, marathon, expertise, mysticism, lootrunning, guild
+
+
+def get_lookup_dicts_of_tomes(data_file, lookup=True):
+    keys = ['armour', 'weapon', 'marathon', 'expertise', 'mysticism', 'lootrunning', 'guild']
+    values = actual_tome_parsing(data_file, lookup)
+    lookup_dict = dict(zip(keys, values))
+    def merge_all_dictionaries(dictionaries: list[dict]):
+        if len(dictionaries) > 2:
+            new_dict = dictionaries[0] | dictionaries[1]
+            dictionaries = dictionaries[2:]
+            dictionaries.append(new_dict)
+            return merge_all_dictionaries(dictionaries)
+        else:
+            return dictionaries[0] | dictionaries[1]
+    tomes = merge_all_dictionaries(list(values))
+    return lookup_dict, tomes
+
+
+def parse_tomes(data_file):
+    armour, weapon, marathon, expertise, mysticism, lootrunning, guild = actual_tome_parsing(data_file)
+    keys_generator = map(make_numpy_arrays_stat_keys, [armour, weapon, marathon, expertise, mysticism, lootrunning, guild])
+    all_stat_keys = set()
+    for keys in keys_generator:
+        all_stat_keys |= keys
+    ordered_stats = sorted(stat_indices.STAT_NAMES.values())
+
+    new_armour = [(name, np.array([values.get(stat_key, 0) for stat_key in ordered_stats])) for name, values in armour.items()]
+    new_weapon = [(name, np.array([values.get(stat_key, 0) for stat_key in ordered_stats])) for name, values in weapon.items()]
+    new_marathon = [(name, np.array([values.get(stat_key, 0) for stat_key in ordered_stats])) for name, values in marathon.items()]
+    new_expertise = [(name, np.array([values.get(stat_key, 0) for stat_key in ordered_stats])) for name, values in expertise.items()]
+    new_mysticism = [(name, np.array([values.get(stat_key, 0) for stat_key in ordered_stats])) for name, values in mysticism.items()]
+    new_lootrunning = [(name, np.array([values.get(stat_key, 0) for stat_key in ordered_stats])) for name, values in lootrunning.items()]
+    new_guild = [(name, np.array([values.get(stat_key, 0) for stat_key in ordered_stats])) for name, values in guild.items()]
+    return new_armour, new_weapon, new_marathon, new_expertise, new_mysticism, new_lootrunning, new_guild
 
 
 if __name__ == "__main__":

@@ -7,17 +7,69 @@ import heapq
 
 
 
-ORNATE_SHADOW_ITEMS = [
+ORNATE_SHADOW_ITEMS = {
     'Ornate Shadow Cowl',
     'Ornate Shadow Garb',
     'Ornate Shadow Cover',
-    'Ornate Shadow Cloud']
-FIRE_HIVE_ITEMS = []
-WATER_HIVE_ITEMS = []
-EARTH_HIVE_ITEMS = []
-THUNDER_HIVE_ITEMS = []
-AIR_HIVE_ITEMS = []
-MASTER_HIVE_ITEMS = []
+    'Ornate Shadow Cloud'}
+FIRE_HIVE_ITEMS = {
+    "Sparkweaver",
+    "Soulflare",
+    "Cinderchain",
+    "Mantlewalkers",
+    "Clockwork",
+    "Dupliblaze"}
+WATER_HIVE_ITEMS = {
+    "Whitecap Crown",
+    "Stillwater Blue",
+    "Trench Scourer",
+    "Silt of the Seafloor",
+    "Coral Ring",
+    "Moon Pool Circlet"}
+EARTH_HIVE_ITEMS = {
+    "Ambertoise Shell",
+    "Beetle Aegis",
+    "Elder Oak Roots",
+    "Humbark Moccasins",
+    "Subur Clip",
+    "Golemlus Core"}
+THUNDER_HIVE_ITEMS = {
+    "Sparkling Visor",
+    "Insulated Plate Mail",
+    "Static-Charged Leggings",
+    "Thunderous Step",
+    "Bottled Thunderstorm",
+    "Lightning Flash"}
+AIR_HIVE_ITEMS = {
+    "Pride of the Aerie",
+    "Gale's Freedom",
+    "Turbine Greaves",
+    "Flashstep",
+    "Breezehands",
+    "Vortex Bracer"}
+MASTER_HIVE_ITEMS = {
+    "Abyss-Imbued Leggings",
+    "Boreal-Patterned Crown",
+    "Anima-Infused Cuirass",
+    "Chaos-Woven Greaves",
+    "Elysium-Engraved Aegis",
+    "Eden-Blessed Guards",
+    "Gaea-Hewn Boots",
+    "Hephaestus-Forged Sabatons",
+    "Obsidian-Framed Helmet",
+    "Twilight-Gilded Cloak",
+    "Infused Hive Relik",
+    "Infused Hive Wand",
+    "Infused Hive Spear",
+    "Infused Hive Dagger",
+    "Infused Hive Bow",
+    "Contrast",
+    "Prowess",
+    "Intensity"}
+GROOKWARTS = {
+    "Dragon's Eye Bracelet",
+    "Draoi Fair",
+    "Renda Langit"}
 
 
 MAX_SP_TO_INVEST = 200
@@ -92,6 +144,7 @@ def legal_item_combinations(build: list[tuple[str, np.ndarray]]) -> bool:
     earth_hive = False
     thunder_hive = False
     air_hive = False
+    grookwarts = False
     for item in build:
         if item[0] in ORNATE_SHADOW_ITEMS:
             if ornate_shadow:
@@ -119,6 +172,10 @@ def legal_item_combinations(build: list[tuple[str, np.ndarray]]) -> bool:
             thunder_hive = True
         elif item[0] in AIR_HIVE_ITEMS:
             if air_hive:
+                return False
+            air_hive = True
+        elif item[0] in GROOKWARTS:
+            if grookwarts:
                 return False
             air_hive = True
     return True

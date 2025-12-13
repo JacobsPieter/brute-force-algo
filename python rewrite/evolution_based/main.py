@@ -138,7 +138,10 @@ def evolution_steps(keep_per_step: int, current_builds: list[list[tuple[str, np.
 
 
 def main():
-    items= parser.parse_items('data\\items.json')
+    items = parser.parse_items('data\\items.json')
+    tomes = parser.parse_tomes('data\\tomes.json')
+    
+    print(tomes)
 
     helmets, chestplates, leggings, boots, rings, bracelets, necklaces, spears, bows, daggers, wands, reliks = items
     weapons = spears
@@ -149,7 +152,7 @@ def main():
 
 
 
-    weapons = [item for item in weapons if item[0] == "Divzer"]
+    weapons = [item for item in weapons if item[0] == "Guardian"]
 
     sp_requirements_list = ['strength_requirement', 'dexterity_requirement', 'intelligence_requirement', 'defense_requirement', 'agility_requirement']
     sp_adding_list = ['strength', 'dexterity', 'intelligence', 'defense', 'agility']
