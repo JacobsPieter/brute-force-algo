@@ -1,5 +1,6 @@
 import check_skill_points
 import human_readable_stat_names_and_indices as stat_indices
+from classes import *
 
 from numba import njit
 import numpy as np
@@ -90,26 +91,6 @@ LARGE_POS = 1000000000000
 
 
 
-def combine_build_stats(build1: list[tuple[str, np.ndarray]]) -> np.ndarray:
-    combined_stats = np.zeros_like(build1[0][1])
-    for item in build1:
-        combined_stats = np.add(combined_stats, item[1])
-    return combined_stats
-
-
-def combine_skill_point_requirements(build: list[tuple[str, np.ndarray]], skill_points_req_array_pos: tuple) -> tuple:
-    str_req, dex_req, int_req, def_req, agi_req = 0, 0, 0, 0, 0
-    for item in build:
-        str_req = max([item[1][skill_points_req_array_pos[0]], str_req])
-        dex_req = max([item[1][skill_points_req_array_pos[1]], dex_req])
-        int_req = max([item[1][skill_points_req_array_pos[2]], int_req])
-        def_req = max([item[1][skill_points_req_array_pos[3]], def_req])
-        agi_req = max([item[1][skill_points_req_array_pos[4]], agi_req])
-    return (str_req, dex_req, int_req, def_req, agi_req)
-
-
-
-
 
 
 def skill_point_fast_check(skill_points: tuple[int, int, int, int, int]) -> bool:
@@ -136,7 +117,7 @@ def skill_point_fast_check(skill_points: tuple[int, int, int, int, int]) -> bool
 
 
 
-def legal_item_combinations(build: list[tuple[str, np.ndarray]]) -> bool:
+def legal_item_combinations(build: Build) -> bool:
     ornate_shadow = False
     master_hive = False
     fire_hive = False
@@ -145,36 +126,36 @@ def legal_item_combinations(build: list[tuple[str, np.ndarray]]) -> bool:
     thunder_hive = False
     air_hive = False
     grookwarts = False
-    for item in build:
-        if item[0] in ORNATE_SHADOW_ITEMS:
+    for item in build.get_all_items():
+        if item.name in ORNATE_SHADOW_ITEMS:
             if ornate_shadow:
                 return False
             ornate_shadow = True
-        elif item[0] in MASTER_HIVE_ITEMS:
+        elif item.name in MASTER_HIVE_ITEMS:
             if master_hive:
                 return False
             master_hive = True
-        elif item[0] in FIRE_HIVE_ITEMS:
+        elif item.name in FIRE_HIVE_ITEMS:
             if fire_hive:
                 return False
             fire_hive = True
-        elif item[0] in WATER_HIVE_ITEMS:
+        elif item.name in WATER_HIVE_ITEMS:
             if water_hive:
                 return False
             water_hive = True
-        elif item[0] in EARTH_HIVE_ITEMS:
+        elif item.name in EARTH_HIVE_ITEMS:
             if earth_hive:
                 return False
             earth_hive = True
-        elif item[0] in THUNDER_HIVE_ITEMS:
+        elif item.name in THUNDER_HIVE_ITEMS:
             if thunder_hive:
                 return False
             thunder_hive = True
-        elif item[0] in AIR_HIVE_ITEMS:
+        elif item.name in AIR_HIVE_ITEMS:
             if air_hive:
                 return False
             air_hive = True
-        elif item[0] in GROOKWARTS:
+        elif item.name in GROOKWARTS:
             if grookwarts:
                 return False
             air_hive = True
@@ -197,9 +178,9 @@ def calculate_fitness_wrapper(build, config):
 
 
 
-def calculate_fitness(build, required_stats_names: list[str], required_stats_minimums: list[float], required_stats_maximums: list[float], required_stats_weights: list[int], pos_in_build_stats: list[int]) -> float:
+def calculate_fitness(build: Build, required_stats_names: list[str], required_stats_minimums: list[float], required_stats_maximums: list[float], required_stats_weights: list[int], pos_in_build_stats: list[int]) -> float:
     make_value_zero_no_more: float = 0.01
-    build_stats = combine_build_stats(build)
+    build_stats = build.get_combined_build_stats()
     fitness: float = 0
     new_minimums = required_stats_minimums
     new_maximums = required_stats_maximums
@@ -219,7 +200,7 @@ def calculate_fitness(build, required_stats_names: list[str], required_stats_min
     for stat, stat_name in enumerate(required_stats_names):
 
         stat_fitness: float = 0
-        value = build_stats[pos_in_build_stats[stat]]
+        value = build.get_stat_from_combined_stats(stat_name)
         
         weight: float = required_stats_weights[stat]
         minimum: float = required_stats_minimums[stat]
@@ -260,32 +241,19 @@ def calculate_fitness(build, required_stats_names: list[str], required_stats_min
 
 
 
-def evaluate_builds(max_builds_list_length: int, stat_to_optimise: int, builds_to_evaluate: list[list[tuple[str, np.ndarray]]], skill_points_req_array_pos, min_optimised_stat_req, config) -> list[list[tuple[str, np.ndarray]]]:
-    valid_builds = []
+def evaluate_builds(max_builds_list_length: int, builds_to_evaluate: list[Build], config) -> list[Build]:
+    valid_builds: list[Build] = []
     valid_build_set = set()
-    skill_indices = [stat_indices.get_stat_pos('strength'),
-                     stat_indices.get_stat_pos('dexterity'),
-                     stat_indices.get_stat_pos('intelligence'),
-                     stat_indices.get_stat_pos('defense'),
-                     stat_indices.get_stat_pos('agility')]
-    req_indices = [stat_indices.get_stat_pos('strength_requirement'),
-                   stat_indices.get_stat_pos('dexterity_requirement'),
-                   stat_indices.get_stat_pos('intelligence_requirement'),
-                   stat_indices.get_stat_pos('defense_requirement'),
-                   stat_indices.get_stat_pos('agility_requirement')]
     for build in builds_to_evaluate:
-        combined_stats = combine_build_stats(build)
-        skill_point_reqs = combine_skill_point_requirements(build, skill_points_req_array_pos)
         if not check_skill_points.check_skillpoints(build):
             continue
         if not legal_item_combinations(build):
             continue
-        fitness = calculate_fitness_wrapper(build, config)
-        if not f'{[item[0] for item in build]}' in valid_build_set:
-            valid_build_set.add(f'{[item[0] for item in build]}')
-            valid_builds.append((build, fitness))
-    valid_builds = heapq.nlargest(max_builds_list_length, valid_builds, key=lambda build: build[1])
-    valid_builds = [build[0] for build in valid_builds]
+        build.set_fitness(calculate_fitness_wrapper(build, config))
+        if not build in valid_build_set:
+            valid_build_set.add(build)
+            valid_builds.append(build)
+    valid_builds = heapq.nlargest(max_builds_list_length, valid_builds, key=lambda build: build.get_fitness())
     return valid_builds
 
 

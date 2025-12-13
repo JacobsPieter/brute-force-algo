@@ -75,7 +75,7 @@ STAT_NAMES: dict[str, str] = {
                 'reflection':'ref',
                 'spell_damage_percent':'sdPct',
                 'spell_damage_raw':'sdRaw',
-                'slots':'slots',
+                'powder_slots':'slots',
                 'slow_enemy':'slowEnemy',
                 'spell_cost_percent_1':'spPct1',
                 'spell_cost_percent_2':'spPct2',
@@ -111,9 +111,6 @@ STAT_NAMES: dict[str, str] = {
 
 def get_stat_indices() -> dict[str, int]:
     return {stat_name: index for index, stat_name in enumerate(sorted(STAT_NAMES.values()))}
-
-
-
 
 def get_stat_pos(stat_name: str):
     stat_name_short = STAT_NAMES.get(stat_name)

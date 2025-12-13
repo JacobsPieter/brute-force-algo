@@ -3,7 +3,7 @@ import numpy as np
 import json
 import ctypes as ct
 
-import parser
+from classes import *
 
 
 
@@ -19,16 +19,11 @@ def build_header():
     header = [legacy, version]
     return header
 
-def build_equipment(build: list[tuple[str, np.ndarray]], data_file='data\\items.json'):
-    lookup_dict, items = parser.get_lookup_dicts_of_items(data_file)
-    powderable_types = {'helmet', 'chestplate', 'leggings', 'boots'}
+def build_equipment(build: Build):
     equipment = []
-    for item in build:
-        item_name = item[0]
-        encoding_list = [(ENC['EQUIPMENT_KIND']['NORMAL'], ENC['EQUIPMENT_KIND']['BITLEN']), (items[item_name]['id']+1, ENC['ITEM_ID_BITLEN'])]
-        if items[item_name]['type'] in powderable_types:
-            encoding_list.append((ENC['EQUIPMENT_POWDERS_FLAG']['NO_POWDERS'], ENC['EQUIPMENT_POWDERS_FLAG']['BITLEN']))
-        elif items[item_name]['category'] == 'weapon':
+    for item in build.get_all_items():
+        encoding_list = [(ENC['EQUIPMENT_KIND']['NORMAL'], ENC['EQUIPMENT_KIND']['BITLEN']), (item.id+1, ENC['ITEM_ID_BITLEN'])]
+        if isinstance(item, Powderable):
             encoding_list.append((ENC['EQUIPMENT_POWDERS_FLAG']['NO_POWDERS'], ENC['EQUIPMENT_POWDERS_FLAG']['BITLEN']))
         equipment.append(encoding_list)
     return equipment
@@ -126,7 +121,7 @@ def encode_build(build):
     
 
 
-if __name__ == "main":
+""" if __name__ == "main":
     build = [('Brilliant Diamond Helmet', 0), ('Brilliant Diamond Chestplate', 0), ('Brilliant Diamond Leggings', 0), ('Brilliant Diamond Boots', 0), ('Bygg', 0), ('Bygg', 0), ('Depravity', 0), ('Grafted Eyestalk', 0), ('Cracked Oak Spear', 0)]
-    print(encode_build(build))
+    print(encode_build(build)) """
 

@@ -3,38 +3,16 @@ from numba import njit
 import numpy as np
 
 import human_readable_stat_names_and_indices as stat_indices
-
-
-def combine_skill_point_requirements(build: list[tuple[str, np.ndarray]], skill_points_req_array_pos: tuple) -> tuple:
-    str_req, dex_req, int_req, def_req, agi_req = 0, 0, 0, 0, 0
-    for item in build:
-        str_req = max([item[1][skill_points_req_array_pos[0]], str_req])
-        dex_req = max([item[1][skill_points_req_array_pos[1]], dex_req])
-        int_req = max([item[1][skill_points_req_array_pos[2]], int_req])
-        def_req = max([item[1][skill_points_req_array_pos[3]], def_req])
-        agi_req = max([item[1][skill_points_req_array_pos[4]], agi_req])
-    return (str_req, dex_req, int_req, def_req, agi_req)
+from classes import *
 
 
 
-
-def check_skillpoints(build):
-    weapon_item = build[-1]
-    equipment_items = build[:-1]
-
-    skill_indices = [stat_indices.get_stat_pos('strength'),
-                     stat_indices.get_stat_pos('dexterity'),
-                     stat_indices.get_stat_pos('intelligence'),
-                     stat_indices.get_stat_pos('defense'),
-                     stat_indices.get_stat_pos('agility')]
-    req_indices = [stat_indices.get_stat_pos('strength_requirement'),
-                   stat_indices.get_stat_pos('dexterity_requirement'),
-                   stat_indices.get_stat_pos('intelligence_requirement'),
-                   stat_indices.get_stat_pos('defense_requirement'),
-                   stat_indices.get_stat_pos('agility_requirement')]
+def check_skillpoints(build: Build):
+    weapon_item = build.weapon
+    equipment_items = build.get_all_items()[:-1]
     
-    weapon_item_sp = (weapon_item[0], ([int(weapon_item[1][i]) for i in skill_indices], [int(weapon_item[1][i]) for i in req_indices]))
-    equipment_items_sp = [(name, ([int(stats[i]) for i in skill_indices], [int(stats[i]) for i in req_indices])) for name, stats in equipment_items]
+    weapon_item_sp = (weapon_item.name, (weapon_item.get_skillpoints(), weapon_item.get_skillpoints_requirements()))
+    equipment_items_sp = [(item.name, (item.get_skillpoints(), item.get_skillpoints_requirements())) for item in equipment_items]
 
     fixed = []
     consider = []
@@ -90,7 +68,7 @@ def check_skillpoints(build):
                     current_sp[i] += skillpoints[i]
         if not feasible:
             continue
-        total_reqs = combine_skill_point_requirements(build, tuple(req_indices))
+        total_reqs = build.get_combined_skill_point_requirements()
         needed_extra_sp = [0, 0, 0, 0, 0]
         for i, sp in enumerate(current_sp):
             if sp < total_reqs[i] and total_reqs[i] > 0:
