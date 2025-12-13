@@ -100,13 +100,51 @@ class Build:
         self.ring1, self.ring2, self.bracelet, self.necklace = tuple(self.accessories)
         self.weapon = weapon
         self.tomes = tomes
+        self.validated = False
         self.__fitness = 0
-        self.__changed_fitness = False
         self.__calculated_build_stats = False
         self.__calculated_skill_point_requirements = False
     
+    def set_item(self, item: Armour | Accessory | Weapon | Tome):
+        match item.type:
+            case 'weapon':
+                if isinstance(item, Weapon):
+                    self.weapon = item
+            case 'helmet':
+                if isinstance(item, Armour):
+                    self.helmet = item
+            case 'chestplate':
+                if isinstance(item, Armour):
+                    self.chestplate = item
+            case 'leggings':
+                if isinstance(item, Armour):
+                    self.leggings = item
+            case 'boots':
+                if isinstance(item, Armour):
+                    self.boots = item
+            case 'ring1':
+                if isinstance(item, Accessory):
+                    self.ring1 = item
+            case 'ring2':
+                if isinstance(item, Accessory):
+                    self.ring2 = item
+            case 'bracelet':
+                if isinstance(item, Accessory):
+                    self.bracelet = item
+            case 'necklace':
+                if isinstance(item, Accessory):
+                    self.necklace = item
+            case _:
+                pass
+        self.armour = [self.helmet, self.chestplate, self.leggings, self.boots]
+        self.accessories = [self.ring1, self.ring2, self.bracelet, self.necklace]
+        
+
     def __str__(self):
-        return f'{(self.get_all_items())}'
+        return f'{self.get_all_items()}'
+    
+    def get_name(self):
+        return f'{self.get_all_items()}'
     
     def get_all_items(self):
         return list(itertools.chain(self.armour, self.accessories, [self.weapon], self.tomes))
@@ -137,8 +175,7 @@ class Build:
         return self.__fitness
 
     def set_fitness(self, new_fitness):
-        if not self.__changed_fitness:
-            self.__fitness = new_fitness
+        self.__fitness = new_fitness
     
     def get_combined_skill_point_requirements(self):
         if self.__calculated_skill_point_requirements:
@@ -157,7 +194,8 @@ class Build:
         self.__calculated_skill_point_requirements = True
         return (str_req, dex_req, int_req, def_req, agi_req)
 
-
+    def set_build_validated(self, value: bool):
+        self.validated = value
 
 
 

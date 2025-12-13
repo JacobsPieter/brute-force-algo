@@ -104,23 +104,23 @@ def gen_new_build_mutations(
         necklaces: list[Accessory],
         weapons: list[Weapon]):
     helmet_changed = Build(existing_build.armour, existing_build.accessories, existing_build.weapon, existing_build.tomes)
-    helmet_changed.helmet = rd.choice(helmets)
+    helmet_changed.set_item(rd.choice(helmets))
     chestplate_changed = Build(existing_build.armour, existing_build.accessories, existing_build.weapon, existing_build.tomes)
-    chestplate_changed.chestplate = rd.choice(chestplates)
+    chestplate_changed.set_item(rd.choice(chestplates))
     legging_changed = Build(existing_build.armour, existing_build.accessories, existing_build.weapon, existing_build.tomes)
-    legging_changed.leggings = rd.choice(leggings)
+    legging_changed.set_item(rd.choice(leggings))
     boot_changed = Build(existing_build.armour, existing_build.accessories, existing_build.weapon, existing_build.tomes)
-    boot_changed.boots = rd.choice(boots)
+    boot_changed.set_item(rd.choice(boots))
     ring1_changed = Build(existing_build.armour, existing_build.accessories, existing_build.weapon, existing_build.tomes)
-    ring1_changed.ring1 = rd.choice(rings)
+    ring1_changed.set_item(rd.choice(rings))
     ring2_changed = Build(existing_build.armour, existing_build.accessories, existing_build.weapon, existing_build.tomes)
-    ring2_changed.ring2 = rd.choice(rings)
+    ring2_changed.set_item(rd.choice(rings))
     bracelet_changed = Build(existing_build.armour, existing_build.accessories, existing_build.weapon, existing_build.tomes)
-    bracelet_changed.bracelet = rd.choice(bracelets)
+    bracelet_changed.set_item(rd.choice(bracelets))
     necklace_changed = Build(existing_build.armour, existing_build.accessories, existing_build.weapon, existing_build.tomes)
-    necklace_changed.necklace = rd.choice(necklaces)
+    necklace_changed.set_item(rd.choice(necklaces))
     weapon_changed = Build(existing_build.armour, existing_build.accessories, existing_build.weapon, existing_build.tomes)
-    weapon_changed.weapon = rd.choice(weapons)
+    weapon_changed.set_item(rd.choice(weapons))
     return [helmet_changed, chestplate_changed, legging_changed, boot_changed, ring1_changed, ring2_changed, bracelet_changed, necklace_changed, weapon_changed, existing_build]
 
 

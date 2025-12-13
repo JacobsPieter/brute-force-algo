@@ -2,8 +2,6 @@ import check_skill_points
 import human_readable_stat_names_and_indices as stat_indices
 from classes import *
 
-from numba import njit
-import numpy as np
 import heapq
 
 
@@ -206,7 +204,7 @@ def calculate_fitness(build: Build, required_stats_names: list[str], required_st
         minimum: float = required_stats_minimums[stat]
         maximum: float = required_stats_maximums[stat]
 
-        if value < 0.1 or value > -0.1:
+        if value < 0.1 and value > -0.1:
             value = value + make_value_zero_no_more
 
         if minimum > LARGE_NEG and maximum < LARGE_POS:
@@ -218,21 +216,21 @@ def calculate_fitness(build: Build, required_stats_names: list[str], required_st
                 stat_fitness = maximum / value
             elif value < minimum:
                 stat_fitness = value / minimum
-            stats_fitnesses.append(stat_fitness * weight / total_weigth)
+            stats_fitnesses.append(stat_fitness * weight)
             continue
         if maximum < LARGE_POS and minimum <= LARGE_NEG:
             stat_fitness = maximum / value
-            stats_fitnesses.append(stat_fitness * weight / total_weigth)
+            stats_fitnesses.append(stat_fitness * weight)
             continue
         if minimum > LARGE_NEG and maximum >= LARGE_POS:
             stat_fitness = value / minimum
-            stats_fitnesses.append(stat_fitness * weight / total_weigth)
+            stats_fitnesses.append(stat_fitness * weight)
             continue
         if minimum <= LARGE_NEG and maximum >= LARGE_POS:
-            stats_fitnesses.append(value * weight / total_weigth)
+            stats_fitnesses.append(value * weight)
             continue
     
-    fitness = sum(stats_fitnesses)
+    fitness = sum(stats_fitnesses) / total_weigth
     return fitness
 
 
@@ -245,13 +243,15 @@ def evaluate_builds(max_builds_list_length: int, builds_to_evaluate: list[Build]
     valid_builds: list[Build] = []
     valid_build_set = set()
     for build in builds_to_evaluate:
-        if not check_skill_points.check_skillpoints(build):
-            continue
-        if not legal_item_combinations(build):
-            continue
-        build.set_fitness(calculate_fitness_wrapper(build, config))
-        if not build in valid_build_set:
-            valid_build_set.add(build)
+        if not build.validated:
+            if not check_skill_points.check_skillpoints(build):
+                continue
+            if not legal_item_combinations(build):
+                continue
+            build.set_fitness(calculate_fitness_wrapper(build, config))
+            build.set_build_validated(True)
+        if not build.get_name() in valid_build_set:
+            valid_build_set.add(build.get_name())
             valid_builds.append(build)
     valid_builds = heapq.nlargest(max_builds_list_length, valid_builds, key=lambda build: build.get_fitness())
     return valid_builds
