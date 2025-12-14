@@ -9,12 +9,14 @@ from classes import *
 
 def check_skillpoints(build: Build):
     weapon_item = build.weapon
-    equipment_items = build.get_all_items()[:-1]
+    equipment_items = build.get_all_gear()[:-1]
+    tome = build.guild_tome
     
     weapon_item_sp = (weapon_item.name, (weapon_item.get_skillpoints(), weapon_item.get_skillpoints_requirements()))
     equipment_items_sp = [(item.name, (item.get_skillpoints(), item.get_skillpoints_requirements())) for item in equipment_items]
+    tome_sp = (tome.name, (tome.get_skillpoints(), tome.get_skillpoints_requirements()))
 
-    fixed = []
+    fixed = [tome_sp]
     consider = []
     noboost = []
     for name, (skillpoints, reqs) in equipment_items_sp:

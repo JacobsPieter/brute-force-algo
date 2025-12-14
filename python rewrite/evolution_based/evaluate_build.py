@@ -124,7 +124,7 @@ def legal_item_combinations(build: Build) -> bool:
     thunder_hive = False
     air_hive = False
     grookwarts = False
-    for item in build.get_all_items():
+    for item in build.get_all_gear():
         if item.name in ORNATE_SHADOW_ITEMS:
             if ornate_shadow:
                 return False
@@ -169,16 +169,14 @@ def calculate_fitness_wrapper(build, config):
     required_stats_minimums_list = [required_stats_minimums.get(stat,LARGE_NEG) for stat in required_stats_names]
     required_stats_maximums_list = [required_stats_maximums.get(stat,LARGE_POS) for stat in required_stats_names]
     required_stats_weights_list = [required_stats_weights[stat] for stat in required_stats_names]
-    pos_in_build_stats = stat_indices.get_stats_pos_list(required_stats_names)
-    fitness = calculate_fitness(build, required_stats_names, required_stats_minimums_list, required_stats_maximums_list, required_stats_weights_list, pos_in_build_stats)
+    fitness = calculate_fitness(build, required_stats_names, required_stats_minimums_list, required_stats_maximums_list, required_stats_weights_list)
     return fitness  
 
 
 
 
-def calculate_fitness(build: Build, required_stats_names: list[str], required_stats_minimums: list[float], required_stats_maximums: list[float], required_stats_weights: list[int], pos_in_build_stats: list[int]) -> float:
+def calculate_fitness(build: Build, required_stats_names: list[str], required_stats_minimums: list[float], required_stats_maximums: list[float], required_stats_weights: list[int]) -> float:
     make_value_zero_no_more: float = 0.01
-    build_stats = build.get_combined_build_stats()
     fitness: float = 0
     new_minimums = required_stats_minimums
     new_maximums = required_stats_maximums
@@ -198,7 +196,10 @@ def calculate_fitness(build: Build, required_stats_names: list[str], required_st
     for stat, stat_name in enumerate(required_stats_names):
 
         stat_fitness: float = 0
-        value = build.get_stat_from_combined_stats(stat_name)
+        if stat_name == 'total_hp':
+            value = sum(build.get_stats_from_combined_stats(['hp', 'hp_bonus']))
+        else:
+            value = build.get_stat_from_combined_stats(stat_name)
         
         weight: float = required_stats_weights[stat]
         minimum: float = required_stats_minimums[stat]

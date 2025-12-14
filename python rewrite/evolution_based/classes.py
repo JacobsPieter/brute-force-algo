@@ -93,23 +93,32 @@ class Tome(Item):
 
 
 class Build:
-    def __init__(self, armour: list[Armour], accessories: list[Accessory], weapon: Weapon, tomes: list[Tome]):
+    def __init__(self, armour: list[Armour], accessories: list[Accessory], weapon: Weapon, tomes: list[list[Tome]]):
         self.armour = armour
         self.helmet, self.chestplate, self.leggings, self.boots = tuple(self.armour)
         self.accessories = accessories
         self.ring1, self.ring2, self.bracelet, self.necklace = tuple(self.accessories)
         self.weapon = weapon
         self.tomes = tomes
+        self.armour_tomes: list[Tome] = self.tomes[0]
+        self.weapon_tomes: list[Tome] = self.tomes[1]
+        self.marathon_tomes: list[Tome] = self.tomes[2]
+        self.expertise_tomes: list[Tome] = self.tomes[3]
+        self.mysticism_tomes: list[Tome] = self.tomes[4]
+        self.lootrunning_tome: Tome = self.tomes[5][0]
+        self.guild_tome: Tome = self.tomes[6][0]
         self.validated = False
         self.__fitness = 0
         self.__calculated_build_stats = False
         self.__calculated_skill_point_requirements = False
     
-    def set_item(self, item: Armour | Accessory | Weapon | Tome):
+    def set_item(self, item: Armour | Accessory | Weapon | Tome, position=0):
         match item.type:
             case 'weapon':
                 if isinstance(item, Weapon):
                     self.weapon = item
+                if isinstance(item, Tome):
+                    self.weapon_tomes[position] = item
             case 'helmet':
                 if isinstance(item, Armour):
                     self.helmet = item
@@ -122,22 +131,35 @@ class Build:
             case 'boots':
                 if isinstance(item, Armour):
                     self.boots = item
-            case 'ring1':
+            case 'ring':
                 if isinstance(item, Accessory):
-                    self.ring1 = item
-            case 'ring2':
-                if isinstance(item, Accessory):
-                    self.ring2 = item
+                    if position == 0:
+                        self.ring1 = item
+                    else:
+                        self.ring2 = item
             case 'bracelet':
                 if isinstance(item, Accessory):
                     self.bracelet = item
             case 'necklace':
                 if isinstance(item, Accessory):
                     self.necklace = item
+            case 'armour':
+                if isinstance(item, Tome):
+                    self.armour_tomes[position] = item
+            case 'marathon':
+                if isinstance(item, Tome):
+                    self.marathon_tomes[position] = item
+            case 'expertise':
+                if isinstance(item, Tome):
+                    self.expertise_tomes[position] = item
+            case 'mysticism':
+                if isinstance(item, Tome):
+                    self.mysticism_tomes[position] = item
             case _:
                 pass
         self.armour = [self.helmet, self.chestplate, self.leggings, self.boots]
         self.accessories = [self.ring1, self.ring2, self.bracelet, self.necklace]
+        self.tomes = [self.armour_tomes, self.weapon_tomes, self.marathon_tomes, self.expertise_tomes, self.mysticism_tomes, [self.lootrunning_tome], [self.guild_tome]]
         
 
     def __str__(self):
@@ -146,8 +168,17 @@ class Build:
     def get_name(self):
         return f'{self.get_all_items()}'
     
+    def get_all_gear(self):
+        return list(itertools.chain(self.armour, self.accessories, [self.weapon]))
+    
+    def get_all_tomes(self):
+        return list(itertools.chain(self.tomes))
+    
+    def get_all_tomes_flattened(self):
+        return list(itertools.chain.from_iterable(self.tomes))
+
     def get_all_items(self):
-        return list(itertools.chain(self.armour, self.accessories, [self.weapon], self.tomes))
+        return list(itertools.chain(self.armour, self.accessories, [self.weapon], self.get_all_tomes_flattened()))
     
     def get_combined_build_stats(self) -> np.ndarray:
         if self.__calculated_build_stats:
@@ -167,7 +198,7 @@ class Build:
     
     def __combine_build_stats(self) -> np.ndarray:
         combined_stats = np.zeros_like(self.helmet.get_all_stats())
-        for item in list(itertools.chain(self.armour, self.accessories, [self.weapon], self.tomes)):
+        for item in list(itertools.chain(self.armour, self.accessories, [self.weapon], itertools.chain.from_iterable(self.tomes))):
             combined_stats = np.add(combined_stats, item.get_all_stats())
         return combined_stats
     
@@ -185,7 +216,7 @@ class Build:
         
     def __combine_skill_point_requirements(self) -> tuple:
         str_req, dex_req, int_req, def_req, agi_req = 0, 0, 0, 0, 0
-        for item in self.get_all_items():
+        for item in self.get_all_gear():
             str_req = max([item.get_skillpoints_requirements()[0], str_req])
             dex_req = max([item.get_skillpoints_requirements()[1], dex_req])
             int_req = max([item.get_skillpoints_requirements()[2], int_req])

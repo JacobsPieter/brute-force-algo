@@ -21,7 +21,7 @@ def build_header():
 
 def build_equipment(build: Build):
     equipment = []
-    for item in build.get_all_items():
+    for item in build.get_all_gear():
         encoding_list = [(ENC['EQUIPMENT_KIND']['NORMAL'], ENC['EQUIPMENT_KIND']['BITLEN']), (item.id+1, ENC['ITEM_ID_BITLEN'])]
         if isinstance(item, Powderable):
             encoding_list.append((ENC['EQUIPMENT_POWDERS_FLAG']['NO_POWDERS'], ENC['EQUIPMENT_POWDERS_FLAG']['BITLEN']))
@@ -29,9 +29,33 @@ def build_equipment(build: Build):
     return equipment
 
 
-def build_tomes():
-    tomes = [(ENC['TOMES_FLAG']['NO_TOMES'], ENC['TOMES_FLAG']['BITLEN'])]
-    return tomes
+def build_tomes(build: Build):
+    enc_tomes: list[list] = [[], [], [], [], [], [], [], [], [], [], [], [], [], []]
+    for i, tomes in enumerate(build.get_all_tomes()):
+        for tome in tomes:
+            match i:
+                case 0: #armour
+                    encoding_list = [(ENC['TOME_SLOT_FLAG']['USED'], ENC['TOME_SLOT_FLAG']['BITLEN']), (tome.id, ENC['TOME_ID_BITLEN'])]
+                    enc_tomes[1].append(encoding_list)
+                case 1: #weapon
+                    encoding_list = [(ENC['TOME_SLOT_FLAG']['USED'], ENC['TOME_SLOT_FLAG']['BITLEN']), (tome.id, ENC['TOME_ID_BITLEN'])]
+                    enc_tomes[0].append(encoding_list)
+                case 2: #marathon
+                    encoding_list = [(ENC['TOME_SLOT_FLAG']['USED'], ENC['TOME_SLOT_FLAG']['BITLEN']), (tome.id, ENC['TOME_ID_BITLEN'])]
+                    enc_tomes[4].append(encoding_list)
+                case 3: #expertise
+                    encoding_list = [(ENC['TOME_SLOT_FLAG']['USED'], ENC['TOME_SLOT_FLAG']['BITLEN']), (tome.id, ENC['TOME_ID_BITLEN'])]
+                    enc_tomes[6].append(encoding_list)
+                case 4: #mysticism
+                    encoding_list = [(ENC['TOME_SLOT_FLAG']['USED'], ENC['TOME_SLOT_FLAG']['BITLEN']), (tome.id, ENC['TOME_ID_BITLEN'])]
+                    enc_tomes[5].append(encoding_list)
+                case 5: #lootrunning
+                    encoding_list = [(ENC['TOME_SLOT_FLAG']['USED'], ENC['TOME_SLOT_FLAG']['BITLEN']), (tome.id, ENC['TOME_ID_BITLEN'])]
+                    enc_tomes[3].append(encoding_list)
+                case 6: #guild
+                    encoding_list = [(ENC['TOME_SLOT_FLAG']['USED'], ENC['TOME_SLOT_FLAG']['BITLEN']), (tome.id, ENC['TOME_ID_BITLEN'])]
+                    enc_tomes[2].append(encoding_list)
+    return (ENC['TOMES_FLAG']['HAS_TOMES'], ENC['TOMES_FLAG']['BITLEN']), itertools.chain.from_iterable(enc_tomes)
 
 
 def build_skillpoints():
@@ -75,8 +99,18 @@ def trim_bitstring(base64string: str, bitstring: str):
         return base64string, bitstring
 
 
-
-
+def create_base64string(bitstring: str):
+    base64_characters = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '+', '-']
+    base64string = ''
+    while len(bitstring) >= 6:
+        bitstring_slice = bitstring[-6:]
+        to_convert = f'0b{bitstring_slice[::-1]}'
+        bitstring = bitstring[:-6]
+        base64string += base64_characters[int(to_convert, base=0)]
+    if len(bitstring) > 0:
+        bitstring += '0'*(6-len(bitstring))
+        base64string, bitstring = trim_bitstring(base64string, bitstring)
+    return base64string
 
 
 def encode_build(build):
@@ -84,7 +118,7 @@ def encode_build(build):
     base64string = ''
     header = build_header()
     equipment = build_equipment(build)
-    tomes = build_tomes()
+    tome_flag, tomes = build_tomes(build)
     skillpoints = build_skillpoints()
     level = build_level()
     aspects = build_aspects()
@@ -96,9 +130,11 @@ def encode_build(build):
         for element in item:
             bitstring = add_to_binary_string(bitstring, element)
             base64string, bitstring = trim_bitstring(base64string, bitstring)
-    for element in tomes:
-        bitstring = add_to_binary_string(bitstring, element)
-        base64string, bitstring = trim_bitstring(base64string, bitstring)
+    bitstring = add_to_binary_string(bitstring, tome_flag)
+    for tome in tomes:
+        for element in tome:
+            bitstring = add_to_binary_string(bitstring, element)
+            base64string, bitstring = trim_bitstring(base64string, bitstring)
     for element in skillpoints:
         bitstring = add_to_binary_string(bitstring, element)
         base64string, bitstring = trim_bitstring(base64string, bitstring)
@@ -111,6 +147,7 @@ def encode_build(build):
     for element in tree:
         bitstring = add_to_binary_string(bitstring, element)
         base64string, bitstring = trim_bitstring(base64string, bitstring)
+    #return create_base64string(bitstring)[::-1]
     if len(bitstring) > 0:
         bitstring += '0'*(6-len(bitstring))
         base64string, bitstring = trim_bitstring(base64string, bitstring)
