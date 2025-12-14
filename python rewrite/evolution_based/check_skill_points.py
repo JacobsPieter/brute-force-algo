@@ -32,6 +32,11 @@ def check_skillpoints(build: Build):
         for i in range(5):
             sp_base[i] += skillpoints[i]
     
+
+    least_applied = [0, 0, 0, 0, 0]
+    least_applied_total = 0
+    possible = False
+
     permutations = itertools.permutations(consider)
     for perm in permutations:
         current_sp = sp_base.copy()
@@ -80,8 +85,12 @@ def check_skillpoints(build: Build):
                 applied_sp[i] += needed_extra_sp[i]
         if not all(sp_applied <= 100 for sp_applied in applied_sp) or sum(sp_applied for sp_applied in applied_sp) > 200:
             continue
-        else:
-            return True
-    return False
+        possible = True
+        if least_applied_total < total_applied:
+            least_applied_total = total_applied
+            least_applied = applied_sp
+            build.skill_points = current_sp
+            build.skill_points_applied = least_applied
+    return possible
 
 

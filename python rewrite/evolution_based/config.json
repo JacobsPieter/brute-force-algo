@@ -1,8 +1,8 @@
 {
     "algorithm": {
         "generations": 50,
-        "subjects": 100,
-        "change_per_generation": 20
+        "subjects": 50,
+        "change_per_generation": 10
     },
     "return_length": 10,
     "items_used": {
@@ -17,10 +17,10 @@
         "state": "This part is not implemented yet"
     },
     "required_stats":{
-        "required_stats_names": ["total_hp"],
+        "required_stats_names": ["effective_hp"],
         "required_stats_minimums": {},
         "required_stats_maximums": {},
-        "required_stats_weights": {"total_hp": 100},
+        "required_stats_weights": {"effective_hp": 100},
         "required_stats_explanation_DO_NOT_USE_as_key": {"stat1": "minimum value of the stat as an integer", "stat2": "minimum value of the stat as an integer"}
     }
 }

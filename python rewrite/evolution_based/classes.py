@@ -99,6 +99,7 @@ class Build:
         self.accessories = accessories
         self.ring1, self.ring2, self.bracelet, self.necklace = tuple(self.accessories)
         self.weapon = weapon
+
         self.tomes = tomes
         self.armour_tomes: list[Tome] = self.tomes[0]
         self.weapon_tomes: list[Tome] = self.tomes[1]
@@ -107,6 +108,10 @@ class Build:
         self.mysticism_tomes: list[Tome] = self.tomes[4]
         self.lootrunning_tome: Tome = self.tomes[5][0]
         self.guild_tome: Tome = self.tomes[6][0]
+
+        self.skill_points = [0, 0, 0, 0, 0]
+        self.skill_points_applied = [0, 0, 0, 0, 0]
+
         self.validated = False
         self.__fitness = 0
         self.__calculated_build_stats = False

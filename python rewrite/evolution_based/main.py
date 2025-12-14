@@ -6,15 +6,13 @@ import progressbar
 from classes import *
 
 
-import numpy as np
-from numba import njit
+
 import random as rd
 import json
 import itertools
 
 
-BENCHMARK = True  # Set to False to use interactive input
-SINGLE_THREADED = True  # Set to True to disable multiprocessing
+
 
 with open('python rewrite\\evolution_based\\config.json', 'r') as config_file:
     config = json.load(config_file)
@@ -25,32 +23,6 @@ with open('python rewrite\\evolution_based\\config.json', 'r') as config_file:
 min_optimised_stat_req = 0
 
 
-
-
-def get_stat_to_optimise():
-    if BENCHMARK:
-        return stat_indices.get_stat_pos('hp')
-    else:
-        new_input = input('Give stat to optimize: ')
-        new_input.strip().lower()
-        return stat_indices.get_stat_pos(new_input)
-
-def get_max_generations():
-    if BENCHMARK:
-        return 50  # small for quick benchmarks
-    else:
-        new_input = input('Give the max amount of generations to do (lower = faster): ')
-        numerical_input = int(new_input.strip().lower())
-        return numerical_input
-
-
-def get_max_best_length():
-    if BENCHMARK:
-        return 50  # small for quick benchmarks
-    else:
-        new_input = input('Give the max amount of best results to give (lower = faster): ')
-        numerical_input = int(new_input.strip().lower())
-        return numerical_input
 
 
 def initialise_build(
@@ -200,11 +172,7 @@ def main():
 
 
     for i, build in enumerate(resulting_builds):
-        combined_stats = build.get_combined_build_stats()
-        item_names = [item.name for item in build.get_all_items()]
-        #print(f'Build: {item_names}')
         print(f'https://wynnbuilder.github.io/builder/#{encoder.encode_build(build)}')
-        #print(f'Stats: {combined_stats}')
         if i > return_amount:
             break
     input()

@@ -1,6 +1,6 @@
 import check_skill_points
-import human_readable_stat_names_and_indices as stat_indices
 from classes import *
+from parser import get_skillpoints_data
 
 import heapq
 
@@ -172,7 +172,21 @@ def calculate_fitness_wrapper(build, config):
     fitness = calculate_fitness(build, required_stats_names, required_stats_minimums_list, required_stats_maximums_list, required_stats_weights_list)
     return fitness  
 
+def calculate_total_hp(build: Build):
+    return sum(build.get_stats_from_combined_stats(['hp', 'hp_bonus']))
 
+
+def calculate_ehp(build: Build):
+    def_mult, agi_mult = 0.867, 0.951
+    _, _, _, defense, agility = build.skill_points
+    sp_data = get_skillpoints_data('data\\skillpoints.csv')
+    pre_effectiveness_def = float(sp_data[defense+1][2])
+    pre_effectiveness_agi = float(sp_data[agility+1][2])
+    effective_def = pre_effectiveness_def * def_mult
+    effective_agi = pre_effectiveness_agi * agi_mult
+    total_hp = calculate_total_hp(build)
+    total_ehp = total_hp / (0.10*effective_agi + (1-effective_agi) * (1-effective_def))
+    return total_ehp
 
 
 def calculate_fitness(build: Build, required_stats_names: list[str], required_stats_minimums: list[float], required_stats_maximums: list[float], required_stats_weights: list[int]) -> float:
@@ -197,7 +211,9 @@ def calculate_fitness(build: Build, required_stats_names: list[str], required_st
 
         stat_fitness: float = 0
         if stat_name == 'total_hp':
-            value = sum(build.get_stats_from_combined_stats(['hp', 'hp_bonus']))
+            value = calculate_total_hp(build)
+        elif stat_name == 'effective_hp':
+            value = calculate_ehp(build)
         else:
             value = build.get_stat_from_combined_stats(stat_name)
         

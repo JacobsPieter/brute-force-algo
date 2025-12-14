@@ -2,7 +2,15 @@ import human_readable_stat_names_and_indices as stat_indices
 from classes import *
 
 import json
-import numpy as np
+import csv
+
+def get_skillpoints_data(data_file: str):
+    with open(data_file, mode ='r') as file:    
+        csvFile = list(csv.reader(file))
+        return csvFile
+
+
+
 
 
 
