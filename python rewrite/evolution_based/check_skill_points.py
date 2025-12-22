@@ -1,6 +1,4 @@
 import itertools
-from numba import njit
-import numpy as np
 
 import human_readable_stat_names_and_indices as stat_indices
 from classes import *

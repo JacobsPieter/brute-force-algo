@@ -17,10 +17,10 @@
         "state": "This part is not implemented yet"
     },
     "required_stats":{
-        "required_stats_names": ["effective_hp"],
-        "required_stats_minimums": {},
+        "required_stats_names": ["thunder_damage_percent", "spell_damage_percent", "effective_hp"],
+        "required_stats_minimums": {"thunder_damage_percent": 10},
         "required_stats_maximums": {},
-        "required_stats_weights": {"effective_hp": 100},
+        "required_stats_weights": {"thunder_damage_percent": 100, "spell_damage_percent": 50, "effective_hp": 1},
         "required_stats_explanation_DO_NOT_USE_as_key": {"stat1": "minimum value of the stat as an integer", "stat2": "minimum value of the stat as an integer"}
     }
 }

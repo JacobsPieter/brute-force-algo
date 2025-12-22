@@ -1,4 +1,3 @@
-import human_readable_stat_names_and_indices as stat_indices
 from classes import *
 
 import json

@@ -185,7 +185,7 @@ def calculate_ehp(build: Build):
     effective_def = pre_effectiveness_def * def_mult
     effective_agi = pre_effectiveness_agi * agi_mult
     total_hp = calculate_total_hp(build)
-    total_ehp = total_hp / (0.10*effective_agi + (1-effective_agi) * (1-effective_def))
+    total_ehp = total_hp / (0.90*effective_agi + (1-effective_agi) * (1-effective_def))
     return total_ehp
 
 

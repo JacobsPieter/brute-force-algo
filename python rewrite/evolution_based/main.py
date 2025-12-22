@@ -1,5 +1,4 @@
 import parser
-import human_readable_stat_names_and_indices as stat_indices
 import encoder
 import evaluate_build as evaluate
 import progressbar
