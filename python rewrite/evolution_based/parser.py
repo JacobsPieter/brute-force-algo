@@ -16,9 +16,9 @@ def get_skillpoints_data(data_file: str):
 
 def get_bad_data(file_path):
     with open(file_path, 'rb') as file:
-        file.seek(1691308)
-        problematic_bytes = file.read(200)
-        print(f"Bytes at position 1691308: {problematic_bytes}")
+        file.seek(6137317)
+        problematic_bytes = file.read(100)
+        print(f"Bytes at position 6137317: {problematic_bytes}")
 
 def get_data(file_path):
     with open(file_path, 'r') as file:
@@ -42,17 +42,28 @@ def make_numpy_arrays_stat_keys(category: dict[str, dict[str, int]]):
     return all_keys
 
 
+def get_item_id_mappings(map_file = 'data\\idmap.json'):
+    with open(map_file, 'r') as file:
+        data = json.load(file)
+        return data
+
+def get_tome_id_mappings(map_file = 'data\\tome_id_map.json'):
+    with open(map_file, 'r') as file:
+        data = json.load(file)
+        return data
 
 
-def get_items_and_sets(data_file):
+def get_items_and_sets(data_file) -> dict[str, dict]:
     data = get_data(data_file)
-    items: list[dict] = data['items']
-    sets: dict[str, dict] = data['sets']
-    return items, sets
+    """ items: list[dict] = data['items']
+    sets: dict[str, dict] = data['sets'] """
+    return data
 
 
 def parse_items(data_file):
-    items, sets = get_items_and_sets(data_file)
+    items = get_items_and_sets(data_file)
+    item_ids = get_item_id_mappings()
+    tome_ids = get_tome_id_mappings()
     helmets: list[Armour] = []
     chestplates: list[Armour] = []
     leggings: list[Armour] = []
@@ -65,72 +76,91 @@ def parse_items(data_file):
     daggers: list[Weapon] = []
     wands: list[Weapon] = []
     reliks: list[Weapon] = []
-    for item in items:
+    armour: list[Tome] = []
+    weapon: list[Tome] = []
+    marathon: list[Tome] = []
+    expertise: list[Tome] = []
+    mysticism: list[Tome] = []
+    lootrunning: list[Tome] = []
+    guild: list[Tome] = []
+    for item_name, item_data in items.items():
+        item_data['name'] = item_name
+        item = item_data
         match item['type']:
-            case 'helmet':
-                helmets.append(Armour(item))
-            case 'chestplate':
-                chestplates.append(Armour(item))
-            case 'leggings':
-                leggings.append(Armour(item))
-            case 'boots':
-                boots.append(Armour(item))
-            case 'ring':
-                rings.append(Accessory(item))
-            case 'bracelet':
-                bracelets.append(Accessory(item))
-            case 'necklace':
-                necklaces.append(Accessory(item))
-            case 'spear':
-                spears.append(Weapon(item))
-            case 'bow':
-                bows.append(Weapon(item))
-            case 'dagger':
-                daggers.append(Weapon(item))
-            case 'wand':
-                wands.append(Weapon(item))
-            case 'relik':
-                reliks.append(Weapon(item))
+            case 'armour':
+                item['id'] = item_ids[item['internalName']]
+                match item['armourType']:
+                    case 'helmet':
+                        helmets.append(Armour(item))
+                    case 'chestplate':
+                        chestplates.append(Armour(item))
+                    case 'leggings':
+                        leggings.append(Armour(item))
+                    case 'boots':
+                        boots.append(Armour(item))
+                    case _:
+                        print(f"Unknown armour type: {item['armourType']}")
+            case 'accessory':
+                item['id'] = item_ids[item['internalName']]
+                match item['accessoryType']:
+                    case 'ring':
+                        rings.append(Accessory(item))
+                    case 'bracelet':
+                        bracelets.append(Accessory(item))
+                    case 'necklace':
+                        necklaces.append(Accessory(item))
+                    case _:
+                        print(f"Unknown accessory type: {item['accessoryType']}")
+            case 'weapon':
+                item['id'] = item_ids[item['internalName']]
+                match item['weaponType']:
+                    case 'spear':
+                        spears.append(Weapon(item))
+                    case 'bow':
+                        bows.append(Weapon(item))
+                    case 'dagger':
+                        daggers.append(Weapon(item))
+                    case 'wand':
+                        wands.append(Weapon(item))
+                    case 'relik':
+                        reliks.append(Weapon(item))
+                    case _:
+                        print(f"Unknown weapon type: {item['weaponType']}")
+            case 'tome':
+                item['id'] = tome_ids[item['internalName']]
+                match item['tomeType']:
+                    case 'armour_tome':
+                        armour.append(Tome(item))
+                    case 'weapon_tome':
+                        weapon.append(Tome(item))
+                    case 'marathon_tome':
+                        marathon.append(Tome(item))
+                    case 'expertise_tome':
+                        expertise.append(Tome(item))
+                    case 'mysticism_tome':
+                        mysticism.append(Tome(item))
+                    case 'lootrun_tome':
+                        lootrunning.append(Tome(item))
+                    case 'guild_tome':
+                        guild.append(Tome(item))
+                    case _:
+                        print(f"Unknown tome type: {item['tomeType']}")
+            case 'ingredient':
+                pass
+            case 'material':
+                pass
+            case 'tool':
+                pass
+            case 'charm':
+                pass
             case _:
                 print(f"Unknown item type: {item['type']}")
-    return helmets, chestplates, leggings, boots, rings, bracelets, necklaces, spears, bows, daggers, wands, reliks
-
-
-
-
-
-def parse_tomes(data_file):
-    tomes = get_data(data_file)
-    armour = []
-    weapon = []
-    marathon = []
-    expertise = []
-    mysticism = []
-    lootrunning = []
-    guild = []
-    for tome in tomes["tomes"]:
-        match tome['type']:
-            case 'armour':
-                armour.append(Tome(tome))
-            case 'weapon':
-                weapon.append(Tome(tome))
-            case 'marathon':
-                marathon.append(Tome(tome))
-            case 'expertise':
-                expertise.append(Tome(tome))
-            case 'mysticism':
-                mysticism.append(Tome(tome))
-            case 'lootrun':
-                lootrunning.append(Tome(tome))
-            case 'guild':
-                guild.append(Tome(tome))
-            case _:
-                print(f"Unknown tome type: {tome['type']}")
-    return armour, weapon, marathon, expertise, mysticism, lootrunning, guild
+    return helmets, chestplates, leggings, boots, rings, bracelets, necklaces, spears, bows, daggers, wands, reliks, armour, weapon, marathon, expertise, mysticism, lootrunning, guild
 
 
 
 
 
 if __name__ == "__main__":
-    parse_items('data\\items.json')
+    get_bad_data('data\\items.json')
+    parse_items("data\\items.json")

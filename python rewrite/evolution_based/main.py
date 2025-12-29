@@ -132,12 +132,10 @@ def evolution_step(
 
 def main():
     items = parser.parse_items('data\\items.json')
-    tomes = parser.parse_tomes('data\\tomes.json')
     
-    helmets, chestplates, leggings, boots, rings, bracelets, necklaces, spears, bows, daggers, wands, reliks = items
+    helmets, chestplates, leggings, boots, rings, bracelets, necklaces, spears, bows, daggers, wands, reliks, armour_tomes, weapon_tomes, marathon_tomes, expertise_tomes, mysticism_tomes, lootrunning_tomes, guild_tomes = items
     weapons = list(itertools.chain(spears, bows, daggers, wands, reliks))
 
-    armour_tomes, weapon_tomes, marathon_tomes, expertise_tomes, mysticism_tomes, lootrunning_tomes, guild_tomes = tomes
 
 
 

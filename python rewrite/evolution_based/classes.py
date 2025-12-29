@@ -11,6 +11,19 @@ class Item:
         self.type = item['type']
         if not item.get('category', None) == None:
             self.category = item['category']
+        
+        if not item.get('base') == None:
+            if not item['base'].get('baseHealth', None) == None:
+                self.base_health = item['baseHealth']
+        
+        if not item.get('identifications', None) == None:
+            if not item['identifications'].get('rawHealth', None) == None:
+                if not isinstance(item['identifications']['rawHealth'], dict):
+                    self.raw_health = item['identifications']['rawHealth']
+                else:
+                    self.raw_health = item['identifications']['rawHealth']['max']
+        
+        
         self.__stats = self.__get_item_stats_from_dict(item)
         self.__skillpoints_requirements = tuple(self.get_stats_list(['strength_requirement', 'dexterity_requirement', 'intelligence_requirement', 'defense_requirement', 'agility_requirement']))
         self.__skillpoints = tuple(self.get_stats_list(['strength', 'dexterity', 'intelligence', 'defense', 'agility']))
@@ -60,26 +73,33 @@ class Powderable(Gear):
 class Armour(Powderable):
     def __init__(self, item: dict) -> None:
         super().__init__(item)
+        self.subtype = item['armourType']
 
 
 class Accessory(Gear):
     def __init__(self, item: dict) -> None:
         super().__init__(item)
+        self.subtype = item['accessoryType']
 
 
 class Weapon(Powderable):
     def __init__(self, item: dict) -> None:
         super().__init__(item)
-        match self.type:
+        match item['weaponType']:
             case 'bow':
+                self.subtype = 'bow'
                 self.character_class = 'Archer'
             case 'spear':
+                self.subtype = 'spear'
                 self.character_class = 'Warrior'
             case 'wand':
+                self.subtype = 'wand'
                 self.character_class = 'Mage'
             case 'dagger':
+                self.subtype = 'dagger'
                 self.character_class = 'Assassin'
             case 'relik':
+                self.subtype = 'relik'
                 self.character_class = 'Shaman'
             case _:
                 raise ValueError

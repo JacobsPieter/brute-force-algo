@@ -189,6 +189,13 @@ def calculate_ehp(build: Build):
     return total_ehp
 
 
+def calculate_damage_for_attack(build: Build):
+    average_dps = build.get_stat_from_combined_stats('average_dps')
+
+
+
+
+
 def calculate_fitness(build: Build, required_stats_names: list[str], required_stats_minimums: list[float], required_stats_maximums: list[float], required_stats_weights: list[int]) -> float:
     make_value_zero_no_more: float = 0.01
     fitness: float = 0
