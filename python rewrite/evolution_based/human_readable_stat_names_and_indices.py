@@ -109,6 +109,18 @@ STAT_NAMES: dict[str, str] = {
                 'xp_bonus':'xpb'}
 
 
+
+
+def get_internal_stat_name(stat_name: str) -> str:
+    stat_name_short = STAT_NAMES.get(stat_name, stat_name)
+    if stat_name_short is None:
+        raise ValueError(f"Unknown stat name: {stat_name}")
+    return stat_name_short
+
+
+def get_internal_stat_name_list(stat_names: list[str]) -> list[str]:
+    return [get_internal_stat_name(stat_name) for stat_name in stat_names]
+
 def get_stat_indices() -> dict[str, int]:
     return {stat_name: index for index, stat_name in enumerate(sorted(STAT_NAMES.values()))}
 

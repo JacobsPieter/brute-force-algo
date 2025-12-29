@@ -20,7 +20,7 @@
         "required_stats_names": ["effective_hp"],
         "required_stats_minimums": {},
         "required_stats_maximums": {},
-        "required_stats_weights": {"effective_hp": 100},
+        "required_stats_weights": {"effective_hp": 1},
         "required_stats_explanation_DO_NOT_USE_as_key": {"stat1": "minimum value of the stat as an integer", "stat2": "minimum value of the stat as an integer"}
     }
 }

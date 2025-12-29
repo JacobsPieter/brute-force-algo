@@ -180,8 +180,8 @@ def calculate_ehp(build: Build):
     def_mult, agi_mult = 0.867, 0.951
     _, _, _, defense, agility = build.skill_points
     sp_data = get_skillpoints_data('data\\skillpoints.csv')
-    pre_effectiveness_def = float(sp_data[defense+1][2])
-    pre_effectiveness_agi = float(sp_data[agility+1][2])
+    pre_effectiveness_def = float(sp_data[max(min(defense+1,150),0)][2])
+    pre_effectiveness_agi = float(sp_data[max(min(agility+1,150),0)][2])
     effective_def = pre_effectiveness_def * def_mult
     effective_agi = pre_effectiveness_agi * agi_mult
     total_hp = calculate_total_hp(build)
