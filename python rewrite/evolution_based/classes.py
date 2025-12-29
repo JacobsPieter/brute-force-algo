@@ -1,6 +1,7 @@
 import human_readable_stat_names_and_indices as stat_indices
 
 import itertools
+import numpy  as np
 
 
 class Item:
@@ -8,6 +9,8 @@ class Item:
         self.name = item['name']
         self.id = item['id']
         self.type = item['type']
+        if not item.get('category', None) == None:
+            self.category = item['category']
         self.__stats = self.__get_item_stats_from_dict(item)
         self.__skillpoints_requirements = tuple(self.get_stats_list(['strength_requirement', 'dexterity_requirement', 'intelligence_requirement', 'defense_requirement', 'agility_requirement']))
         self.__skillpoints = tuple(self.get_stats_list(['strength', 'dexterity', 'intelligence', 'defense', 'agility']))
@@ -42,7 +45,6 @@ class Item:
 class Gear(Item):
     def __init__(self, item: dict) -> None:
         super().__init__(item)
-        self.category = item['category']
         self.majorid = item.get('majorid', '')
 
     def get_majorid(self):
