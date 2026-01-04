@@ -1,3 +1,20 @@
+"""
+Build encoding module for generating Wynnbuilder URLs.
+
+This module handles the conversion of Build objects into base64-encoded strings
+that can be used in Wynnbuilder URLs. It implements the bit-level encoding format
+used by Wynnbuilder, packing build information efficiently into a compact string.
+
+The encoding process involves:
+1. Building a bit string with various build components (header, equipment, tomes, etc.)
+2. Converting the bit string to base64 for URL compatibility
+3. Following the specific encoding constants and format expected by Wynnbuilder
+
+Note: This encoder follows the Wynnbuilder format on time of writing and may need updates
+if the Wynnbuilder encoding scheme changes.
+Still up to date as of 2026-04-01.
+"""
+
 import json
 
 from classes import *
@@ -111,6 +128,26 @@ def create_base64string(bitstring: str):
 
 
 def encode_build(build):
+    """
+    Encode a Build object into a base64 string for Wynnbuilder URLs.
+
+    Takes a complete build and converts it into the compact base64 format used
+    by Wynnbuilder. This involves building a bit string with all build components
+    (header, equipment, tomes, skill points, level, aspects, tree) and then
+    converting to base64.
+
+    The resulting string can be used directly in Wynnbuilder URLs like:
+    https://wynnbuilder.github.io/builder/#{encoded_string}
+
+    Args:
+        build: The Build object to encode
+
+    Returns:
+        str: Base64-encoded string representing the build
+    
+    For now only will return changed items like armour, accessories, weapon and tomes,
+    all other types from the build will default to the default specified by wynnbuilder.
+    """
     bitstring = ''
     base64string = ''
     header = build_header()
@@ -158,4 +195,3 @@ def encode_build(build):
 """ if __name__ == "main":
     build = [('Brilliant Diamond Helmet', 0), ('Brilliant Diamond Chestplate', 0), ('Brilliant Diamond Leggings', 0), ('Brilliant Diamond Boots', 0), ('Bygg', 0), ('Bygg', 0), ('Depravity', 0), ('Grafted Eyestalk', 0), ('Cracked Oak Spear', 0)]
     print(encode_build(build)) """
-

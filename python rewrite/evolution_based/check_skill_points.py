@@ -1,3 +1,23 @@
+"""
+Skill point validation module for Wynncraft builds.
+
+This module contains the complex logic for checking whether a build's skill point
+requirements can be satisfied. It handles the Wynncraft skill point system where
+equipment must be equipped in a specific order to meet requirements, and skill
+points can only be invested up to certain limits.
+
+Key challenges addressed:
+- Equipment ordering matters for skill point requirements
+- Maximum 100 SP per stat, 200 SP total from equipment
+- Some items provide skill points, others only have requirements
+- Guild tomes always contribute their skill points
+
+TODO: Make it work more like the new proposed solution from wynnbuilder as this
+one is influenced by it, but it seems like they found a better version I would
+like to draw some inspiration from as in more recent testing I've found it to
+not always produce correct results.
+"""
+
 import itertools
 
 import human_readable_stat_names_and_indices as stat_indices
@@ -6,6 +26,32 @@ from classes import *
 
 
 def check_skillpoints(build: Build):
+    """
+    Check if a build's skill point requirements can be satisfied.
+
+    This is the core skill point validation logic for Wynncraft builds. It determines
+    whether it's possible to equip all items in the build by finding a valid equipment
+    order and skill point investment strategy.
+
+    The algorithm categorizes equipment into:
+    - Fixed: Items that always contribute (guild tome, items with no requirements)
+    - Consider: Items with both requirements and bonuses (tried in all permutations)
+    - Noboost: Items with requirements but no bonuses (no skill points provided)
+    - Weapon: Always equipped last
+
+    It tries all possible orderings of equipment that need consideration, calculating
+    the minimum skill points needed to meet requirements while respecting Wynncraft's
+    limits (100 SP max per stat invested yourself, 200 SP total to invest, items can go
+    over these limits).
+
+    Args:
+        build: The Build object to validate
+
+    Returns:
+        bool: True if the build can be equipped with valid skill point investment,
+              False otherwise. Also sets build.skill_points and build.skill_points_applied
+              to the optimal skill point allocation if possible.
+    """
     weapon_item = build.weapon
     equipment_items = build.get_all_gear()[:-1]
     tome = build.guild_tome
@@ -90,5 +136,3 @@ def check_skillpoints(build: Build):
             build.skill_points = current_sp
             build.skill_points_applied = least_applied
     return possible
-
-

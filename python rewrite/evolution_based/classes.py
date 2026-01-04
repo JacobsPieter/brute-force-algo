@@ -1,3 +1,20 @@
+"""
+Classes module defining the data structures for Wynncraft items and builds.
+
+This module provides the core object model for representing Wynncraft game items
+and character builds. It handles item statistics, skill point requirements, and
+build composition.
+
+Key classes:
+- Item: Base class for all equippable items with stats and requirements
+- Gear hierarchy: Armour, Accessory, Weapon classes with specific properties
+- Tome: Special items that provide some stat bonuses
+- Build: Complete character equipment set with combined statistics
+
+All item stats are stored as numpy arrays for efficient computation, indexed
+according to the stat names defined in human_readable_stat_names_and_indices.
+"""
+
 import human_readable_stat_names_and_indices as stat_indices
 
 import itertools
@@ -5,6 +22,26 @@ import numpy  as np
 
 
 class Item:
+    """
+    Base class representing any equippable item in Wynncraft.
+
+    Items contain statistics, skill point requirements, and other properties.
+    Statistics are stored as a numpy array for efficient computation and
+    indexed according to the stat names defined in stat_indices.
+
+    Attributes:
+        name: Item name
+        id: Item ID
+        type: Item type (weapon, helmet, etc.)
+        category: Item category (optional)
+        base_health: Base health value (optional)
+        raw_health: Raw health identification (optional)
+    
+    TODO: make sure the classes work with the new item file, provided by the wynncraft api itself
+    base_health and raw_health still don't work, and the old implementation with the np arrays messed up
+    by using the new itemfile
+    """
+
     def __init__(self, item: dict) -> None:
         self.name = item['name']
         self.id = item['id']
@@ -114,6 +151,22 @@ class Tome(Item):
 
 
 class Build:
+    """
+    Represents a complete Wynncraft character build with all equipment.
+
+    A build consists of armor pieces, accessories, a weapon, and various tomes.
+    Provides methods for calculating combined statistics, fitness evaluation,
+    and item management.
+
+    Attributes:
+        armour: List of 4 armor pieces [helmet, chestplate, leggings, boots]
+        accessories: List of 4 accessories [ring1, ring2, bracelet, necklace]
+        weapon: Single weapon item
+        tomes: Nested list of tome collections by type
+        validated: Whether build passes skill point and item combination checks
+        skill_points: Current skill point allocation (used for eg. ehp calculation)
+    """
+
     def __init__(self, armour: list[Armour], accessories: list[Accessory], weapon: Weapon, tomes: list[list[Tome]]):
         self.armour = armour
         self.helmet, self.chestplate, self.leggings, self.boots = tuple(self.armour)
@@ -139,6 +192,19 @@ class Build:
         self.__calculated_skill_point_requirements = False
     
     def set_item(self, item: Armour | Accessory | Weapon | Tome, position=0):
+        """
+        Replace an item in the build with a new one.
+
+        Handles the complex logic of updating different equipment slots based on item type.
+        For items with multiple slots (armor pieces, rings, tomes), uses position parameter
+        to determine which slot to replace.
+
+        Args:
+            item: The new item to equip
+            position: Slot index for items that have multiple positions (leave to zero if
+            there is only one slot for that itemtype, use as a listindex to choose a different
+            slot if there are more slots for that item. (example: tomes)
+        """
         match item.type:
             case 'weapon':
                 if isinstance(item, Weapon):
@@ -253,6 +319,3 @@ class Build:
 
     def set_build_validated(self, value: bool):
         self.validated = value
-
-
-

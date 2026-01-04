@@ -1,3 +1,15 @@
+"""
+Console progress bar utility for displaying algorithm progress.
+
+This module provides a simple terminal progress bar function adapted from
+Stack Overflow. It displays progress as a visual bar with percentage completion,
+useful for long-running evolutionary algorithm processes.
+
+Source: Stack Overflow (https://stackoverflow.com/a/...)
+License: CC BY-SA 4.0
+Retrieved: 2025-12-11
+"""
+
 #######################################################################################################
 #######################################################################################################
 #######################################################################################################

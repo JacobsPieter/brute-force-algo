@@ -1,3 +1,16 @@
+"""
+Build evaluation module for the Wynncraft optimizer.
+
+This module handles the core evaluation logic for determining build quality:
+- Skill point requirement validation
+- Legal item combination checking (no items that can't be used together like Qira hive items)
+- Fitness calculation based on configured stats
+- Build ranking and selection
+
+Key functions implement Wynncraft-specific rules like effective HP calculation,
+item combination restrictions (Hive items, Ornate Shadow, etc.), and weighted fitness scoring.
+"""
+
 import check_skill_points
 from classes import *
 from parser import get_skillpoints_data
@@ -279,6 +292,3 @@ def evaluate_builds(max_builds_list_length: int, builds_to_evaluate: list[Build]
             valid_builds.append(build)
     valid_builds = heapq.nlargest(max_builds_list_length, valid_builds, key=lambda build: build.get_fitness())
     return valid_builds
-
-
-
