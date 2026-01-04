@@ -186,7 +186,7 @@ def calculate_fitness_wrapper(build, config):
     return fitness  
 
 def calculate_total_hp(build: Build):
-    return sum(build.get_stats_from_combined_stats(['hp', 'hp_bonus']))
+    return sum(build.get_stats_from_combined_stats(['baseHealth', 'rawHealth']))
 
 
 def calculate_ehp(build: Build):

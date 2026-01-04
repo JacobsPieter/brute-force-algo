@@ -49,28 +49,17 @@ class Item:
         if not item.get('category', None) == None:
             self.category = item['category']
         
-        if not item.get('base') == None:
-            if not item['base'].get('baseHealth', None) == None:
-                self.base_health = item['baseHealth']
-        
-        if not item.get('identifications', None) == None:
-            if not item['identifications'].get('rawHealth', None) == None:
-                if not isinstance(item['identifications']['rawHealth'], dict):
-                    self.raw_health = item['identifications']['rawHealth']
-                else:
-                    self.raw_health = item['identifications']['rawHealth']['max']
-        
         
         self.__stats = self.__get_item_stats_from_dict(item)
-        self.__skillpoints_requirements = tuple(self.get_stats_list(['strength_requirement', 'dexterity_requirement', 'intelligence_requirement', 'defense_requirement', 'agility_requirement']))
-        self.__skillpoints = tuple(self.get_stats_list(['strength', 'dexterity', 'intelligence', 'defense', 'agility']))
+        self.__skillpoints_requirements = tuple(self.get_stats_list(['strength', 'dexterity', 'intelligence', 'defence', 'agility']))
+        self.__skillpoints = tuple(self.get_stats_list(['rawStrength', 'rawDexterity', 'rawIntelligence', 'rawDefence', 'rawAgility']))
     
     def __str__(self):
         return f'{self.name}, {self.__stats}'
     
     def __get_item_stats_from_dict(self, item: dict) -> np.ndarray:
-        ordered_stats = sorted(stat_indices.STAT_NAMES.values())
-        stats = np.array([item.get(stat_key, 0) for stat_key in ordered_stats])
+        stats_list = [item.get(stat_key, 0) for stat_key in stat_indices.WYNNAPI_STAT_NAMES]
+        stats = np.array(stats_list, int)
         return stats
 
     
@@ -88,7 +77,7 @@ class Item:
         return value
     
     def get_stats_list(self, stats: list[str]):
-        values = [self.__stats[stat_indices.get_stats_pos_list(stats)[i]] for i in range(len(stats))]
+        values: list[int] = [self.__stats[stat_indices.get_stat_pos(stat)] for stat in stats]
         return values
 
 
@@ -104,7 +93,7 @@ class Gear(Item):
 class Powderable(Gear):
     def __init__(self, item: dict) -> None:
         super().__init__(item)
-        self.powderslots = self.get_stat('powder_slots')
+        self.powderslots = self.get_stat('powderSlots')
 
 
 class Armour(Powderable):
@@ -140,7 +129,7 @@ class Weapon(Powderable):
                 self.character_class = 'Shaman'
             case _:
                 raise ValueError
-        self.powderslots = self.get_stat('powder_slots')
+        self.powderslots = self.get_stat('powderSlots')
 
 
 

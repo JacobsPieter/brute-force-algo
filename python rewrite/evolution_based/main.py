@@ -324,8 +324,8 @@ def main():
 
     # Output results
     for i, build in enumerate(resulting_builds):
-        print(f'https://wynnbuilder.github.io/builder/#{encoder.encode_build(build)}')
-        if i > return_amount:
+        print(f'{i+1}) https://wynnbuilder.github.io/builder/#{encoder.encode_build(build)}')
+        if i >= return_amount-1:
             break
     input()
 
