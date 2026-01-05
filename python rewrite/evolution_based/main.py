@@ -296,7 +296,7 @@ def main():
     weapons = list(itertools.chain(spears, bows, daggers, wands, reliks))
 
     # TODO: Make weapon filtering configurable instead of hardcoded
-    weapons = [item for item in weapons if item.name == "Guardian"]
+    #weapons = [item for item in weapons if item.name == "Guardian"]
 
     generations = config["algorithm"]["generations"]
     max_best_length = config["algorithm"]["subjects"]
