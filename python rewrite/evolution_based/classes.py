@@ -46,6 +46,17 @@ class Item:
         self.name = item['name']
         self.id = item['id']
         self.type = item['type']
+        match item['type']:
+            case 'weapon':
+                self.sub_type = item['weaponType']
+            case 'armour':
+                self.sub_type = item['armourType']
+            case 'accessory':
+                self.sub_type = item['accessoryType']
+            case 'tome':
+                self.sub_type = item['tomeType']
+            case _:
+                print('forgot to implement the correct subtype for this item, create an issue')
         if not item.get('category', None) == None:
             self.category = item['category']
         
@@ -58,10 +69,28 @@ class Item:
         return f'{self.name}, {self.__stats}'
     
     def __get_item_stats_from_dict(self, item: dict) -> np.ndarray:
-        stats_list = [item.get(stat_key, 0) for stat_key in stat_indices.WYNNAPI_STAT_NAMES]
+        flattened_item = self.__get_flattened_stat_dict(item)
+        stats_list = [flattened_item.get(stat_key, 0) for stat_key in stat_indices.WYNNAPI_STAT_NAMES]
         stats = np.array(stats_list, int)
         return stats
 
+    def __get_flattened_stat_dict(self, item: dict) -> dict:
+        return_dict: dict = {}
+        for key, value in item.items():
+            match key:
+                case 'requirements':
+                    for sub_key, sub_value in value.items():
+                        return_dict[sub_key] = sub_value
+                case 'identifications':
+                    for sub_key, sub_value in value.items():
+                        return_dict[sub_key] = sub_value.get('max') if isinstance(sub_value, dict) else sub_value
+                case 'base':
+                    for sub_key, sub_value in value.items():
+                        #TODO: make it so the base damage of a weapon gets imported correctly (maybe by making it a weapon only attribute... don't know yet) i'll fix when implementing the actual damage calculations
+                        return_dict[sub_key] = sub_value.get('max') if isinstance(sub_value, dict) else sub_value
+                case _:
+                    return_dict[key] = value
+        return return_dict
     
     def get_skillpoints_requirements(self) -> tuple:
         return self.__skillpoints_requirements
@@ -113,19 +142,19 @@ class Weapon(Powderable):
         super().__init__(item)
         match item['weaponType']:
             case 'bow':
-                self.subtype = 'bow'
+                self.sub_type = 'bow'
                 self.character_class = 'Archer'
             case 'spear':
-                self.subtype = 'spear'
+                self.sub_type = 'spear'
                 self.character_class = 'Warrior'
             case 'wand':
-                self.subtype = 'wand'
+                self.sub_type = 'wand'
                 self.character_class = 'Mage'
             case 'dagger':
-                self.subtype = 'dagger'
+                self.sub_type = 'dagger'
                 self.character_class = 'Assassin'
             case 'relik':
-                self.subtype = 'relik'
+                self.sub_type = 'relik'
                 self.character_class = 'Shaman'
             case _:
                 raise ValueError
@@ -198,46 +227,60 @@ class Build:
             case 'weapon':
                 if isinstance(item, Weapon):
                     self.weapon = item
-                if isinstance(item, Tome):
-                    self.weapon_tomes[position] = item
-            case 'helmet':
-                if isinstance(item, Armour):
-                    self.helmet = item
-            case 'chestplate':
-                if isinstance(item, Armour):
-                    self.chestplate = item
-            case 'leggings':
-                if isinstance(item, Armour):
-                    self.leggings = item
-            case 'boots':
-                if isinstance(item, Armour):
-                    self.boots = item
-            case 'ring':
-                if isinstance(item, Accessory):
-                    if position == 0:
-                        self.ring1 = item
-                    else:
-                        self.ring2 = item
-            case 'bracelet':
-                if isinstance(item, Accessory):
-                    self.bracelet = item
-            case 'necklace':
-                if isinstance(item, Accessory):
-                    self.necklace = item
             case 'armour':
-                if isinstance(item, Tome):
-                    self.armour_tomes[position] = item
-            case 'marathon':
-                if isinstance(item, Tome):
-                    self.marathon_tomes[position] = item
-            case 'expertise':
-                if isinstance(item, Tome):
-                    self.expertise_tomes[position] = item
-            case 'mysticism':
-                if isinstance(item, Tome):
-                    self.mysticism_tomes[position] = item
+                match item.sub_type:
+                    case 'helmet':
+                        if isinstance(item, Armour):
+                            self.helmet = item
+                    case 'chestplate':
+                        if isinstance(item, Armour):
+                            self.chestplate = item
+                    case 'leggings':
+                        if isinstance(item, Armour):
+                            self.leggings = item
+                    case 'boots':
+                        if isinstance(item, Armour):
+                            self.boots = item
+            case 'accessory':
+                match item.sub_type:
+                    case 'ring':
+                        if isinstance(item, Accessory):
+                            if position == 0:
+                                self.ring1 = item
+                            else:
+                                self.ring2 = item
+                    case 'bracelet':
+                        if isinstance(item, Accessory):
+                            self.bracelet = item
+                    case 'necklace':
+                        if isinstance(item, Accessory):
+                            self.necklace = item
+            case 'tome':
+                match item.sub_type:
+                    case 'armour_tome':
+                        if isinstance(item, Tome):
+                            self.armour_tomes[position] = item
+                    case 'marathon_tome':
+                        if isinstance(item, Tome):
+                            self.marathon_tomes[position] = item
+                    case 'expertise_tome':
+                        if isinstance(item, Tome):
+                            self.expertise_tomes[position] = item
+                    case 'mysticism_tome':
+                        if isinstance(item, Tome):
+                            self.mysticism_tomes[position] = item
+                    case 'weapon_tome':
+                        if isinstance(item, Tome):
+                            self.weapon_tomes[position] = item
+                    case 'lootrun_tome':
+                        if isinstance(item, Tome):
+                            self.lootrunning_tome = item
+                    case 'guild_tome':
+                        if isinstance(item, Tome):
+                            self.guild_tome = item
+                        
             case _:
-                pass
+                print('wrong typing in the code, create an issue')
         self.armour = [self.helmet, self.chestplate, self.leggings, self.boots]
         self.accessories = [self.ring1, self.ring2, self.bracelet, self.necklace]
         self.tomes = [self.armour_tomes, self.weapon_tomes, self.marathon_tomes, self.expertise_tomes, self.mysticism_tomes, [self.lootrunning_tome], [self.guild_tome]]
@@ -274,7 +317,7 @@ class Build:
         return value
     
     def get_stats_from_combined_stats(self, stats: list[str]):
-        values = [self.get_combined_build_stats()[stat_indices.get_stats_pos_list(stats)[i]] for i in range(len(stats))]
+        values = [self.get_combined_build_stats()[stat_indices.get_stat_pos(stat)] for stat in stats]
         return values
     
     def __combine_build_stats(self) -> np.ndarray:

@@ -41,7 +41,6 @@ with open('python rewrite\\evolution_based\\config.json', 'r') as config_file:
 
 
 
-min_optimised_stat_req = 0
 
 
 
@@ -197,16 +196,16 @@ def gen_new_build_mutations(
         list_to_choose_item_from = rd.choice([helmets, chestplates, leggings, boots, rings, bracelets, necklaces, weapons, armour_tomes, weapon_tomes, marathon_tomes, expertise_tomes,  mysticism_tomes, lootrunning_tomes, guild_tomes])
         if isinstance(list_to_choose_item_from[0], Tome):
             check_by_item = list_to_choose_item_from[0]
-            match check_by_item.type:
-                case 'armour':
+            match check_by_item.sub_type:
+                case 'armour_tome':
                     changed.set_item(rd.choice(list_to_choose_item_from), rd.randint(0,3))
-                case 'guild':
+                case 'guild_tome':
                     changed.set_item(rd.choice(list_to_choose_item_from), 0)
-                case 'lootrun':
+                case 'lootrun_tome':
                     changed.set_item(rd.choice(list_to_choose_item_from), 0)
                 case _:
                     changed.set_item(rd.choice(list_to_choose_item_from), rd.randint(0,1))
-        if list_to_choose_item_from[0].type == 'ring':
+        elif list_to_choose_item_from[0].sub_type == 'ring':
             changed.set_item(rd.choice(list_to_choose_item_from), rd.randint(0,1))
         else:
             changed.set_item(rd.choice(list_to_choose_item_from))
