@@ -14,6 +14,7 @@ item combination restrictions (Hive items, Ornate Shadow, etc.), and weighted fi
 import check_skill_points
 from classes import *
 from parser import get_skillpoints_data
+import damage_calculations
 
 import heapq
 
@@ -82,6 +83,9 @@ GROOKWARTS = {
     "Dragon's Eye Bracelet",
     "Draoi Fair",
     "Renda Langit"}
+
+
+ATTACK_TYPES = {'melee', 'spell'}
 
 
 MAX_SP_TO_INVEST = 200
@@ -202,8 +206,11 @@ def calculate_ehp(build: Build):
     return total_ehp
 
 
-def calculate_damage_for_attack(build: Build):
-    average_dps = build.get_stat_from_combined_stats('average_dps')
+def get_attack_damage(build: Build, attack_type: str):
+    if attack_type not in ATTACK_TYPES:
+        raise ValueError(f'attacktype must be in ATTACK_TYPES: {ATTACK_TYPES}')
+    damage_calculations.calculate_attack_damage(build, attack_type)
+
 
 
 

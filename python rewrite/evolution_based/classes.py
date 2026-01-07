@@ -158,7 +158,45 @@ class Weapon(Powderable):
                 self.character_class = 'Shaman'
             case _:
                 raise ValueError
+        
+        self.damages = self.__get_damages(item)
+        self.attackspeed = self.__get_attackspeed(item)
+
         self.powderslots = self.get_stat('powderSlots')
+
+    def __get_damages(self, item: dict) -> np.ndarray:
+        damages = np.array([[0, 0] for _ in range(6)])
+        damage_types: list[str] = ['neutral', 'earth', 'thunder', 'water', 'fire', 'air']
+        if not item.get('base', None) == None:
+            for i, damage in enumerate(damage_types):
+                if damage == 'neutral':
+                    if not item['base'].get(f'baseDamage', None) == None:
+                        damages[i] = [item['base']['baseDamage']['min'], item['base']['baseDamage']['max']]
+                        continue
+                if not item['base'].get(f'base{damage.capitalize()}Damage', None) == None:
+                    damages[i] = item['base'][f'base{damage.capitalize()}Damage']['min'], item['base'][f'base{damage.capitalize()}Damage']['max']
+        return damages
+    
+    def __get_attackspeed(self, item: dict) -> float:
+        speed = 0.0
+        match item['attackSpeed']:
+            case 'superSlow':
+                speed = 0.51
+            case 'verySlow':
+                speed = 0.83
+            case 'slow':
+                speed = 1.5
+            case 'normal':
+                speed = 2.05
+            case 'fast':
+                speed = 2.5
+            case 'veryFast':
+                speed = 3.1
+            case 'superFast':
+                speed = 4.3
+            case _:
+                print(f'unknown attackspeed: {item['attackSpeed']}')
+        return speed
 
 
 

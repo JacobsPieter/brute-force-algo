@@ -1,0 +1,3269 @@
+{
+  "archetypes": {
+    "blitz": {
+      "name": "<span class='font-ascii' style='color:#60c5cd'><span class='font-ascii' style='font-weight:bolder'>Riftwalker</span></span>",
+      "description": "<span class='font-ascii' style='color:#AAAAAA'>Riftwalkers bend time and become stronger as fights drag on. <span class='font-ascii' style='color:#555555'>(Mobility, Stack Damage)</span></span>",
+      "shortDescription": "<span class='font-ascii' style='color:#AAAAAA'>Bend time and ramp up</span>",
+      "icon": {
+        "name": "abilityTree.riftwalker",
+        "value": {
+          "id": "minecraft:potion",
+          "name": "abilityTree.riftwalker",
+          "customModelData": {
+            "rangeDispatch": [
+              201
+            ]
+          }
+        },
+        "format": "attribute"
+      },
+      "slot": 29
+    },
+    "priest": {
+      "name": "<span class='font-ascii' style='color:#b8b0b0'><span class='font-ascii' style='font-weight:bolder'>Light Bender</span></span>",
+      "description": "<span class='font-ascii' style='color:#AAAAAA'>Light Benders support allies and become stronger as they heal. <span class='font-ascii' style='color:#555555'>(Support, Buffs)</span></span>",
+      "shortDescription": "<span class='font-ascii' style='color:#AAAAAA'>Grow from healing</span>",
+      "icon": {
+        "name": "abilityTree.lightBender",
+        "value": {
+          "id": "minecraft:potion",
+          "name": "abilityTree.lightBender",
+          "customModelData": {
+            "rangeDispatch": [
+              200
+            ]
+          }
+        },
+        "format": "attribute"
+      },
+      "slot": 31
+    },
+    "arcane": {
+      "name": "<span class='font-ascii' style='color:#eb3dfe'><span class='font-ascii' style='font-weight:bolder'>Arcanist</span></span>",
+      "description": "<span class='font-ascii' style='color:#AAAAAA'>Arcanists cause destructive damage and chaos. <span class='font-ascii' style='color:#555555'>(Burst Damage, Mana)</span></span>",
+      "shortDescription": "<span class='font-ascii' style='color:#AAAAAA'>Uncontrollable chaotic power</span>",
+      "icon": {
+        "name": "abilityTree.arcanist",
+        "value": {
+          "id": "minecraft:potion",
+          "name": "abilityTree.arcanist",
+          "customModelData": {
+            "rangeDispatch": [
+              199
+            ]
+          }
+        },
+        "format": "attribute"
+      },
+      "slot": 33
+    }
+  },
+  "pages": {
+    "1": {
+      "meteor": {
+        "name": "<span class='font-ascii' style='color:#87dd47'><span class='font-ascii' style='font-weight:bolder'>Meteor</span></span>",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "abilityTree.nodeMage",
+            "customModelData": {
+              "rangeDispatch": [
+                184
+              ]
+            }
+          },
+          "format": "attribute"
+        },
+        "slot": 4,
+        "coordinates": {
+          "x": 5,
+          "y": 1
+        },
+        "description": [
+          "<span class='font-ascii' style='color:#FFAA00'>Click Combo: <span class='font-ascii' style='color:#FF55FF'><span class='font-ascii' style='font-weight:bolder'>RIGHT</span></span><span class='font-ascii' style='color:#AAAAAA'>-</span><span class='font-ascii' style='color:#FF55FF'><span class='font-ascii' style='font-weight:bolder'>LEFT</span></span><span class='font-ascii' style='color:#AAAAAA'>-</span><span class='font-ascii' style='color:#FF55FF'><span class='font-ascii' style='font-weight:bolder'>LEFT</span></span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Conjures a slow but powerful meteor</span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>from the sky, dealing massive</span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>damage over a large area.</span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#66e6ff'><span class='font-common'></span> <span class='font-ascii' style='color:#AAAAAA'>Mana Cost: </span><span class='font-ascii' style='color:#FFFFFF'>50</span></span></span>",
+          "<span class='font-ascii' style='color:#FF5555'><span class='font-common'></span> <span class='font-ascii' style='color:#AAAAAA'>Total Damage: </span><span class='font-ascii' style='color:#FFFFFF'>400% </span><span class='font-ascii' style='color:#555555'>(of your DPS)</span></span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>  <span class='font-ascii' style='margin-left: 20px'><span class='font-ascii' style='color:#555555'>(<span class='font-ascii' style='color:#FFAA00'><span class='font-common'></span> </span><span class='font-ascii' style='color:#555555'>Damage: </span><span class='font-ascii' style='color:#555555'>330%</span><span class='font-ascii' style='color:#555555'>)</span></span></span></span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>  <span class='font-ascii' style='margin-left: 20px'><span class='font-ascii' style='color:#555555'>(<span class='font-ascii' style='color:#00AA00'><span class='font-common'></span> </span><span class='font-ascii' style='color:#555555'>Earth: </span><span class='font-ascii' style='color:#555555'>70%</span><span class='font-ascii' style='color:#555555'>)</span></span></span></span></span>",
+          "<span class='font-ascii' style='color:#00AA00'><span class='font-common'></span> <span class='font-ascii' style='color:#AAAAAA'>Range: </span><span class='font-ascii' style='color:#FFFFFF'>18 Blocks</span></span></span>",
+          "<span class='font-ascii' style='color:#00AAAA'><span class='font-common'></span> <span class='font-ascii' style='color:#AAAAAA'>Area of Effect: </span><span class='font-ascii' style='color:#FFFFFF'>5 Blocks </span><span class='font-ascii' style='color:#AAAAAA'>(Circle-Shaped)</span></span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Ability Points: <span class='font-ascii' style='color:#FFFFFF'>1</span></span>"
+        ],
+        "requirements": {
+          "ABILITY_POINTS": 1
+        },
+        "links": [
+          "wandProficiency"
+        ],
+        "locks": null,
+        "page": 1
+      },
+      "wandProficiency": {
+        "name": "<span class='font-ascii' style='color:#ffffff'><span class='font-ascii' style='font-weight:bolder'>Wand Proficiency I</span></span>",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "abilityTree.nodeWhite",
+            "customModelData": {
+              "rangeDispatch": [
+                158
+              ]
+            }
+          },
+          "format": "attribute"
+        },
+        "slot": 22,
+        "coordinates": {
+          "x": 5,
+          "y": 3
+        },
+        "description": [
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Improve your <span class='font-ascii' style='text-decoration: underline'>Main Attack</span><span class='font-ascii' style='color:#AAAAAA'>'s damage</span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>and range when using a wand.</span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#FF5555'><span class='font-common'></span> <span class='font-ascii' style='color:#AAAAAA'>Main Attack Damage: </span><span class='font-ascii' style='color:#FFFFFF'>+5%</span></span></span>",
+          "<span class='font-ascii' style='color:#00AA00'><span class='font-common'></span> <span class='font-ascii' style='color:#AAAAAA'>Main Attack Range: </span><span class='font-ascii' style='color:#FFFFFF'>+2 Blocks</span></span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Ability Points: <span class='font-ascii' style='color:#FFFFFF'>1</span></span>"
+        ],
+        "requirements": {
+          "ABILITY_POINTS": 1
+        },
+        "links": [
+          "shootingStar",
+          "meteorCost1"
+        ],
+        "locks": null,
+        "page": 1
+      },
+      "meteorCost1": {
+        "name": "<span class='font-ascii' style='color:#ffffff'><span class='font-ascii' style='font-weight:bolder'>Cheaper Meteor</span></span>",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "abilityTree.nodeWhite",
+            "customModelData": {
+              "rangeDispatch": [
+                158
+              ]
+            }
+          },
+          "format": "attribute"
+        },
+        "slot": 24,
+        "coordinates": {
+          "x": 7,
+          "y": 3
+        },
+        "description": [
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Reduce the mana cost of <span class='font-ascii' style='text-decoration: underline'>Meteor</span><span class='font-ascii' style='color:#AAAAAA'>.</span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#66e6ff'><span class='font-common'></span> <span class='font-ascii' style='color:#AAAAAA'>Mana Cost: </span><span class='font-ascii' style='color:#FFFFFF'>-10</span></span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Ability Points: <span class='font-ascii' style='color:#FFFFFF'>1</span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Required Ability: <span class='font-ascii' style='color:#FFFFFF'>Meteor</span></span>"
+        ],
+        "requirements": {
+          "NODE": "meteor",
+          "ABILITY_POINTS": 1
+        },
+        "links": [
+          ""
+        ],
+        "locks": null,
+        "page": 1
+      },
+      "shootingStar": {
+        "name": "<span class='font-ascii' style='color:#ffe14d'><span class='font-ascii' style='font-weight:bolder'>Shooting Star</span></span>",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "abilityTree.nodeYellow",
+            "customModelData": {
+              "rangeDispatch": [
+                162
+              ]
+            }
+          },
+          "format": "attribute"
+        },
+        "slot": 40,
+        "coordinates": {
+          "x": 5,
+          "y": 5
+        },
+        "description": [
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Drastically increase the</span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>speed of your <span class='font-ascii' style='text-decoration: underline'>Meteor</span><span class='font-ascii' style='color:#AAAAAA'> ability.</span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Ability Points: <span class='font-ascii' style='color:#FFFFFF'>1</span></span>"
+        ],
+        "requirements": {
+          "ABILITY_POINTS": 1
+        },
+        "links": [
+          "teleport"
+        ],
+        "locks": null,
+        "page": 1
+      }
+    },
+    "2": {
+      "touchOfLight": {
+        "name": "<span class='font-ascii' style='color:#ffe14d'><span class='font-ascii' style='font-weight:bolder'>Wand Proficiency II</span></span>",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "abilityTree.nodeYellow",
+            "customModelData": {
+              "rangeDispatch": [
+                162
+              ]
+            }
+          },
+          "format": "attribute"
+        },
+        "slot": 11,
+        "coordinates": {
+          "x": 3,
+          "y": 2
+        },
+        "description": [
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Improve your <span class='font-ascii' style='text-decoration: underline'>Main Attack</span><span class='font-ascii' style='color:#AAAAAA'>'s damage</span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>and range when using a wand.</span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#FF5555'><span class='font-common'></span> <span class='font-ascii' style='color:#AAAAAA'>Main Attack Damage: </span><span class='font-ascii' style='color:#FFFFFF'>+5%</span></span></span>",
+          "<span class='font-ascii' style='color:#00AA00'><span class='font-common'></span> <span class='font-ascii' style='color:#AAAAAA'>Main Attack Range: </span><span class='font-ascii' style='color:#FFFFFF'>+2 Blocks</span></span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#FF5555'>Unlocking will block:</span>",
+          "<span class='font-ascii' style='color:#FF5555'>- <span class='font-ascii' style='color:#AAAAAA'>Wisdom</span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#60c5cd'><span class='font-ascii' style='font-weight:bolder'>Riftwalker Archetype</span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Ability Points: <span class='font-ascii' style='color:#FFFFFF'>1</span></span>"
+        ],
+        "requirements": {
+          "ABILITY_POINTS": 1
+        },
+        "links": [
+          "heal"
+        ],
+        "locks": [
+          "wisdom"
+        ],
+        "page": 2
+      },
+      "teleport": {
+        "name": "<span class='font-ascii' style='color:#87dd47'><span class='font-ascii' style='font-weight:bolder'>Teleport</span></span>",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "abilityTree.nodeMage",
+            "customModelData": {
+              "rangeDispatch": [
+                184
+              ]
+            }
+          },
+          "format": "attribute"
+        },
+        "slot": 13,
+        "coordinates": {
+          "x": 5,
+          "y": 2
+        },
+        "description": [
+          "<span class='font-ascii' style='color:#FFAA00'>Click Combo: <span class='font-ascii' style='color:#FF55FF'><span class='font-ascii' style='font-weight:bolder'>RIGHT</span></span><span class='font-ascii' style='color:#AAAAAA'>-</span><span class='font-ascii' style='color:#FF55FF'><span class='font-ascii' style='font-weight:bolder'>RIGHT</span></span><span class='font-ascii' style='color:#AAAAAA'>-</span><span class='font-ascii' style='color:#FF55FF'><span class='font-ascii' style='font-weight:bolder'>RIGHT</span></span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Instantly teleport in the</span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>direction you're facing.</span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#66e6ff'><span class='font-common'></span> <span class='font-ascii' style='color:#AAAAAA'>Mana Cost: </span><span class='font-ascii' style='color:#FFFFFF'>25</span></span></span>",
+          "<span class='font-ascii' style='color:#00AA00'><span class='font-common'></span> <span class='font-ascii' style='color:#AAAAAA'>Range: </span><span class='font-ascii' style='color:#FFFFFF'>16 Blocks</span></span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Ability Points: <span class='font-ascii' style='color:#FFFFFF'>1</span></span>"
+        ],
+        "requirements": {
+          "ABILITY_POINTS": 1
+        },
+        "links": [
+          "touchOfLight",
+          "wisdom"
+        ],
+        "locks": null,
+        "page": 2
+      },
+      "wisdom": {
+        "name": "<span class='font-ascii' style='color:#ffe14d'><span class='font-ascii' style='font-weight:bolder'>Wisdom</span></span>",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "abilityTree.nodeYellow",
+            "customModelData": {
+              "rangeDispatch": [
+                162
+              ]
+            }
+          },
+          "format": "attribute"
+        },
+        "slot": 15,
+        "coordinates": {
+          "x": 7,
+          "y": 2
+        },
+        "description": [
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>For every <span class='font-ascii' style='color:#FFFFFF'>2%</span><span class='font-ascii' style='color:#AAAAAA'> or </span><span class='font-ascii' style='color:#FFFFFF'>2 Raw </span><span class='font-ascii' style='color:#AAAAAA'>Spell Damage you have</span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>from items, gain <span class='font-ascii' style='color:#FFFFFF'>+1/5s</span><span class='font-ascii' style='color:#AAAAAA'> Mana Regen (Max 5/5s)</span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#FF5555'>Unlocking will block:</span>",
+          "<span class='font-ascii' style='color:#FF5555'>- <span class='font-ascii' style='color:#AAAAAA'>Wand Proficiency II</span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#eb3dfe'><span class='font-ascii' style='font-weight:bolder'>Arcanist Archetype</span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Ability Points: <span class='font-ascii' style='color:#FFFFFF'>1</span></span>"
+        ],
+        "requirements": {
+          "ABILITY_POINTS": 1
+        },
+        "links": [
+          "icesnake"
+        ],
+        "locks": [
+          "touchOfLight"
+        ],
+        "page": 2
+      },
+      "heal": {
+        "name": "<span class='font-ascii' style='color:#87dd47'><span class='font-ascii' style='font-weight:bolder'>Heal</span></span>",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "abilityTree.nodeMage",
+            "customModelData": {
+              "rangeDispatch": [
+                184
+              ]
+            }
+          },
+          "format": "attribute"
+        },
+        "slot": 29,
+        "coordinates": {
+          "x": 3,
+          "y": 4
+        },
+        "description": [
+          "<span class='font-ascii' style='color:#FFAA00'>Click Combo: <span class='font-ascii' style='color:#FF55FF'><span class='font-ascii' style='font-weight:bolder'>RIGHT</span></span><span class='font-ascii' style='color:#AAAAAA'>-</span><span class='font-ascii' style='color:#FF55FF'><span class='font-ascii' style='font-weight:bolder'>LEFT</span></span><span class='font-ascii' style='color:#AAAAAA'>-</span><span class='font-ascii' style='color:#FF55FF'><span class='font-ascii' style='font-weight:bolder'>RIGHT</span></span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Heals you and nearby allies in </span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>a large area around you.</span>",
+          "<span class='font-ascii' style='color:#555555'>(When healing others, you can't heal</span>",
+          "<span class='font-ascii' style='color:#555555'>more than 50% of <span class='font-ascii' style='text-decoration: underline'>their</span><span class='font-ascii' style='color:#555555'> max health)</span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#66e6ff'><span class='font-common'></span> <span class='font-ascii' style='color:#AAAAAA'>Mana Cost: </span><span class='font-ascii' style='color:#FFFFFF'>35</span></span></span>",
+          "<span class='font-ascii' style='color:#db5b3c'><span class='font-common'></span> <span class='font-ascii' style='color:#AAAAAA'>Total Heal: </span><span class='font-ascii' style='color:#FFFFFF'>15% </span><span class='font-ascii' style='color:#555555'>(of your max health)</span></span></span>",
+          "<span class='font-ascii' style='color:#00AA00'><span class='font-common'></span> <span class='font-ascii' style='color:#AAAAAA'>Range: </span><span class='font-ascii' style='color:#FFFFFF'>5 Blocks</span></span></span>",
+          "<span class='font-ascii' style='color:#FF55FF'><span class='font-common'></span> <span class='font-ascii' style='color:#AAAAAA'>Duration: </span><span class='font-ascii' style='color:#FFFFFF'>0.6s</span></span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Ability Points: <span class='font-ascii' style='color:#FFFFFF'>1</span></span>"
+        ],
+        "requirements": {
+          "ABILITY_POINTS": 1
+        },
+        "links": [
+          "teleportCost1",
+          "mageThunderPath",
+          "mageAirPath"
+        ],
+        "locks": null,
+        "page": 2
+      },
+      "teleportCost1": {
+        "name": "<span class='font-ascii' style='color:#ffffff'><span class='font-ascii' style='font-weight:bolder'>Cheaper Teleport</span></span>",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "abilityTree.nodeWhite",
+            "customModelData": {
+              "rangeDispatch": [
+                158
+              ]
+            }
+          },
+          "format": "attribute"
+        },
+        "slot": 31,
+        "coordinates": {
+          "x": 5,
+          "y": 4
+        },
+        "description": [
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Reduce the mana cost of <span class='font-ascii' style='text-decoration: underline'>Teleport</span><span class='font-ascii' style='color:#AAAAAA'>.</span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#66e6ff'><span class='font-common'></span> <span class='font-ascii' style='color:#AAAAAA'>Mana Cost: </span><span class='font-ascii' style='color:#FFFFFF'>-5</span></span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Ability Points: <span class='font-ascii' style='color:#FFFFFF'>1</span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Required Ability: <span class='font-ascii' style='color:#FFFFFF'>Teleport</span></span>"
+        ],
+        "requirements": {
+          "NODE": "teleport",
+          "ABILITY_POINTS": 1
+        },
+        "links": [
+          "heal",
+          "icesnake",
+          "mageWaterPath"
+        ],
+        "locks": null,
+        "page": 2
+      },
+      "icesnake": {
+        "name": "<span class='font-ascii' style='color:#87dd47'><span class='font-ascii' style='font-weight:bolder'>Ice Snake</span></span>",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "abilityTree.nodeMage",
+            "customModelData": {
+              "rangeDispatch": [
+                184
+              ]
+            }
+          },
+          "format": "attribute"
+        },
+        "slot": 33,
+        "coordinates": {
+          "x": 7,
+          "y": 4
+        },
+        "description": [
+          "<span class='font-ascii' style='color:#FFAA00'>Click Combo: <span class='font-ascii' style='color:#FF55FF'><span class='font-ascii' style='font-weight:bolder'>RIGHT</span></span><span class='font-ascii' style='color:#AAAAAA'>-</span><span class='font-ascii' style='color:#FF55FF'><span class='font-ascii' style='font-weight:bolder'>RIGHT</span></span><span class='font-ascii' style='color:#AAAAAA'>-</span><span class='font-ascii' style='color:#FF55FF'><span class='font-ascii' style='font-weight:bolder'>LEFT</span></span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Conjures a fast-moving ice snake that</span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>damages and slows enemies.</span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#66e6ff'><span class='font-common'></span> <span class='font-ascii' style='color:#AAAAAA'>Mana Cost: </span><span class='font-ascii' style='color:#FFFFFF'>30</span></span></span>",
+          "<span class='font-ascii' style='color:#FF5555'><span class='font-common'></span> <span class='font-ascii' style='color:#AAAAAA'>Total Damage: </span><span class='font-ascii' style='color:#FFFFFF'>175% </span><span class='font-ascii' style='color:#555555'>(of your DPS)</span></span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>  <span class='font-ascii' style='margin-left: 20px'><span class='font-ascii' style='color:#555555'>(<span class='font-ascii' style='color:#FFAA00'><span class='font-common'></span> </span><span class='font-ascii' style='color:#555555'>Damage: </span><span class='font-ascii' style='color:#555555'>120%</span><span class='font-ascii' style='color:#555555'>)</span></span></span></span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>  <span class='font-ascii' style='margin-left: 20px'><span class='font-ascii' style='color:#555555'>(<span class='font-ascii' style='color:#55FFFF'><span class='font-common'></span> </span><span class='font-ascii' style='color:#555555'>Water: </span><span class='font-ascii' style='color:#555555'>55%</span><span class='font-ascii' style='color:#555555'>)</span></span></span></span></span>",
+          "<span class='font-ascii' style='color:#00AA00'><span class='font-common'></span> <span class='font-ascii' style='color:#AAAAAA'>Range: </span><span class='font-ascii' style='color:#FFFFFF'>18 Blocks</span></span></span>",
+          "<span class='font-ascii' style='color:#00AAAA'><span class='font-common'></span> <span class='font-ascii' style='color:#AAAAAA'>Area of Effect: </span><span class='font-ascii' style='color:#FFFFFF'>2 Blocks </span><span class='font-ascii' style='color:#AAAAAA'>(Circle-Shaped)</span></span></span>",
+          "<span class='font-ascii' style='color:#FFFF55'><span class='font-common'></span> <span class='font-ascii' style='color:#AAAAAA'>Effect: </span><span class='font-ascii' style='color:#FFFFFF'>40% </span><span class='font-ascii' style='color:#AAAAAA'>Slowness (<span class='font-ascii' style='color:#FF5555'><span class='font-common'></span></span><span class='font-ascii' style='color:#AAAAAA'>) to Enemies</span></span></span></span></span>",
+          "<span class='font-ascii' style='color:#FF55FF'><span class='font-common'></span> <span class='font-ascii' style='color:#AAAAAA'>Duration: </span><span class='font-ascii' style='color:#FFFFFF'>3s</span></span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Ability Points: <span class='font-ascii' style='color:#FFFFFF'>1</span></span>"
+        ],
+        "requirements": {
+          "ABILITY_POINTS": 1
+        },
+        "links": [
+          "teleportCost1",
+          "mageFirePath",
+          "mageEarthPath"
+        ],
+        "locks": null,
+        "page": 2
+      }
+    },
+    "3": {
+      "mageAirPath": {
+        "name": "<span class='font-ascii' style='color:#ffffff'><span class='font-ascii' style='font-weight:bolder'>Air Mastery</span></span>",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "abilityTree.nodeWhite",
+            "customModelData": {
+              "rangeDispatch": [
+                158
+              ]
+            }
+          },
+          "format": "attribute"
+        },
+        "slot": 9,
+        "coordinates": {
+          "x": 1,
+          "y": 2
+        },
+        "description": [
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Increase your base damage</span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>from all Air attacks.</span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#FFFFFF'><span class='font-common'></span> <span class='font-ascii' style='color:#AAAAAA'>Air Damage: </span><span class='font-ascii' style='color:#FFFFFF'>+3-4</span></span></span>",
+          "<span class='font-ascii' style='color:#FFFFFF'><span class='font-common'></span> <span class='font-ascii' style='color:#AAAAAA'>Air Damage: </span><span class='font-ascii' style='color:#FFFFFF'>+15%</span></span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#60c5cd'><span class='font-ascii' style='font-weight:bolder'>Riftwalker Archetype</span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Ability Points: <span class='font-ascii' style='color:#FFFFFF'>1</span></span>"
+        ],
+        "requirements": {
+          "ABILITY_POINTS": 1
+        },
+        "links": [
+          "windSlash",
+          ""
+        ],
+        "locks": null,
+        "page": 3
+      },
+      "mageThunderPath": {
+        "name": "<span class='font-ascii' style='color:#ffffff'><span class='font-ascii' style='font-weight:bolder'>Thunder Mastery</span></span>",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "abilityTree.nodeWhite",
+            "customModelData": {
+              "rangeDispatch": [
+                158
+              ]
+            }
+          },
+          "format": "attribute"
+        },
+        "slot": 11,
+        "coordinates": {
+          "x": 3,
+          "y": 2
+        },
+        "description": [
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Increase your base damage</span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>from all Thunder attacks.</span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#FFFF55'><span class='font-common'></span> <span class='font-ascii' style='color:#AAAAAA'>Thunder Damage: </span><span class='font-ascii' style='color:#FFFFFF'>+1-8</span></span></span>",
+          "<span class='font-ascii' style='color:#FFFF55'><span class='font-common'></span> <span class='font-ascii' style='color:#AAAAAA'>Thunder Damage: </span><span class='font-ascii' style='color:#FFFFFF'>+10%</span></span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#60c5cd'><span class='font-ascii' style='font-weight:bolder'>Riftwalker Archetype</span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Ability Points: <span class='font-ascii' style='color:#FFFFFF'>1</span></span>"
+        ],
+        "requirements": {
+          "ABILITY_POINTS": 1
+        },
+        "links": [
+          "mageWaterPath",
+          "thunderstorm"
+        ],
+        "locks": null,
+        "page": 3
+      },
+      "mageFirePath": {
+        "name": "<span class='font-ascii' style='color:#ffffff'><span class='font-ascii' style='font-weight:bolder'>Fire Mastery</span></span>",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "abilityTree.nodeWhite",
+            "customModelData": {
+              "rangeDispatch": [
+                158
+              ]
+            }
+          },
+          "format": "attribute"
+        },
+        "slot": 15,
+        "coordinates": {
+          "x": 7,
+          "y": 2
+        },
+        "description": [
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Increase your base damage</span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>from all Fire attacks.</span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#FF5555'><span class='font-common'></span> <span class='font-ascii' style='color:#AAAAAA'>Fire Damage: </span><span class='font-ascii' style='color:#FFFFFF'>+3-5</span></span></span>",
+          "<span class='font-ascii' style='color:#FF5555'><span class='font-common'></span> <span class='font-ascii' style='color:#AAAAAA'>Fire Damage: </span><span class='font-ascii' style='color:#FFFFFF'>+15%</span></span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#eb3dfe'><span class='font-ascii' style='font-weight:bolder'>Arcanist Archetype</span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Ability Points: <span class='font-ascii' style='color:#FFFFFF'>1</span></span>"
+        ],
+        "requirements": {
+          "ABILITY_POINTS": 1
+        },
+        "links": [
+          "",
+          "mageEarthPath",
+          "burningSigil"
+        ],
+        "locks": null,
+        "page": 3
+      },
+      "mageEarthPath": {
+        "name": "<span class='font-ascii' style='color:#ffffff'><span class='font-ascii' style='font-weight:bolder'>Earth Mastery</span></span>",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "abilityTree.nodeWhite",
+            "customModelData": {
+              "rangeDispatch": [
+                158
+              ]
+            }
+          },
+          "format": "attribute"
+        },
+        "slot": 17,
+        "coordinates": {
+          "x": 9,
+          "y": 2
+        },
+        "description": [
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Increase your base damage</span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>from all Earth attacks.</span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#00AA00'><span class='font-common'></span> <span class='font-ascii' style='color:#AAAAAA'>Earth Damage: </span><span class='font-ascii' style='color:#FFFFFF'>+2-4</span></span></span>",
+          "<span class='font-ascii' style='color:#00AA00'><span class='font-common'></span> <span class='font-ascii' style='color:#AAAAAA'>Earth Damage: </span><span class='font-ascii' style='color:#FFFFFF'>+20%</span></span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#eb3dfe'><span class='font-ascii' style='font-weight:bolder'>Arcanist Archetype</span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Ability Points: <span class='font-ascii' style='color:#FFFFFF'>1</span></span>"
+        ],
+        "requirements": {
+          "ABILITY_POINTS": 1
+        },
+        "links": [
+          "mageFirePath",
+          "burningSigil"
+        ],
+        "locks": null,
+        "page": 3
+      },
+      "mageWaterPath": {
+        "name": "<span class='font-ascii' style='color:#ffffff'><span class='font-ascii' style='font-weight:bolder'>Water Mastery</span></span>",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "abilityTree.nodeWhite",
+            "customModelData": {
+              "rangeDispatch": [
+                158
+              ]
+            }
+          },
+          "format": "attribute"
+        },
+        "slot": 22,
+        "coordinates": {
+          "x": 5,
+          "y": 3
+        },
+        "description": [
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Increase your base damage</span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>from all Water attacks.</span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#55FFFF'><span class='font-common'></span> <span class='font-ascii' style='color:#AAAAAA'>Water Damage: </span><span class='font-ascii' style='color:#FFFFFF'>+2-4</span></span></span>",
+          "<span class='font-ascii' style='color:#55FFFF'><span class='font-common'></span> <span class='font-ascii' style='color:#AAAAAA'>Water Damage: </span><span class='font-ascii' style='color:#FFFFFF'>+15%</span></span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#b8b0b0'><span class='font-ascii' style='font-weight:bolder'>Light Bender Archetype</span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Ability Points: <span class='font-ascii' style='color:#FFFFFF'>1</span></span>"
+        ],
+        "requirements": {
+          "ABILITY_POINTS": 1
+        },
+        "links": [
+          "sunshower"
+        ],
+        "locks": null,
+        "page": 3
+      },
+      "windSlash": {
+        "name": "<span class='font-ascii' style='color:#f747c2'><span class='font-ascii' style='font-weight:bolder'>Wind Slash</span></span>",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "abilityTree.nodePurple",
+            "customModelData": {
+              "rangeDispatch": [
+                166
+              ]
+            }
+          },
+          "format": "attribute"
+        },
+        "slot": 27,
+        "coordinates": {
+          "x": 1,
+          "y": 4
+        },
+        "description": [
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>When using <span class='font-ascii' style='text-decoration: underline'>Teleport</span><span class='font-ascii' style='color:#AAAAAA'>, slash through the</span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>air and deal damage to enemies you pierce.</span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#FF5555'><span class='font-common'></span> <span class='font-ascii' style='color:#AAAAAA'>Total Damage: </span><span class='font-ascii' style='color:#FFFFFF'>100% </span><span class='font-ascii' style='color:#555555'>(of your DPS)</span></span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>  <span class='font-ascii' style='margin-left: 20px'><span class='font-ascii' style='color:#555555'>(<span class='font-ascii' style='color:#FFAA00'><span class='font-common'></span> </span><span class='font-ascii' style='color:#555555'>Damage: </span><span class='font-ascii' style='color:#555555'>75%</span><span class='font-ascii' style='color:#555555'>)</span></span></span></span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>  <span class='font-ascii' style='margin-left: 20px'><span class='font-ascii' style='color:#555555'>(<span class='font-ascii' style='color:#FFFFFF'><span class='font-common'></span> </span><span class='font-ascii' style='color:#555555'>Air: </span><span class='font-ascii' style='color:#555555'>25%</span><span class='font-ascii' style='color:#555555'>)</span></span></span></span></span>",
+          "<span class='font-ascii' style='color:#00AAAA'><span class='font-common'></span> <span class='font-ascii' style='color:#AAAAAA'>Area of Effect: </span><span class='font-ascii' style='color:#FFFFFF'>1.5 Blocks </span><span class='font-ascii' style='color:#AAAAAA'>(Circle-Shaped)</span></span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#60c5cd'><span class='font-ascii' style='font-weight:bolder'>Riftwalker Archetype</span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Ability Points: <span class='font-ascii' style='color:#FFFFFF'>2</span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Required Ability: <span class='font-ascii' style='color:#FFFFFF'>Teleport</span></span>"
+        ],
+        "requirements": {
+          "NODE": "teleport",
+          "ABILITY_POINTS": 2
+        },
+        "links": [
+          "thunderstorm",
+          "windSweeper"
+        ],
+        "locks": null,
+        "page": 3
+      },
+      "thunderstorm": {
+        "name": "<span class='font-ascii' style='color:#f747c2'><span class='font-ascii' style='font-weight:bolder'>Thunderstorm</span></span>",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "abilityTree.nodePurple",
+            "customModelData": {
+              "rangeDispatch": [
+                166
+              ]
+            }
+          },
+          "format": "attribute"
+        },
+        "slot": 29,
+        "coordinates": {
+          "x": 3,
+          "y": 4
+        },
+        "description": [
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>After casting <span class='font-ascii' style='color:#AAAAAA'><span class='font-ascii' style='text-decoration: underline'>Meteor</span></span><span class='font-ascii' style='color:#AAAAAA'>, generate </span><span class='font-ascii' style='color:#FFFFFF'>3</span><span class='font-ascii' style='color:#AAAAAA'> lightning</span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>strikes and deal additional damage.</span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#FF5555'><span class='font-common'></span> <span class='font-ascii' style='color:#AAAAAA'>Total Damage: </span><span class='font-ascii' style='color:#FFFFFF'>+45% </span><span class='font-ascii' style='color:#555555'>(of your DPS, per strike)</span></span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>  <span class='font-ascii' style='margin-left: 20px'><span class='font-ascii' style='color:#555555'>(<span class='font-ascii' style='color:#FFAA00'><span class='font-common'></span> </span><span class='font-ascii' style='color:#555555'>Damage: </span><span class='font-ascii' style='color:#555555'>+30%</span><span class='font-ascii' style='color:#555555'>)</span></span></span></span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>  <span class='font-ascii' style='margin-left: 20px'><span class='font-ascii' style='color:#555555'>(<span class='font-ascii' style='color:#FFFF55'><span class='font-common'></span> </span><span class='font-ascii' style='color:#555555'>Thunder: </span><span class='font-ascii' style='color:#555555'>+15%</span><span class='font-ascii' style='color:#555555'>)</span></span></span></span></span>",
+          "<span class='font-ascii' style='color:#00AAAA'><span class='font-common'></span> <span class='font-ascii' style='color:#AAAAAA'>Area of Effect: </span><span class='font-ascii' style='color:#FFFFFF'>2 Blocks </span><span class='font-ascii' style='color:#AAAAAA'>(Circle-Shaped)</span></span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#FF5555'>Unlocking will block:</span>",
+          "<span class='font-ascii' style='color:#FF5555'>- <span class='font-ascii' style='color:#AAAAAA'>Ophanim</span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Ability Points: <span class='font-ascii' style='color:#FFFFFF'>2</span></span>"
+        ],
+        "requirements": {
+          "ABILITY_POINTS": 2
+        },
+        "links": [
+          "windSlash",
+          "windSweeper"
+        ],
+        "locks": [
+          "ophanim"
+        ],
+        "page": 3
+      },
+      "burningSigil": {
+        "name": "<span class='font-ascii' style='color:#f747c2'><span class='font-ascii' style='font-weight:bolder'>Burning Sigil</span></span>",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "abilityTree.nodePurple",
+            "customModelData": {
+              "rangeDispatch": [
+                166
+              ]
+            }
+          },
+          "format": "attribute"
+        },
+        "slot": 34,
+        "coordinates": {
+          "x": 8,
+          "y": 4
+        },
+        "description": [
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'><span class='font-ascii' style='text-decoration: underline'>Meteor<span class='font-ascii' style='color:#AAAAAA'> and </span><span class='font-ascii' style='color:#AAAAAA'><span class='font-ascii' style='text-decoration: underline'>Ophanim</span></span><span class='font-ascii' style='color:#AAAAAA'> will leave a sigil of fire</span></span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>on the ground that damages enemies every <span class='font-ascii' style='color:#FFFFFF'>0.4s</span><span class='font-ascii' style='color:#AAAAAA'>.</span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#FF5555'><span class='font-common'></span> <span class='font-ascii' style='color:#AAAAAA'>Total Damage: </span><span class='font-ascii' style='color:#FFFFFF'>40% </span><span class='font-ascii' style='color:#555555'>(of your DPS)</span></span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>  <span class='font-ascii' style='margin-left: 20px'><span class='font-ascii' style='color:#555555'>(<span class='font-ascii' style='color:#FFAA00'><span class='font-common'></span> </span><span class='font-ascii' style='color:#555555'>Damage: </span><span class='font-ascii' style='color:#555555'>25%</span><span class='font-ascii' style='color:#555555'>)</span></span></span></span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>  <span class='font-ascii' style='margin-left: 20px'><span class='font-ascii' style='color:#555555'>(<span class='font-ascii' style='color:#FF5555'><span class='font-common'></span> </span><span class='font-ascii' style='color:#555555'>Fire: </span><span class='font-ascii' style='color:#555555'>15%</span><span class='font-ascii' style='color:#555555'>)</span></span></span></span></span>",
+          "<span class='font-ascii' style='color:#00AAAA'><span class='font-common'></span> <span class='font-ascii' style='color:#AAAAAA'>Area of Effect: </span><span class='font-ascii' style='color:#FFFFFF'>7 Blocks </span><span class='font-ascii' style='color:#AAAAAA'>(Circle-Shaped)</span></span></span>",
+          "<span class='font-ascii' style='color:#FF55FF'><span class='font-common'></span> <span class='font-ascii' style='color:#AAAAAA'>Duration: </span><span class='font-ascii' style='color:#FFFFFF'>8s</span></span></span>",
+          "<span class='font-ascii' style='color:#4dffc3'><span class='font-common'></span> <span class='font-ascii' style='color:#AAAAAA'>Cooldown: </span><span class='font-ascii' style='color:#FFFFFF'>8s</span></span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Ability Points: <span class='font-ascii' style='color:#FFFFFF'>2</span></span>"
+        ],
+        "requirements": {
+          "ABILITY_POINTS": 2
+        },
+        "links": [
+          "arcaneTransfer",
+          "meteorDamage1"
+        ],
+        "locks": null,
+        "page": 3
+      },
+      "sunshower": {
+        "name": "<span class='font-ascii' style='color:#f747c2'><span class='font-ascii' style='font-weight:bolder'>Sunshower</span></span>",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "abilityTree.nodePurple",
+            "customModelData": {
+              "rangeDispatch": [
+                166
+              ]
+            }
+          },
+          "format": "attribute"
+        },
+        "slot": 40,
+        "coordinates": {
+          "x": 5,
+          "y": 5
+        },
+        "description": [
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'><span class='font-ascii' style='text-decoration: underline'>Heal<span class='font-ascii' style='color:#AAAAAA'> emits a strong light,</span></span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>damaging nearby enemies.</span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'><span class='font-ascii' style='text-decoration: underline'>Arcane Transfer<span class='font-ascii' style='color:#AAAAAA'> will damage nearby</span></span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>enemies when transferring <span class='font-ascii' style='color:#FFFFFF'>30+ </span><span class='font-ascii' style='color:#AAAAAA'>Mana.</span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#FF5555'><span class='font-common'></span> <span class='font-ascii' style='color:#AAAAAA'>Total Damage: </span><span class='font-ascii' style='color:#FFFFFF'>100% </span><span class='font-ascii' style='color:#555555'>(of your DPS)</span></span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>  <span class='font-ascii' style='margin-left: 20px'><span class='font-ascii' style='color:#555555'>(<span class='font-ascii' style='color:#FFAA00'><span class='font-common'></span> </span><span class='font-ascii' style='color:#555555'>Damage: </span><span class='font-ascii' style='color:#555555'>70%</span><span class='font-ascii' style='color:#555555'>)</span></span></span></span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>  <span class='font-ascii' style='margin-left: 20px'><span class='font-ascii' style='color:#555555'>(<span class='font-ascii' style='color:#55FFFF'><span class='font-common'></span> </span><span class='font-ascii' style='color:#555555'>Water: </span><span class='font-ascii' style='color:#555555'>30%</span><span class='font-ascii' style='color:#555555'>)</span></span></span></span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#b8b0b0'><span class='font-ascii' style='font-weight:bolder'>Light Bender Archetype</span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Ability Points: <span class='font-ascii' style='color:#FFFFFF'>2</span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Required Ability: <span class='font-ascii' style='color:#FFFFFF'>Heal</span></span>"
+        ],
+        "requirements": {
+          "NODE": "heal",
+          "ABILITY_POINTS": 2
+        },
+        "links": [
+          "ophanim"
+        ],
+        "locks": null,
+        "page": 3
+      },
+      "meteorDamage1": {
+        "name": "<span class='font-ascii' style='color:#ffffff'><span class='font-ascii' style='font-weight:bolder'>Crashing Comet</span></span>",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "abilityTree.nodeWhite",
+            "customModelData": {
+              "rangeDispatch": [
+                158
+              ]
+            }
+          },
+          "format": "attribute"
+        },
+        "slot": 44,
+        "coordinates": {
+          "x": 9,
+          "y": 5
+        },
+        "description": [
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Increase the damage of <span class='font-ascii' style='text-decoration: underline'>Meteor</span><span class='font-ascii' style='color:#AAAAAA'>.</span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#FF5555'><span class='font-common'></span> <span class='font-ascii' style='color:#AAAAAA'>Total Damage: </span><span class='font-ascii' style='color:#FFFFFF'>+120% </span><span class='font-ascii' style='color:#555555'>(of your DPS)</span></span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>  <span class='font-ascii' style='margin-left: 20px'><span class='font-ascii' style='color:#555555'>(<span class='font-ascii' style='color:#FFAA00'><span class='font-common'></span> </span><span class='font-ascii' style='color:#555555'>Damage: </span><span class='font-ascii' style='color:#555555'>+90%</span><span class='font-ascii' style='color:#555555'>)</span></span></span></span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>  <span class='font-ascii' style='margin-left: 20px'><span class='font-ascii' style='color:#555555'>(<span class='font-ascii' style='color:#00AA00'><span class='font-common'></span> </span><span class='font-ascii' style='color:#555555'>Earth: </span><span class='font-ascii' style='color:#555555'>+30%</span><span class='font-ascii' style='color:#555555'>)</span></span></span></span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#eb3dfe'><span class='font-ascii' style='font-weight:bolder'>Arcanist Archetype</span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Ability Points: <span class='font-ascii' style='color:#FFFFFF'>1</span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Required Ability: <span class='font-ascii' style='color:#FFFFFF'>Meteor</span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Min Arcanist Archetype: <span class='font-ascii' style='color:#FFFFFF'>2</span></span>"
+        ],
+        "requirements": {
+          "NODE": "meteor",
+          "ARCHETYPE": {
+            "name": "arcane",
+            "amount": 2
+          },
+          "ABILITY_POINTS": 1
+        },
+        "links": [
+          ""
+        ],
+        "locks": null,
+        "page": 3
+      }
+    },
+    "4": {
+      "windSweeper": {
+        "name": "<span class='font-ascii' style='color:#ff4545'><span class='font-ascii' style='font-weight:bolder'>Windsweeper</span></span>",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "abilityTree.nodeRed",
+            "customModelData": {
+              "rangeDispatch": [
+                174
+              ]
+            }
+          },
+          "format": "attribute"
+        },
+        "slot": 10,
+        "coordinates": {
+          "x": 2,
+          "y": 2
+        },
+        "description": [
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Your <span class='font-ascii' style='text-decoration: underline'>Main Attack</span><span class='font-ascii' style='color:#AAAAAA'> will add </span><span class='font-ascii' style='color:#55FFFF'>+1 Winded <span class='font-ascii' style='color:#55FFFF'><span class='font-common'></span></span></span></span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>to enemies you hit. (Max 10, 0.2s Cooldown)</span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'><span class='font-ascii' style='text-decoration: underline'>Ice Snake<span class='font-ascii' style='color:#AAAAAA'> will deal additional damage to</span></span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>enemies for every <span class='font-ascii' style='color:#55FFFF'>Winded <span class='font-ascii' style='color:#55FFFF'><span class='font-common'></span></span><span class='font-ascii' style='color:#AAAAAA'> they have.</span></span></span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#55FFFF'>Winded <span class='font-ascii' style='color:#55FFFF'><span class='font-common'></span><span class='font-ascii' style='color:#AAAAAA'> will decay once every </span><span class='font-ascii' style='color:#FFFFFF'>4s</span><span class='font-ascii' style='color:#AAAAAA'>.</span></span></span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#FF5555'><span class='font-common'></span> <span class='font-ascii' style='color:#AAAAAA'>Total Damage: </span><span class='font-ascii' style='color:#FFFFFF'>15% </span><span class='font-ascii' style='color:#555555'>(of your DPS, per Winded)</span></span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>  <span class='font-ascii' style='margin-left: 20px'><span class='font-ascii' style='color:#555555'>(<span class='font-ascii' style='color:#FFAA00'><span class='font-common'></span> </span><span class='font-ascii' style='color:#555555'>Damage: </span><span class='font-ascii' style='color:#555555'>10%</span><span class='font-ascii' style='color:#555555'>)</span></span></span></span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>  <span class='font-ascii' style='margin-left: 20px'><span class='font-ascii' style='color:#555555'>(<span class='font-ascii' style='color:#55FFFF'><span class='font-common'></span> </span><span class='font-ascii' style='color:#555555'>Water: </span><span class='font-ascii' style='color:#555555'>5%</span><span class='font-ascii' style='color:#555555'>)</span></span></span></span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#60c5cd'><span class='font-ascii' style='font-weight:bolder'>Riftwalker Archetype</span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Ability Points: <span class='font-ascii' style='color:#FFFFFF'>2</span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Required Ability: <span class='font-ascii' style='color:#FFFFFF'>Ice Snake</span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Min Riftwalker Archetype: <span class='font-ascii' style='color:#FFFFFF'>3</span></span>"
+        ],
+        "requirements": {
+          "NODE": "icesnake",
+          "ARCHETYPE": {
+            "name": "blitz",
+            "amount": 3
+          },
+          "ABILITY_POINTS": 2
+        },
+        "links": [
+          "healCost1"
+        ],
+        "locks": null,
+        "page": 4
+      },
+      "ophanim": {
+        "name": "<span class='font-ascii' style='color:#ff4545'><span class='font-ascii' style='font-weight:bolder'>Ophanim</span></span>",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "abilityTree.nodeRed",
+            "customModelData": {
+              "rangeDispatch": [
+                174
+              ]
+            }
+          },
+          "format": "attribute"
+        },
+        "slot": 13,
+        "coordinates": {
+          "x": 5,
+          "y": 2
+        },
+        "description": [
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>When casting <span class='font-ascii' style='text-decoration: underline'>Meteor</span><span class='font-ascii' style='color:#AAAAAA'>, instead summon</span></span>",
+          "<span class='font-ascii' style='color:#FFFFFF'>2 <span class='font-ascii' style='color:#AAAAAA'>orbs of light with </span><span class='font-ascii' style='color:#FFFFFF'>200 </span><span class='font-ascii' style='color:#AAAAAA'>Health that will</span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>attack when you use your <span class='font-ascii' style='text-decoration: underline'>Main Attack</span><span class='font-ascii' style='color:#AAAAAA'>.</span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>When they damage an enemy, they lose <span class='font-ascii' style='color:#FFFFFF'>20%</span><span class='font-ascii' style='color:#AAAAAA'></span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>of their Health. They can be healed back.</span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#66e6ff'><span class='font-common'></span> <span class='font-ascii' style='color:#AAAAAA'>Mana Cost: </span><span class='font-ascii' style='color:#FF5555'>+30</span></span></span>",
+          "<span class='font-ascii' style='color:#FF5555'><span class='font-common'></span> <span class='font-ascii' style='color:#AAAAAA'>Total Damage: </span><span class='font-ascii' style='color:#FFFFFF'>120% </span><span class='font-ascii' style='color:#555555'>(of your DPS)</span></span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>  <span class='font-ascii' style='margin-left: 20px'><span class='font-ascii' style='color:#555555'>(<span class='font-ascii' style='color:#FFAA00'><span class='font-common'></span> </span><span class='font-ascii' style='color:#555555'>Damage: </span><span class='font-ascii' style='color:#555555'>90%</span><span class='font-ascii' style='color:#555555'>)</span></span></span></span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>  <span class='font-ascii' style='margin-left: 20px'><span class='font-ascii' style='color:#555555'>(<span class='font-ascii' style='color:#55FFFF'><span class='font-common'></span> </span><span class='font-ascii' style='color:#555555'>Water: </span><span class='font-ascii' style='color:#555555'>15%</span><span class='font-ascii' style='color:#555555'>)</span></span></span></span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>  <span class='font-ascii' style='margin-left: 20px'><span class='font-ascii' style='color:#555555'>(<span class='font-ascii' style='color:#FFFF55'><span class='font-common'></span> </span><span class='font-ascii' style='color:#555555'>Thunder: </span><span class='font-ascii' style='color:#555555'>15%</span><span class='font-ascii' style='color:#555555'>)</span></span></span></span></span>",
+          "<span class='font-ascii' style='color:#00AA00'><span class='font-common'></span> <span class='font-ascii' style='color:#AAAAAA'>Range: </span><span class='font-ascii' style='color:#FFFFFF'>22 Blocks</span></span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#FF5555'>Unlocking will block:</span>",
+          "<span class='font-ascii' style='color:#FF5555'>- <span class='font-ascii' style='color:#AAAAAA'>Thunderstorm</span></span>",
+          "<span class='font-ascii' style='color:#FF5555'>- <span class='font-ascii' style='color:#AAAAAA'>Psychokinesis</span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#b8b0b0'><span class='font-ascii' style='font-weight:bolder'>Light Bender Archetype</span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Ability Points: <span class='font-ascii' style='color:#FFFFFF'>2</span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Required Ability: <span class='font-ascii' style='color:#FFFFFF'>Meteor</span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Min Light Bender Archetype: <span class='font-ascii' style='color:#FFFFFF'>2</span></span>"
+        ],
+        "requirements": {
+          "NODE": "meteor",
+          "ARCHETYPE": {
+            "name": "priest",
+            "amount": 2
+          },
+          "ABILITY_POINTS": 2
+        },
+        "links": [
+          "purification"
+        ],
+        "locks": [
+          "thunderstorm",
+          "psychokinesis"
+        ],
+        "page": 4
+      },
+      "arcaneTransfer": {
+        "name": "<span class='font-ascii' style='color:#ff4545'><span class='font-ascii' style='font-weight:bolder'>Arcane Transfer</span></span>",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "abilityTree.nodeRed",
+            "customModelData": {
+              "rangeDispatch": [
+                174
+              ]
+            }
+          },
+          "format": "attribute"
+        },
+        "slot": 16,
+        "coordinates": {
+          "x": 8,
+          "y": 2
+        },
+        "description": [
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'><span class='font-ascii' style='text-decoration: underline'>Meteor<span class='font-ascii' style='color:#AAAAAA'>, </span><span class='font-ascii' style='text-decoration: underline'>Ice Snake</span><span class='font-ascii' style='color:#AAAAAA'>, </span>and <span class='font-ascii' style='text-decoration: underline'>Wind Slash</span><span class='font-ascii' style='color:#AAAAAA'> will add </span><span class='font-ascii' style='color:#FFFFFF'>13</span><span class='font-ascii' style='color:#AAAAAA'> Mana to</span></span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>a <span class='font-ascii' style='color:#55FFFF'>Mana Bank <span class='font-default'></span>✺</span></span><span class='font-ascii' style='color:#AAAAAA'> for every aggressive enemy you hit.</span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>With <span class='font-ascii' style='text-decoration: underline'>Thunderstorm</span><span class='font-ascii' style='color:#AAAAAA'>, Mana gain from </span><span class='font-ascii' style='text-decoration: underline'>Meteor</span><span class='font-ascii' style='color:#AAAAAA'> is reduced to </span><span class='font-ascii' style='color:#FFFFFF'>4</span><span class='font-ascii' style='color:#AAAAAA'>.</span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'><span class='font-ascii' style='text-decoration: underline'>Heal<span class='font-ascii' style='color:#AAAAAA'> will now transfer the contents of your</span></span></span>",
+          "<span class='font-ascii' style='color:#55FFFF'>Mana Bank <span class='font-default'></span>✺</span><span class='font-ascii' style='color:#AAAAAA'> into usable Mana instead of healing.</span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#FF5555'>Unlocking will block:</span>",
+          "<span class='font-ascii' style='color:#FF5555'>- <span class='font-ascii' style='color:#AAAAAA'>Orphion's Pulse</span></span>",
+          "<span class='font-ascii' style='color:#FF5555'>- <span class='font-ascii' style='color:#AAAAAA'>Larger Heal</span></span>",
+          "<span class='font-ascii' style='color:#FF5555'>- <span class='font-ascii' style='color:#AAAAAA'>Timelock</span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#eb3dfe'><span class='font-ascii' style='font-weight:bolder'>Arcanist Archetype</span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Ability Points: <span class='font-ascii' style='color:#FFFFFF'>2</span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Required Ability: <span class='font-ascii' style='color:#FFFFFF'>Heal</span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Min Arcanist Archetype: <span class='font-ascii' style='color:#FFFFFF'>2</span></span>"
+        ],
+        "requirements": {
+          "NODE": "heal",
+          "ARCHETYPE": {
+            "name": "arcane",
+            "amount": 2
+          },
+          "ABILITY_POINTS": 2
+        },
+        "links": [
+          "seekingsnake",
+          ""
+        ],
+        "locks": [
+          "orphionsPulse",
+          "moreHealRange1",
+          "timelock"
+        ],
+        "page": 4
+      },
+      "healCost1": {
+        "name": "<span class='font-ascii' style='color:#ffffff'><span class='font-ascii' style='font-weight:bolder'>Cheaper Heal</span></span>",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "abilityTree.nodeWhite",
+            "customModelData": {
+              "rangeDispatch": [
+                158
+              ]
+            }
+          },
+          "format": "attribute"
+        },
+        "slot": 28,
+        "coordinates": {
+          "x": 2,
+          "y": 4
+        },
+        "description": [
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Reduce the mana cost of <span class='font-ascii' style='text-decoration: underline'>Heal</span><span class='font-ascii' style='color:#AAAAAA'>.</span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#66e6ff'><span class='font-common'></span> <span class='font-ascii' style='color:#AAAAAA'>Mana Cost: </span><span class='font-ascii' style='color:#FFFFFF'>-5</span></span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Ability Points: <span class='font-ascii' style='color:#FFFFFF'>1</span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Required Ability: <span class='font-ascii' style='color:#FFFFFF'>Heal</span></span>"
+        ],
+        "requirements": {
+          "NODE": "heal",
+          "ABILITY_POINTS": 1
+        },
+        "links": [
+          "eyePiercer",
+          "breathless",
+          "purification"
+        ],
+        "locks": null,
+        "page": 4
+      },
+      "purification": {
+        "name": "<span class='font-ascii' style='color:#99e9ff'><span class='font-ascii' style='font-weight:bolder'>Purification</span></span>",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "abilityTree.nodeBlue",
+            "customModelData": {
+              "rangeDispatch": [
+                170
+              ]
+            }
+          },
+          "format": "attribute"
+        },
+        "slot": 31,
+        "coordinates": {
+          "x": 5,
+          "y": 4
+        },
+        "description": [
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'><span class='font-ascii' style='text-decoration: underline'>Heal<span class='font-ascii' style='color:#AAAAAA'> and </span><span class='font-ascii' style='text-decoration: underline'>Arcane Transfer</span><span class='font-ascii' style='color:#AAAAAA'> will purify</span></span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>allies of all negative effects and fire.</span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#4dffc3'><span class='font-common'></span> <span class='font-ascii' style='color:#AAAAAA'>Cooldown: </span><span class='font-ascii' style='color:#FFFFFF'>3s</span></span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Ability Points: <span class='font-ascii' style='color:#FFFFFF'>2</span></span>"
+        ],
+        "requirements": {
+          "ABILITY_POINTS": 2
+        },
+        "links": [
+          "healCost1",
+          "breathless",
+          "seekingsnake",
+          "teleportCost2",
+          "moreHealRange1"
+        ],
+        "locks": null,
+        "page": 4
+      },
+      "seekingsnake": {
+        "name": "<span class='font-ascii' style='color:#f747c2'><span class='font-ascii' style='font-weight:bolder'>Sentient Snake</span></span>",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "abilityTree.nodePurple",
+            "customModelData": {
+              "rangeDispatch": [
+                166
+              ]
+            }
+          },
+          "format": "attribute"
+        },
+        "slot": 33,
+        "coordinates": {
+          "x": 7,
+          "y": 4
+        },
+        "description": [
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'><span class='font-ascii' style='text-decoration: underline'>Ice Snake<span class='font-ascii' style='color:#AAAAAA'> will follow the direction</span></span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>you're facing, allowing you to control it.</span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#FF5555'><span class='font-common'></span> <span class='font-ascii' style='color:#AAAAAA'>Total Damage: </span><span class='font-ascii' style='color:#FFFFFF'>+40% </span><span class='font-ascii' style='color:#555555'>(of your DPS)</span></span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>  <span class='font-ascii' style='margin-left: 20px'><span class='font-ascii' style='color:#555555'>(<span class='font-ascii' style='color:#FFAA00'><span class='font-common'></span> </span><span class='font-ascii' style='color:#555555'>Damage: </span><span class='font-ascii' style='color:#555555'>+25%</span><span class='font-ascii' style='color:#555555'>)</span></span></span></span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>  <span class='font-ascii' style='margin-left: 20px'><span class='font-ascii' style='color:#555555'>(<span class='font-ascii' style='color:#55FFFF'><span class='font-common'></span> </span><span class='font-ascii' style='color:#555555'>Water: </span><span class='font-ascii' style='color:#555555'>+15%</span><span class='font-ascii' style='color:#555555'>)</span></span></span></span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Ability Points: <span class='font-ascii' style='color:#FFFFFF'>2</span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Required Ability: <span class='font-ascii' style='color:#FFFFFF'>Ice Snake</span></span>"
+        ],
+        "requirements": {
+          "NODE": "icesnake",
+          "ABILITY_POINTS": 2
+        },
+        "links": [
+          "moreManaBank1",
+          "purification",
+          "pyrokinesis",
+          "moreHealRange1"
+        ],
+        "locks": null,
+        "page": 4
+      },
+      "eyePiercer": {
+        "name": "<span class='font-ascii' style='color:#f747c2'><span class='font-ascii' style='font-weight:bolder'>Eye Piercer</span></span>",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "abilityTree.nodePurple",
+            "customModelData": {
+              "rangeDispatch": [
+                166
+              ]
+            }
+          },
+          "format": "attribute"
+        },
+        "slot": 36,
+        "coordinates": {
+          "x": 1,
+          "y": 5
+        },
+        "description": [
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'><span class='font-ascii' style='text-decoration: underline'>Teleport<span class='font-ascii' style='color:#AAAAAA'> will blind enemies, confusing</span></span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>them for a brief period of time.</span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#FFFF55'><span class='font-common'></span> <span class='font-ascii' style='color:#AAAAAA'>Effect: </span><span class='font-ascii' style='color:#FFFFFF'>Blindness (<span class='font-ascii' style='color:#FF5555'><span class='font-common'></span></span><span class='font-ascii' style='color:#FFFFFF'>) to Enemies</span></span></span></span></span>",
+          "<span class='font-ascii' style='color:#FF55FF'><span class='font-common'></span> <span class='font-ascii' style='color:#AAAAAA'>Duration: </span><span class='font-ascii' style='color:#FFFFFF'>1s</span></span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Ability Points: <span class='font-ascii' style='color:#FFFFFF'>2</span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Required Ability: <span class='font-ascii' style='color:#FFFFFF'>Teleport</span></span>"
+        ],
+        "requirements": {
+          "NODE": "teleport",
+          "ABILITY_POINTS": 2
+        },
+        "links": [
+          "icesnakeCost1"
+        ],
+        "locks": null,
+        "page": 4
+      },
+      "breathless": {
+        "name": "<span class='font-ascii' style='color:#f747c2'><span class='font-ascii' style='font-weight:bolder'>Breathless</span></span>",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "abilityTree.nodePurple",
+            "customModelData": {
+              "rangeDispatch": [
+                166
+              ]
+            }
+          },
+          "format": "attribute"
+        },
+        "slot": 38,
+        "coordinates": {
+          "x": 3,
+          "y": 5
+        },
+        "description": [
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'><span class='font-ascii' style='text-decoration: underline'>Meteor<span class='font-ascii' style='color:#AAAAAA'> and </span><span class='font-ascii' style='color:#AAAAAA'><span class='font-ascii' style='text-decoration: underline'>Ophanim</span></span><span class='font-ascii' style='color:#AAAAAA'> will deal additional damage</span></span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>to enemies for every <span class='font-ascii' style='color:#55FFFF'>Winded <span class='font-ascii' style='color:#55FFFF'><span class='font-common'></span></span><span class='font-ascii' style='color:#AAAAAA'> they have.</span></span></span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#FF5555'><span class='font-common'></span> <span class='font-ascii' style='color:#AAAAAA'>Total Damage: </span><span class='font-ascii' style='color:#FFFFFF'>25% </span><span class='font-ascii' style='color:#555555'>(of your DPS, per Winded)</span></span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>  <span class='font-ascii' style='margin-left: 20px'><span class='font-ascii' style='color:#555555'>(<span class='font-ascii' style='color:#FFAA00'><span class='font-common'></span> </span><span class='font-ascii' style='color:#555555'>Damage: </span><span class='font-ascii' style='color:#555555'>20%</span><span class='font-ascii' style='color:#555555'>)</span></span></span></span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>  <span class='font-ascii' style='margin-left: 20px'><span class='font-ascii' style='color:#555555'>(<span class='font-ascii' style='color:#00AA00'><span class='font-common'></span> </span><span class='font-ascii' style='color:#555555'>Earth: </span><span class='font-ascii' style='color:#555555'>5%</span><span class='font-ascii' style='color:#555555'>)</span></span></span></span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#FF5555'><span class='font-common'></span> <span class='font-ascii' style='color:#AAAAAA'>Total Damage: </span><span class='font-ascii' style='color:#FFFFFF'>10% </span><span class='font-ascii' style='color:#555555'>(of your DPS, with </span><span class='font-ascii' style='color:#555555'><span class='font-ascii' style='text-decoration: underline'>Thunderstorm</span></span><span class='font-ascii' style='color:#555555'>, per Winded)</span></span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>  <span class='font-ascii' style='margin-left: 20px'><span class='font-ascii' style='color:#555555'>(<span class='font-ascii' style='color:#FFAA00'><span class='font-common'></span> </span><span class='font-ascii' style='color:#555555'>Damage: </span><span class='font-ascii' style='color:#555555'>8%</span><span class='font-ascii' style='color:#555555'>)</span></span></span></span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>  <span class='font-ascii' style='margin-left: 20px'><span class='font-ascii' style='color:#555555'>(<span class='font-ascii' style='color:#00AA00'><span class='font-common'></span> </span><span class='font-ascii' style='color:#555555'>Earth: </span><span class='font-ascii' style='color:#555555'>2%</span><span class='font-ascii' style='color:#555555'>)</span></span></span></span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#FF5555'><span class='font-common'></span> <span class='font-ascii' style='color:#AAAAAA'>Total Damage: </span><span class='font-ascii' style='color:#FFFFFF'>3% </span><span class='font-ascii' style='color:#555555'>(of your DPS, with </span><span class='font-ascii' style='color:#555555'><span class='font-ascii' style='text-decoration: underline'>Ophanim</span></span><span class='font-ascii' style='color:#555555'>, per Winded)</span></span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>  <span class='font-ascii' style='margin-left: 20px'><span class='font-ascii' style='color:#555555'>(<span class='font-ascii' style='color:#FFAA00'><span class='font-common'></span> </span><span class='font-ascii' style='color:#555555'>Damage: </span><span class='font-ascii' style='color:#555555'>2%</span><span class='font-ascii' style='color:#555555'>)</span></span></span></span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>  <span class='font-ascii' style='margin-left: 20px'><span class='font-ascii' style='color:#555555'>(<span class='font-ascii' style='color:#00AA00'><span class='font-common'></span> </span><span class='font-ascii' style='color:#555555'>Earth: </span><span class='font-ascii' style='color:#555555'>1%</span><span class='font-ascii' style='color:#555555'>)</span></span></span></span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#60c5cd'><span class='font-ascii' style='font-weight:bolder'>Riftwalker Archetype</span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Ability Points: <span class='font-ascii' style='color:#FFFFFF'>2</span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Required Ability: <span class='font-ascii' style='color:#FFFFFF'>Windsweeper</span></span>"
+        ],
+        "requirements": {
+          "NODE": "windSweeper",
+          "ABILITY_POINTS": 2
+        },
+        "links": null,
+        "locks": null,
+        "page": 4
+      },
+      "moreHealRange1": {
+        "name": "<span class='font-ascii' style='color:#ffffff'><span class='font-ascii' style='font-weight:bolder'>Larger Heal</span></span>",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "abilityTree.nodeWhite",
+            "customModelData": {
+              "rangeDispatch": [
+                158
+              ]
+            }
+          },
+          "format": "attribute"
+        },
+        "slot": 41,
+        "coordinates": {
+          "x": 6,
+          "y": 5
+        },
+        "description": [
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Increase your <span class='font-ascii' style='text-decoration: underline'>Heal</span><span class='font-ascii' style='color:#AAAAAA'>'s range.</span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#00AA00'><span class='font-common'></span> <span class='font-ascii' style='color:#AAAAAA'>Range: </span><span class='font-ascii' style='color:#FFFFFF'>+2 Blocks</span></span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#FF5555'>Unlocking will block:</span>",
+          "<span class='font-ascii' style='color:#FF5555'>- <span class='font-ascii' style='color:#AAAAAA'>Arcane Transfer</span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#b8b0b0'><span class='font-ascii' style='font-weight:bolder'>Light Bender Archetype</span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Ability Points: <span class='font-ascii' style='color:#FFFFFF'>1</span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Required Ability: <span class='font-ascii' style='color:#FFFFFF'>Heal</span></span>"
+        ],
+        "requirements": {
+          "NODE": "heal",
+          "ABILITY_POINTS": 1
+        },
+        "links": [
+          ""
+        ],
+        "locks": [
+          "arcaneTransfer"
+        ],
+        "page": 4
+      },
+      "moreManaBank1": {
+        "name": "<span class='font-ascii' style='color:#ffffff'><span class='font-ascii' style='font-weight:bolder'>Larger Mana Bank</span></span>",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "abilityTree.nodeWhite",
+            "customModelData": {
+              "rangeDispatch": [
+                158
+              ]
+            }
+          },
+          "format": "attribute"
+        },
+        "slot": 44,
+        "coordinates": {
+          "x": 9,
+          "y": 5
+        },
+        "description": [
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Increase your maximum</span>",
+          "<span class='font-ascii' style='color:#55FFFF'>Mana Bank <span class='font-default'></span>✺</span><span class='font-ascii' style='color:#AAAAAA'> by </span><span class='font-ascii' style='color:#FFFFFF'>+30</span><span class='font-ascii' style='color:#AAAAAA'>.</span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#eb3dfe'><span class='font-ascii' style='font-weight:bolder'>Arcanist Archetype</span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Ability Points: <span class='font-ascii' style='color:#FFFFFF'>1</span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Required Ability: <span class='font-ascii' style='color:#FFFFFF'>Arcane Transfer</span></span>"
+        ],
+        "requirements": {
+          "NODE": "arcaneTransfer",
+          "ABILITY_POINTS": 1
+        },
+        "links": [
+          ""
+        ],
+        "locks": null,
+        "page": 4
+      }
+    },
+    "5": {
+      "icesnakeCost1": {
+        "name": "<span class='font-ascii' style='color:#ffffff'><span class='font-ascii' style='font-weight:bolder'>Cheaper Ice Snake</span></span>",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "abilityTree.nodeWhite",
+            "customModelData": {
+              "rangeDispatch": [
+                158
+              ]
+            }
+          },
+          "format": "attribute"
+        },
+        "slot": 9,
+        "coordinates": {
+          "x": 1,
+          "y": 2
+        },
+        "description": [
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Reduce the mana cost of <span class='font-ascii' style='text-decoration: underline'>Ice Snake</span><span class='font-ascii' style='color:#AAAAAA'>.</span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#66e6ff'><span class='font-common'></span> <span class='font-ascii' style='color:#AAAAAA'>Mana Cost: </span><span class='font-ascii' style='color:#FFFFFF'>-5</span></span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Ability Points: <span class='font-ascii' style='color:#FFFFFF'>1</span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Required Ability: <span class='font-ascii' style='color:#FFFFFF'>Ice Snake</span></span>"
+        ],
+        "requirements": {
+          "NODE": "icesnake",
+          "ABILITY_POINTS": 1
+        },
+        "links": [
+          "lightBuff",
+          "blink",
+          "transonicWarp"
+        ],
+        "locks": null,
+        "page": 5
+      },
+      "lightBuff": {
+        "name": "<span class='font-ascii' style='color:#99e9ff'><span class='font-ascii' style='font-weight:bolder'>Fortitude</span></span>",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "abilityTree.nodeBlue",
+            "customModelData": {
+              "rangeDispatch": [
+                170
+              ]
+            }
+          },
+          "format": "attribute"
+        },
+        "slot": 11,
+        "coordinates": {
+          "x": 3,
+          "y": 2
+        },
+        "description": [
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Healing <span class='font-ascii' style='color:#FFFFFF'>120% </span><span class='font-ascii' style='color:#AAAAAA'>of your max health</span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>within <span class='font-ascii' style='color:#FFFFFF'>10s</span><span class='font-ascii' style='color:#AAAAAA'> will apply a damage bonus</span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>to every player you've healed.</span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#FFFF55'><span class='font-common'></span> <span class='font-ascii' style='color:#AAAAAA'>Effect: </span><span class='font-ascii' style='color:#FFFFFF'>40% </span><span class='font-ascii' style='color:#AAAAAA'>Damage Bonus (</span><span class='font-ascii' style='color:#55FF55'><span class='font-default'></span>⚔</span></span><span class='font-ascii' style='color:#AAAAAA'>) to Allies</span></span></span>",
+          "<span class='font-ascii' style='color:#FF55FF'><span class='font-common'></span> <span class='font-ascii' style='color:#AAAAAA'>Duration: </span><span class='font-ascii' style='color:#FFFFFF'>7s</span></span></span>",
+          "<span class='font-ascii' style='color:#4dffc3'><span class='font-common'></span> <span class='font-ascii' style='color:#AAAAAA'>Cooldown: </span><span class='font-ascii' style='color:#FFFFFF'>15s</span></span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#b8b0b0'><span class='font-ascii' style='font-weight:bolder'>Light Bender Archetype</span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Ability Points: <span class='font-ascii' style='color:#FFFFFF'>2</span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Min Light Bender Archetype: <span class='font-ascii' style='color:#FFFFFF'>2</span></span>"
+        ],
+        "requirements": {
+          "ARCHETYPE": {
+            "name": "priest",
+            "amount": 2
+          },
+          "ABILITY_POINTS": 2
+        },
+        "links": [
+          "healthierOphanim1",
+          "blink",
+          "icesnakeCost1",
+          "teleportCost2"
+        ],
+        "locks": null,
+        "page": 5
+      },
+      "teleportCost2": {
+        "name": "<span class='font-ascii' style='color:#ffffff'><span class='font-ascii' style='font-weight:bolder'>Cheaper Teleport II</span></span>",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "abilityTree.nodeWhite",
+            "customModelData": {
+              "rangeDispatch": [
+                158
+              ]
+            }
+          },
+          "format": "attribute"
+        },
+        "slot": 13,
+        "coordinates": {
+          "x": 5,
+          "y": 2
+        },
+        "description": [
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Reduce the mana cost of <span class='font-ascii' style='text-decoration: underline'>Teleport</span><span class='font-ascii' style='color:#AAAAAA'>.</span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#66e6ff'><span class='font-common'></span> <span class='font-ascii' style='color:#AAAAAA'>Mana Cost: </span><span class='font-ascii' style='color:#FFFFFF'>-5</span></span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Ability Points: <span class='font-ascii' style='color:#FFFFFF'>1</span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Required Ability: <span class='font-ascii' style='color:#FFFFFF'>Teleport</span></span>"
+        ],
+        "requirements": {
+          "NODE": "teleport",
+          "ABILITY_POINTS": 1
+        },
+        "links": [
+          "lightBuff",
+          "healthierOphanim1",
+          "snakeNest",
+          "freezingSigil",
+          "pyrokinesis"
+        ],
+        "locks": null,
+        "page": 5
+      },
+      "pyrokinesis": {
+        "name": "<span class='font-ascii' style='color:#99e9ff'><span class='font-ascii' style='font-weight:bolder'>Pyrokinesis</span></span>",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "abilityTree.nodeBlue",
+            "customModelData": {
+              "rangeDispatch": [
+                170
+              ]
+            }
+          },
+          "format": "attribute"
+        },
+        "slot": 16,
+        "coordinates": {
+          "x": 8,
+          "y": 2
+        },
+        "description": [
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>When your <span class='font-ascii' style='color:#55FFFF'>Mana Bank <span class='font-default'></span>✺</span></span><span class='font-ascii' style='color:#AAAAAA'> reaches </span><span class='font-ascii' style='color:#FFFFFF'>30</span><span class='font-ascii' style='color:#AAAAAA'>,</span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>your <span class='font-ascii' style='text-decoration: underline'>Main Attack</span><span class='font-ascii' style='color:#AAAAAA'> will explode</span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>upon impact with enemies.</span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#FF5555'><span class='font-common'></span> <span class='font-ascii' style='color:#AAAAAA'>Total Damage: </span><span class='font-ascii' style='color:#FFFFFF'>200% </span><span class='font-ascii' style='color:#555555'>(Main Attack Damage)</span></span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>  <span class='font-ascii' style='margin-left: 20px'><span class='font-ascii' style='color:#555555'>(<span class='font-ascii' style='color:#FFAA00'><span class='font-common'></span> </span><span class='font-ascii' style='color:#555555'>Damage: </span><span class='font-ascii' style='color:#555555'>200%</span><span class='font-ascii' style='color:#555555'>)</span></span></span></span></span>",
+          "<span class='font-ascii' style='color:#00AAAA'><span class='font-common'></span> <span class='font-ascii' style='color:#AAAAAA'>Area of Effect: </span><span class='font-ascii' style='color:#FFFFFF'>4 Blocks </span><span class='font-ascii' style='color:#AAAAAA'>(Circle-Shaped)</span></span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#eb3dfe'><span class='font-ascii' style='font-weight:bolder'>Arcanist Archetype</span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Ability Points: <span class='font-ascii' style='color:#FFFFFF'>2</span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Required Ability: <span class='font-ascii' style='color:#FFFFFF'>Arcane Transfer</span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Min Arcanist Archetype: <span class='font-ascii' style='color:#FFFFFF'>4</span></span>"
+        ],
+        "requirements": {
+          "NODE": "arcaneTransfer",
+          "ARCHETYPE": {
+            "name": "arcane",
+            "amount": 4
+          },
+          "ABILITY_POINTS": 2
+        },
+        "links": [
+          "seance",
+          "freezingSigil",
+          "teleportCost2",
+          "snakeNest"
+        ],
+        "locks": null,
+        "page": 5
+      },
+      "blink": {
+        "name": "<span class='font-ascii' style='color:#ffe14d'><span class='font-ascii' style='font-weight:bolder'>Blink</span></span>",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "abilityTree.nodeYellow",
+            "customModelData": {
+              "rangeDispatch": [
+                162
+              ]
+            }
+          },
+          "format": "attribute"
+        },
+        "slot": 19,
+        "coordinates": {
+          "x": 2,
+          "y": 3
+        },
+        "description": [
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'><span class='font-ascii' style='text-decoration: underline'>Teleport<span class='font-ascii' style='color:#AAAAAA'> will trigger </span><span class='font-ascii' style='color:#FFFFFF'>2 </span><span class='font-ascii' style='color:#AAAAAA'>times</span></span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>in quick succession.</span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#00AA00'><span class='font-common'></span> <span class='font-ascii' style='color:#AAAAAA'>Range: </span><span class='font-ascii' style='color:#FF5555'>-4 Blocks</span></span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#60c5cd'><span class='font-ascii' style='font-weight:bolder'>Riftwalker Archetype</span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Ability Points: <span class='font-ascii' style='color:#FFFFFF'>1</span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Required Ability: <span class='font-ascii' style='color:#FFFFFF'>Teleport</span></span>"
+        ],
+        "requirements": {
+          "NODE": "teleport",
+          "ABILITY_POINTS": 1
+        },
+        "links": null,
+        "locks": null,
+        "page": 5
+      },
+      "freezingSigil": {
+        "name": "<span class='font-ascii' style='color:#99e9ff'><span class='font-ascii' style='font-weight:bolder'>Freezing Sigil</span></span>",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "abilityTree.nodeBlue",
+            "customModelData": {
+              "rangeDispatch": [
+                170
+              ]
+            }
+          },
+          "format": "attribute"
+        },
+        "slot": 24,
+        "coordinates": {
+          "x": 7,
+          "y": 3
+        },
+        "description": [
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'><span class='font-ascii' style='text-decoration: underline'>Ice Snake<span class='font-ascii' style='color:#AAAAAA'> will leave a sigil of ice</span></span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>beneath you that slows and damages</span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>enemies every <span class='font-ascii' style='color:#FFFFFF'>0.8s</span><span class='font-ascii' style='color:#AAAAAA'>. Allies standing on</span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>the sigil will be immune to knockback.</span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#FF5555'><span class='font-common'></span> <span class='font-ascii' style='color:#AAAAAA'>Total Damage: </span><span class='font-ascii' style='color:#FFFFFF'>20% </span><span class='font-ascii' style='color:#555555'>(of your DPS)</span></span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>  <span class='font-ascii' style='margin-left: 20px'><span class='font-ascii' style='color:#555555'>(<span class='font-ascii' style='color:#FFAA00'><span class='font-common'></span> </span><span class='font-ascii' style='color:#555555'>Damage: </span><span class='font-ascii' style='color:#555555'>15%</span><span class='font-ascii' style='color:#555555'>)</span></span></span></span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>  <span class='font-ascii' style='margin-left: 20px'><span class='font-ascii' style='color:#555555'>(<span class='font-ascii' style='color:#55FFFF'><span class='font-common'></span> </span><span class='font-ascii' style='color:#555555'>Water: </span><span class='font-ascii' style='color:#555555'>5%</span><span class='font-ascii' style='color:#555555'>)</span></span></span></span></span>",
+          "<span class='font-ascii' style='color:#00AAAA'><span class='font-common'></span> <span class='font-ascii' style='color:#AAAAAA'>Area of Effect: </span><span class='font-ascii' style='color:#FFFFFF'>7 Blocks </span><span class='font-ascii' style='color:#AAAAAA'>(Circle-Shaped)</span></span></span>",
+          "<span class='font-ascii' style='color:#FFFF55'><span class='font-common'></span> <span class='font-ascii' style='color:#AAAAAA'>Effects: </span><span class='font-ascii' style='color:#FFFFFF'>15% </span><span class='font-ascii' style='color:#AAAAAA'>Slowness (<span class='font-ascii' style='color:#FF5555'><span class='font-common'></span></span><span class='font-ascii' style='color:#AAAAAA'>) to Enemies, per hit </span><span class='font-ascii' style='color:#555555'>(Max 60%)</span></span></span></span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>  <span class='font-ascii' style='margin-left: 7.5px'><span class='font-ascii' style='margin-left: 7.5px'><span class='font-ascii' style='margin-left: 7.5px'><span class='font-ascii' style='margin-left: 7.5px'><span class='font-ascii' style='margin-left: 7.5px'><span class='font-ascii' style='margin-left: 7.5px'><span class='font-ascii' style='margin-left: 7.5px'><span class='font-ascii' style='margin-left: 7.5px'><span class='font-ascii' style='margin-left: 7.5px'><span class='font-ascii' style='margin-left: 7.5px'><span class='font-ascii' style='margin-left: 7.5px'><span class='font-ascii' style='margin-left: 7.5px'><span class='font-ascii' style='margin-left: 7.5px'><span class='font-ascii' style='margin-left: 7.5px'> <span class='font-ascii' style='color:#AAAAAA'>Knockback Immunity to Allies</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span>",
+          "<span class='font-ascii' style='color:#FF55FF'><span class='font-common'></span> <span class='font-ascii' style='color:#AAAAAA'>Duration: </span><span class='font-ascii' style='color:#FFFFFF'>8s</span></span></span>",
+          "<span class='font-ascii' style='color:#4dffc3'><span class='font-common'></span> <span class='font-ascii' style='color:#AAAAAA'>Cooldown: </span><span class='font-ascii' style='color:#FFFFFF'>8s</span></span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#b8b0b0'><span class='font-ascii' style='font-weight:bolder'>Light Bender Archetype</span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Ability Points: <span class='font-ascii' style='color:#FFFFFF'>2</span></span>"
+        ],
+        "requirements": {
+          "ABILITY_POINTS": 2
+        },
+        "links": null,
+        "locks": null,
+        "page": 5
+      },
+      "healthierOphanim1": {
+        "name": "<span class='font-ascii' style='color:#ffffff'><span class='font-ascii' style='font-weight:bolder'>Resilient Light</span></span>",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "abilityTree.nodeWhite",
+            "customModelData": {
+              "rangeDispatch": [
+                158
+              ]
+            }
+          },
+          "format": "attribute"
+        },
+        "slot": 30,
+        "coordinates": {
+          "x": 4,
+          "y": 4
+        },
+        "description": [
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Increases the health of <span class='font-ascii' style='text-decoration: underline'>Ophanim</span><span class='font-ascii' style='color:#AAAAAA'>'s</span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>orbs by <span class='font-ascii' style='color:#FFFFFF'>+800</span><span class='font-ascii' style='color:#AAAAAA'> and reduces the</span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>damage they take when attacking by <span class='font-ascii' style='color:#FFFFFF'>-5%</span><span class='font-ascii' style='color:#AAAAAA'>.</span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#b8b0b0'><span class='font-ascii' style='font-weight:bolder'>Light Bender Archetype</span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Ability Points: <span class='font-ascii' style='color:#FFFFFF'>1</span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Required Ability: <span class='font-ascii' style='color:#FFFFFF'>Ophanim</span></span>"
+        ],
+        "requirements": {
+          "NODE": "ophanim",
+          "ABILITY_POINTS": 1
+        },
+        "links": [
+          "fluidHealing",
+          "snakeNest",
+          "orphionsPulse"
+        ],
+        "locks": null,
+        "page": 5
+      },
+      "snakeNest": {
+        "name": "<span class='font-ascii' style='color:#f747c2'><span class='font-ascii' style='font-weight:bolder'>Snake Nest</span></span>",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "abilityTree.nodePurple",
+            "customModelData": {
+              "rangeDispatch": [
+                166
+              ]
+            }
+          },
+          "format": "attribute"
+        },
+        "slot": 32,
+        "coordinates": {
+          "x": 6,
+          "y": 4
+        },
+        "description": [
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'><span class='font-ascii' style='text-decoration: underline'>Ice Snake<span class='font-ascii' style='color:#AAAAAA'> will summon </span><span class='font-ascii' style='color:#FFFFFF'>3</span><span class='font-ascii' style='color:#AAAAAA'> snakes.</span></span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#FF5555'><span class='font-common'></span> <span class='font-ascii' style='color:#AAAAAA'>Total Damage: </span><span class='font-ascii' style='color:#FFFFFF'>+50% </span><span class='font-ascii' style='color:#555555'>(of your DPS)</span></span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>  <span class='font-ascii' style='margin-left: 20px'><span class='font-ascii' style='color:#555555'>(<span class='font-ascii' style='color:#FFAA00'><span class='font-common'></span> </span><span class='font-ascii' style='color:#555555'>Damage: </span><span class='font-ascii' style='color:#555555'>+35%</span><span class='font-ascii' style='color:#555555'>)</span></span></span></span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>  <span class='font-ascii' style='margin-left: 20px'><span class='font-ascii' style='color:#555555'>(<span class='font-ascii' style='color:#55FFFF'><span class='font-common'></span> </span><span class='font-ascii' style='color:#555555'>Water: </span><span class='font-ascii' style='color:#555555'>+15%</span><span class='font-ascii' style='color:#555555'>)</span></span></span></span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Ability Points: <span class='font-ascii' style='color:#FFFFFF'>2</span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Required Ability: <span class='font-ascii' style='color:#FFFFFF'>Ice Snake</span></span>"
+        ],
+        "requirements": {
+          "NODE": "icesnake",
+          "ABILITY_POINTS": 2
+        },
+        "links": [
+          "healthierOphanim1",
+          "pyrokinesisMana",
+          "seance",
+          "orphionsPulse"
+        ],
+        "locks": null,
+        "page": 5
+      },
+      "seance": {
+        "name": "<span class='font-ascii' style='color:#ffffff'><span class='font-ascii' style='font-weight:bolder'>Seance</span></span>",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "abilityTree.nodeWhite",
+            "customModelData": {
+              "rangeDispatch": [
+                158
+              ]
+            }
+          },
+          "format": "attribute"
+        },
+        "slot": 34,
+        "coordinates": {
+          "x": 8,
+          "y": 4
+        },
+        "description": [
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>For every <span class='font-ascii' style='color:#FFFFFF'>5/3s</span><span class='font-ascii' style='color:#AAAAAA'> Lifesteal you have</span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>from items, gain <span class='font-ascii' style='color:#FFFFFF'>+1%</span><span class='font-ascii' style='color:#AAAAAA'> Spell Damage (Max 50%)</span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Ability Points: <span class='font-ascii' style='color:#FFFFFF'>1</span></span>"
+        ],
+        "requirements": {
+          "ABILITY_POINTS": 1
+        },
+        "links": [
+          "pyrokinesisMana",
+          "snakeNest",
+          "moreManaBank2"
+        ],
+        "locks": null,
+        "page": 5
+      },
+      "transonicWarp": {
+        "name": "<span class='font-ascii' style='color:#99e9ff'><span class='font-ascii' style='font-weight:bolder'>Transonic Warp</span></span>",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "abilityTree.nodeBlue",
+            "customModelData": {
+              "rangeDispatch": [
+                170
+              ]
+            }
+          },
+          "format": "attribute"
+        },
+        "slot": 36,
+        "coordinates": {
+          "x": 1,
+          "y": 5
+        },
+        "description": [
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'><span class='font-ascii' style='text-decoration: underline'>Teleport<span class='font-ascii' style='color:#AAAAAA'> will deal additional damage to</span></span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>enemies for every <span class='font-ascii' style='color:#55FFFF'>Winded <span class='font-ascii' style='color:#55FFFF'><span class='font-common'></span></span><span class='font-ascii' style='color:#AAAAAA'> they have.</span></span></span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#FF5555'><span class='font-common'></span> <span class='font-ascii' style='color:#AAAAAA'>Total Damage: </span><span class='font-ascii' style='color:#FFFFFF'>16% </span><span class='font-ascii' style='color:#555555'>(of your DPS, per Winded)</span></span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>  <span class='font-ascii' style='margin-left: 20px'><span class='font-ascii' style='color:#555555'>(<span class='font-ascii' style='color:#FFAA00'><span class='font-common'></span> </span><span class='font-ascii' style='color:#555555'>Damage: </span><span class='font-ascii' style='color:#555555'>10%</span><span class='font-ascii' style='color:#555555'>)</span></span></span></span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>  <span class='font-ascii' style='margin-left: 20px'><span class='font-ascii' style='color:#555555'>(<span class='font-ascii' style='color:#FFFF55'><span class='font-common'></span> </span><span class='font-ascii' style='color:#555555'>Thunder: </span><span class='font-ascii' style='color:#555555'>3%</span><span class='font-ascii' style='color:#555555'>)</span></span></span></span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>  <span class='font-ascii' style='margin-left: 20px'><span class='font-ascii' style='color:#555555'>(<span class='font-ascii' style='color:#FFFFFF'><span class='font-common'></span> </span><span class='font-ascii' style='color:#555555'>Air: </span><span class='font-ascii' style='color:#555555'>3%</span><span class='font-ascii' style='color:#555555'>)</span></span></span></span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#60c5cd'><span class='font-ascii' style='font-weight:bolder'>Riftwalker Archetype</span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Ability Points: <span class='font-ascii' style='color:#FFFFFF'>2</span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Required Ability: <span class='font-ascii' style='color:#FFFFFF'>Windsweeper</span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Min Riftwalker Archetype: <span class='font-ascii' style='color:#FFFFFF'>5</span></span>"
+        ],
+        "requirements": {
+          "NODE": "windSweeper",
+          "ARCHETYPE": {
+            "name": "blitz",
+            "amount": 5
+          },
+          "ABILITY_POINTS": 2
+        },
+        "links": [
+          "fluidHealing",
+          "airborne"
+        ],
+        "locks": null,
+        "page": 5
+      },
+      "fluidHealing": {
+        "name": "<span class='font-ascii' style='color:#f747c2'><span class='font-ascii' style='font-weight:bolder'>Fluid Healing</span></span>",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "abilityTree.nodePurple",
+            "customModelData": {
+              "rangeDispatch": [
+                166
+              ]
+            }
+          },
+          "format": "attribute"
+        },
+        "slot": 38,
+        "coordinates": {
+          "x": 3,
+          "y": 5
+        },
+        "description": [
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>For every <span class='font-ascii' style='color:#FFFFFF'>1% <span class='font-ascii' style='color:#55FFFF'><span class='font-common'></span> </span><span class='font-ascii' style='color:#AAAAAA'>Water Damage Bonus</span></span></span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>you have from items, buff <span class='font-ascii' style='text-decoration: underline'>Heal</span><span class='font-ascii' style='color:#AAAAAA'>'s</span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>healing power by <span class='font-ascii' style='color:#FFFFFF'>+0.3%</span><span class='font-ascii' style='color:#AAAAAA'>. (Max +75%)</span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#b8b0b0'><span class='font-ascii' style='font-weight:bolder'>Light Bender Archetype</span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Ability Points: <span class='font-ascii' style='color:#FFFFFF'>2</span></span>"
+        ],
+        "requirements": {
+          "ABILITY_POINTS": 2
+        },
+        "links": [
+          "airborne",
+          "transonicWarp",
+          "orphionsPulse"
+        ],
+        "locks": null,
+        "page": 5
+      },
+      "orphionsPulse": {
+        "name": "<span class='font-ascii' style='color:#99e9ff'><span class='font-ascii' style='font-weight:bolder'>Orphion's Pulse</span></span>",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "abilityTree.nodeBlue",
+            "customModelData": {
+              "rangeDispatch": [
+                170
+              ]
+            }
+          },
+          "format": "attribute"
+        },
+        "slot": 40,
+        "coordinates": {
+          "x": 5,
+          "y": 5
+        },
+        "description": [
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'><span class='font-ascii' style='text-decoration: underline'>Heal<span class='font-ascii' style='color:#AAAAAA'> becomes slower and stronger,</span></span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>pulsing <span class='font-ascii' style='color:#FFFFFF'>2</span><span class='font-ascii' style='color:#AAAAAA'> more times for greater healing.</span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#db5b3c'><span class='font-common'></span> <span class='font-ascii' style='color:#AAAAAA'>Pulse Self Heal: </span><span class='font-ascii' style='color:#FFFFFF'>20% </span><span class='font-ascii' style='color:#555555'>(of your max health)</span></span></span>",
+          "<span class='font-ascii' style='color:#FF55FF'><span class='font-common'></span> <span class='font-ascii' style='color:#AAAAAA'>Duration: </span><span class='font-ascii' style='color:#FFFFFF'>1.2s</span></span></span>",
+          "<span class='font-ascii' style='color:#4dffc3'><span class='font-common'></span> <span class='font-ascii' style='color:#AAAAAA'>Delay: </span><span class='font-ascii' style='color:#FFFFFF'>1.5s </span><span class='font-ascii' style='color:#555555'>(per pulse)</span></span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#FF5555'>Unlocking will block:</span>",
+          "<span class='font-ascii' style='color:#FF5555'>- <span class='font-ascii' style='color:#AAAAAA'>Arcane Transfer</span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#b8b0b0'><span class='font-ascii' style='font-weight:bolder'>Light Bender Archetype</span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Ability Points: <span class='font-ascii' style='color:#FFFFFF'>2</span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Required Ability: <span class='font-ascii' style='color:#FFFFFF'>Heal</span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Min Light Bender Archetype: <span class='font-ascii' style='color:#FFFFFF'>5</span></span>"
+        ],
+        "requirements": {
+          "NODE": "heal",
+          "ARCHETYPE": {
+            "name": "priest",
+            "amount": 5
+          },
+          "ABILITY_POINTS": 2
+        },
+        "links": [
+          "lightDance",
+          "strongerOphanim",
+          "fluidHealing"
+        ],
+        "locks": [
+          "arcaneTransfer"
+        ],
+        "page": 5
+      },
+      "pyrokinesisMana": {
+        "name": "<span class='font-ascii' style='color:#ffe14d'><span class='font-ascii' style='font-weight:bolder'>Arcane Restoration</span></span>",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "abilityTree.nodeYellow",
+            "customModelData": {
+              "rangeDispatch": [
+                162
+              ]
+            }
+          },
+          "format": "attribute"
+        },
+        "slot": 42,
+        "coordinates": {
+          "x": 7,
+          "y": 5
+        },
+        "description": [
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'><span class='font-ascii' style='text-decoration: underline'>Pyrokinesis<span class='font-ascii' style='color:#AAAAAA'> will add </span><span class='font-ascii' style='color:#FFFFFF'>+1</span><span class='font-ascii' style='color:#AAAAAA'> Mana every</span></span></span>",
+          "<span class='font-ascii' style='color:#FFFFFF'>0.25s<span class='font-ascii' style='color:#AAAAAA'> to your </span><span class='font-ascii' style='color:#55FFFF'>Mana Bank <span class='font-default'></span>✺</span></span><span class='font-ascii' style='color:#AAAAAA'> when</span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>hitting an aggressive enemy.</span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#FF55FF'><span class='font-common'></span> <span class='font-ascii' style='color:#AAAAAA'>Duration: </span><span class='font-ascii' style='color:#FFFFFF'>2.5s</span></span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#eb3dfe'><span class='font-ascii' style='font-weight:bolder'>Arcanist Archetype</span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Ability Points: <span class='font-ascii' style='color:#FFFFFF'>1</span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Required Ability: <span class='font-ascii' style='color:#FFFFFF'>Pyrokinesis</span></span>"
+        ],
+        "requirements": {
+          "NODE": "pyrokinesis",
+          "ABILITY_POINTS": 1
+        },
+        "links": [
+          "strongerOphanim"
+        ],
+        "locks": null,
+        "page": 5
+      },
+      "strongerOphanim": {
+        "name": "<span class='font-ascii' style='color:#ffffff'><span class='font-ascii' style='font-weight:bolder'>Incandescence</span></span>",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "abilityTree.nodeWhite",
+            "customModelData": {
+              "rangeDispatch": [
+                158
+              ]
+            }
+          },
+          "format": "attribute"
+        },
+        "slot": 50,
+        "coordinates": {
+          "x": 6,
+          "y": 6
+        },
+        "description": [
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Increase the damage of <span class='font-ascii' style='text-decoration: underline'>Ophanim</span><span class='font-ascii' style='color:#AAAAAA'>.</span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#FF5555'><span class='font-common'></span> <span class='font-ascii' style='color:#AAAAAA'>Total Damage: </span><span class='font-ascii' style='color:#FFFFFF'>+30% </span><span class='font-ascii' style='color:#555555'>(of your DPS)</span></span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>  <span class='font-ascii' style='margin-left: 20px'><span class='font-ascii' style='color:#555555'>(<span class='font-ascii' style='color:#FFAA00'><span class='font-common'></span> </span><span class='font-ascii' style='color:#555555'>Damage: </span><span class='font-ascii' style='color:#555555'>+20%</span><span class='font-ascii' style='color:#555555'>)</span></span></span></span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>  <span class='font-ascii' style='margin-left: 20px'><span class='font-ascii' style='color:#555555'>(<span class='font-ascii' style='color:#FFFFFF'><span class='font-common'></span> </span><span class='font-ascii' style='color:#555555'>Air: </span><span class='font-ascii' style='color:#555555'>+10%</span><span class='font-ascii' style='color:#555555'>)</span></span></span></span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Ability Points: <span class='font-ascii' style='color:#FFFFFF'>1</span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Required Ability: <span class='font-ascii' style='color:#FFFFFF'>Ophanim</span></span>"
+        ],
+        "requirements": {
+          "NODE": "ophanim",
+          "ABILITY_POINTS": 1
+        },
+        "links": null,
+        "locks": null,
+        "page": 5
+      }
+    },
+    "6": {
+      "airborne": {
+        "name": "<span class='font-ascii' style='color:#ff4545'><span class='font-ascii' style='font-weight:bolder'>Diffusion</span></span>",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "abilityTree.nodeRed",
+            "customModelData": {
+              "rangeDispatch": [
+                174
+              ]
+            }
+          },
+          "format": "attribute"
+        },
+        "slot": 10,
+        "coordinates": {
+          "x": 2,
+          "y": 2
+        },
+        "description": [
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>If you kill an enemy with <span class='font-ascii' style='color:#55FFFF'>Winded <span class='font-ascii' style='color:#55FFFF'><span class='font-common'></span></span><span class='font-ascii' style='color:#AAAAAA'></span></span></span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>on them, the leftover <span class='font-ascii' style='color:#55FFFF'>Winded <span class='font-ascii' style='color:#55FFFF'><span class='font-common'></span></span><span class='font-ascii' style='color:#AAAAAA'> will</span></span></span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>spread to other nearby foes. (Max 10)</span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#00AA00'><span class='font-common'></span> <span class='font-ascii' style='color:#AAAAAA'>Range: </span><span class='font-ascii' style='color:#FFFFFF'>8 Blocks</span></span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#60c5cd'><span class='font-ascii' style='font-weight:bolder'>Riftwalker Archetype</span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Ability Points: <span class='font-ascii' style='color:#FFFFFF'>2</span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Min Riftwalker Archetype: <span class='font-ascii' style='color:#FFFFFF'>6</span></span>"
+        ],
+        "requirements": {
+          "ARCHETYPE": {
+            "name": "blitz",
+            "amount": 6
+          },
+          "ABILITY_POINTS": 2
+        },
+        "links": [
+          "iceSnakeCost2",
+          "betterWinded",
+          "icesnakeCost2"
+        ],
+        "locks": null,
+        "page": 6
+      },
+      "lightDance": {
+        "name": "<span class='font-ascii' style='color:#ff4545'><span class='font-ascii' style='font-weight:bolder'>Lightweaver</span></span>",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "abilityTree.nodeRed",
+            "customModelData": {
+              "rangeDispatch": [
+                174
+              ]
+            }
+          },
+          "format": "attribute"
+        },
+        "slot": 13,
+        "coordinates": {
+          "x": 5,
+          "y": 2
+        },
+        "description": [
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Healing <span class='font-ascii' style='color:#FFFFFF'>50%</span><span class='font-ascii' style='color:#AAAAAA'> of your max health within</span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'><span class='font-ascii' style='color:#FFFFFF'>10s <span class='font-ascii' style='color:#AAAAAA'>will summon a rotating orb that</span></span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>damages enemies upon contact. (Max 3 orbs)</span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#FF5555'><span class='font-common'></span> <span class='font-ascii' style='color:#AAAAAA'>Total Damage: </span><span class='font-ascii' style='color:#FFFFFF'>150% </span><span class='font-ascii' style='color:#555555'>(of your DPS)</span></span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>  <span class='font-ascii' style='margin-left: 20px'><span class='font-ascii' style='color:#555555'>(<span class='font-ascii' style='color:#FFAA00'><span class='font-common'></span> </span><span class='font-ascii' style='color:#555555'>Damage: </span><span class='font-ascii' style='color:#555555'>120%</span><span class='font-ascii' style='color:#555555'>)</span></span></span></span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>  <span class='font-ascii' style='margin-left: 20px'><span class='font-ascii' style='color:#555555'>(<span class='font-ascii' style='color:#FF5555'><span class='font-common'></span> </span><span class='font-ascii' style='color:#555555'>Fire: </span><span class='font-ascii' style='color:#555555'>30%</span><span class='font-ascii' style='color:#555555'>)</span></span></span></span></span>",
+          "<span class='font-ascii' style='color:#00AA00'><span class='font-common'></span> <span class='font-ascii' style='color:#AAAAAA'>Range: </span><span class='font-ascii' style='color:#FFFFFF'>7 Blocks</span></span></span>",
+          "<span class='font-ascii' style='color:#00AAAA'><span class='font-common'></span> <span class='font-ascii' style='color:#AAAAAA'>Area of Effect: </span><span class='font-ascii' style='color:#FFFFFF'>1.5 Block </span><span class='font-ascii' style='color:#AAAAAA'>(Circle-Shaped)</span></span></span>",
+          "<span class='font-ascii' style='color:#FF55FF'><span class='font-common'></span> <span class='font-ascii' style='color:#AAAAAA'>Duration: </span><span class='font-ascii' style='color:#FFFFFF'>20s</span></span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#b8b0b0'><span class='font-ascii' style='font-weight:bolder'>Light Bender Archetype</span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Ability Points: <span class='font-ascii' style='color:#FFFFFF'>2</span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Min Light Bender Archetype: <span class='font-ascii' style='color:#FFFFFF'>7</span></span>"
+        ],
+        "requirements": {
+          "ARCHETYPE": {
+            "name": "priest",
+            "amount": 7
+          },
+          "ABILITY_POINTS": 2
+        },
+        "links": [
+          "arcaneSpeed",
+          "meteorCost2"
+        ],
+        "locks": null,
+        "page": 6
+      },
+      "arcaneSpeed": {
+        "name": "<span class='font-ascii' style='color:#f747c2'><span class='font-ascii' style='font-weight:bolder'>Arcane Speed</span></span>",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "abilityTree.nodePurple",
+            "customModelData": {
+              "rangeDispatch": [
+                166
+              ]
+            }
+          },
+          "format": "attribute"
+        },
+        "slot": 15,
+        "coordinates": {
+          "x": 7,
+          "y": 2
+        },
+        "description": [
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>You gain a walk speed buff after</span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>casting <span class='font-ascii' style='text-decoration: underline'>Heal</span><span class='font-ascii' style='color:#AAAAAA'> or </span><span class='font-ascii' style='text-decoration: underline'>Arcane Transfer</span><span class='font-ascii' style='color:#AAAAAA'>.</span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#FFFF55'><span class='font-common'></span> <span class='font-ascii' style='color:#AAAAAA'>Effects: </span><span class='font-ascii' style='color:#FFFFFF'>+80% </span><span class='font-ascii' style='color:#AAAAAA'>Walk Speed</span></span></span>",
+          "<span class='font-ascii' style='color:#FF55FF'><span class='font-common'></span> <span class='font-ascii' style='color:#AAAAAA'>Duration: </span><span class='font-ascii' style='color:#FFFFFF'>4s</span></span></span>",
+          "<span class='font-ascii' style='color:#4dffc3'><span class='font-common'></span> <span class='font-ascii' style='color:#AAAAAA'>Cooldown: </span><span class='font-ascii' style='color:#FFFFFF'>8s</span></span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#eb3dfe'><span class='font-ascii' style='font-weight:bolder'>Arcanist Archetype</span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Ability Points: <span class='font-ascii' style='color:#FFFFFF'>2</span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Required Ability: <span class='font-ascii' style='color:#FFFFFF'>Heal</span></span>"
+        ],
+        "requirements": {
+          "NODE": "heal",
+          "ABILITY_POINTS": 2
+        },
+        "links": [
+          "lightDance",
+          "moreManaBank2",
+          "psychokinesis",
+          "meteorCost2"
+        ],
+        "locks": null,
+        "page": 6
+      },
+      "moreManaBank2": {
+        "name": "<span class='font-ascii' style='color:#ffffff'><span class='font-ascii' style='font-weight:bolder'>Larger Mana Bank II</span></span>",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "abilityTree.nodeWhite",
+            "customModelData": {
+              "rangeDispatch": [
+                158
+              ]
+            }
+          },
+          "format": "attribute"
+        },
+        "slot": 17,
+        "coordinates": {
+          "x": 9,
+          "y": 2
+        },
+        "description": [
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Increase your maximum</span>",
+          "<span class='font-ascii' style='color:#55FFFF'>Mana Bank <span class='font-default'></span>✺</span><span class='font-ascii' style='color:#AAAAAA'> by </span><span class='font-ascii' style='color:#FFFFFF'>+30</span><span class='font-ascii' style='color:#AAAAAA'>.</span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#eb3dfe'><span class='font-ascii' style='font-weight:bolder'>Arcanist Archetype</span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Ability Points: <span class='font-ascii' style='color:#FFFFFF'>1</span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Required Ability: <span class='font-ascii' style='color:#FFFFFF'>Arcane Transfer</span></span>"
+        ],
+        "requirements": {
+          "NODE": "arcaneTransfer",
+          "ABILITY_POINTS": 1
+        },
+        "links": [
+          "arcaneSpeed",
+          "chaosExplosion",
+          "psychokinesis"
+        ],
+        "locks": null,
+        "page": 6
+      },
+      "betterWinded": {
+        "name": "<span class='font-ascii' style='color:#ffffff'><span class='font-ascii' style='font-weight:bolder'>More Winded</span></span>",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "abilityTree.nodeWhite",
+            "customModelData": {
+              "rangeDispatch": [
+                158
+              ]
+            }
+          },
+          "format": "attribute"
+        },
+        "slot": 18,
+        "coordinates": {
+          "x": 1,
+          "y": 3
+        },
+        "description": [
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Increase your maximum <span class='font-ascii' style='color:#55FFFF'>Winded <span class='font-ascii' style='color:#55FFFF'><span class='font-common'></span></span><span class='font-ascii' style='color:#AAAAAA'> by </span><span class='font-ascii' style='color:#FFFFFF'>+10</span><span class='font-ascii' style='color:#AAAAAA'>.</span></span></span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#60c5cd'><span class='font-ascii' style='font-weight:bolder'>Riftwalker Archetype</span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Ability Points: <span class='font-ascii' style='color:#FFFFFF'>1</span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Required Ability: <span class='font-ascii' style='color:#FFFFFF'>Windsweeper</span></span>"
+        ],
+        "requirements": {
+          "NODE": "windSweeper",
+          "ABILITY_POINTS": 1
+        },
+        "links": null,
+        "locks": null,
+        "page": 6
+      },
+      "psychokinesis": {
+        "name": "<span class='font-ascii' style='color:#f747c2'><span class='font-ascii' style='font-weight:bolder'>Psychokinesis</span></span>",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "abilityTree.nodePurple",
+            "customModelData": {
+              "rangeDispatch": [
+                166
+              ]
+            }
+          },
+          "format": "attribute"
+        },
+        "slot": 25,
+        "coordinates": {
+          "x": 8,
+          "y": 3
+        },
+        "description": [
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Shoots <span class='font-ascii' style='text-decoration: underline'>Meteor</span><span class='font-ascii' style='color:#AAAAAA'> from you as a slow projectile.</span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#00AA00'><span class='font-common'></span> <span class='font-ascii' style='color:#AAAAAA'>Range: </span><span class='font-ascii' style='color:#FFFFFF'>+18 Blocks</span></span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#FF5555'>Unlocking will block:</span>",
+          "<span class='font-ascii' style='color:#FF5555'>- <span class='font-ascii' style='color:#AAAAAA'>Ophanim</span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#eb3dfe'><span class='font-ascii' style='font-weight:bolder'>Arcanist Archetype</span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Ability Points: <span class='font-ascii' style='color:#FFFFFF'>2</span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Required Ability: <span class='font-ascii' style='color:#FFFFFF'>Meteor</span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Min Arcanist Archetype: <span class='font-ascii' style='color:#FFFFFF'>5</span></span>"
+        ],
+        "requirements": {
+          "NODE": "meteor",
+          "ARCHETYPE": {
+            "name": "arcane",
+            "amount": 5
+          },
+          "ABILITY_POINTS": 2
+        },
+        "links": null,
+        "locks": [
+          "ophanim"
+        ],
+        "page": 6
+      },
+      "icesnakeCost2": {
+        "name": "<span class='font-ascii' style='color:#ffffff'><span class='font-ascii' style='font-weight:bolder'>Cheaper Ice Snake II</span></span>",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "abilityTree.nodeWhite",
+            "customModelData": {
+              "rangeDispatch": [
+                158
+              ]
+            }
+          },
+          "format": "attribute"
+        },
+        "slot": 28,
+        "coordinates": {
+          "x": 2,
+          "y": 4
+        },
+        "description": [
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Reduce the mana cost of <span class='font-ascii' style='text-decoration: underline'>Ice Snake</span><span class='font-ascii' style='color:#AAAAAA'>.</span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#66e6ff'><span class='font-common'></span> <span class='font-ascii' style='color:#AAAAAA'>Mana Cost: </span><span class='font-ascii' style='color:#FFFFFF'>-5</span></span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Ability Points: <span class='font-ascii' style='color:#FFFFFF'>1</span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Required Ability: <span class='font-ascii' style='color:#FFFFFF'>Ice Snake</span></span>"
+        ],
+        "requirements": {
+          "NODE": "icesnake",
+          "ABILITY_POINTS": 1
+        },
+        "links": [
+          "geyserSnake",
+          "explosiveEntrance",
+          "timeDilation"
+        ],
+        "locks": null,
+        "page": 6
+      },
+      "explosiveEntrance": {
+        "name": "<span class='font-ascii' style='color:#f747c2'><span class='font-ascii' style='font-weight:bolder'>Explosive Entrance</span></span>",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "abilityTree.nodePurple",
+            "customModelData": {
+              "rangeDispatch": [
+                166
+              ]
+            }
+          },
+          "format": "attribute"
+        },
+        "slot": 30,
+        "coordinates": {
+          "x": 4,
+          "y": 4
+        },
+        "description": [
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Deal damage in an area on the</span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>location you <span class='font-ascii' style='text-decoration: underline'>Teleport</span><span class='font-ascii' style='color:#AAAAAA'> to.</span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#FF5555'><span class='font-common'></span> <span class='font-ascii' style='color:#AAAAAA'>Total Damage: </span><span class='font-ascii' style='color:#FFFFFF'>80% </span><span class='font-ascii' style='color:#555555'>(of your DPS)</span></span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>  <span class='font-ascii' style='margin-left: 20px'><span class='font-ascii' style='color:#555555'>(<span class='font-ascii' style='color:#FFAA00'><span class='font-common'></span> </span><span class='font-ascii' style='color:#555555'>Damage: </span><span class='font-ascii' style='color:#555555'>60%</span><span class='font-ascii' style='color:#555555'>)</span></span></span></span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>  <span class='font-ascii' style='margin-left: 20px'><span class='font-ascii' style='color:#555555'>(<span class='font-ascii' style='color:#FF5555'><span class='font-common'></span> </span><span class='font-ascii' style='color:#555555'>Fire: </span><span class='font-ascii' style='color:#555555'>20%</span><span class='font-ascii' style='color:#555555'>)</span></span></span></span></span>",
+          "<span class='font-ascii' style='color:#00AAAA'><span class='font-common'></span> <span class='font-ascii' style='color:#AAAAAA'>Area of Effect: </span><span class='font-ascii' style='color:#FFFFFF'>3 Blocks </span><span class='font-ascii' style='color:#AAAAAA'>(Circle-Shaped)</span></span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Ability Points: <span class='font-ascii' style='color:#FFFFFF'>2</span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Required Ability: <span class='font-ascii' style='color:#FFFFFF'>Teleport</span></span>"
+        ],
+        "requirements": {
+          "NODE": "teleport",
+          "ABILITY_POINTS": 2
+        },
+        "links": [
+          "meteorCost2",
+          "icesnakeCost2",
+          "betterOphanim",
+          "geyserSnake"
+        ],
+        "locks": null,
+        "page": 6
+      },
+      "meteorCost2": {
+        "name": "<span class='font-ascii' style='color:#ffffff'><span class='font-ascii' style='font-weight:bolder'>Cheaper Meteor II</span></span>",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "abilityTree.nodeWhite",
+            "customModelData": {
+              "rangeDispatch": [
+                158
+              ]
+            }
+          },
+          "format": "attribute"
+        },
+        "slot": 32,
+        "coordinates": {
+          "x": 6,
+          "y": 4
+        },
+        "description": [
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Reduce the mana cost of <span class='font-ascii' style='text-decoration: underline'>Meteor</span><span class='font-ascii' style='color:#AAAAAA'>.</span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#66e6ff'><span class='font-common'></span> <span class='font-ascii' style='color:#AAAAAA'>Mana Cost: </span><span class='font-ascii' style='color:#FFFFFF'>-5</span></span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Ability Points: <span class='font-ascii' style='color:#FFFFFF'>1</span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Required Ability: <span class='font-ascii' style='color:#FFFFFF'>Meteor</span></span>"
+        ],
+        "requirements": {
+          "NODE": "meteor",
+          "ABILITY_POINTS": 1
+        },
+        "links": [
+          "explosiveEntrance",
+          "betterOphanim"
+        ],
+        "locks": null,
+        "page": 6
+      },
+      "chaosExplosion": {
+        "name": "<span class='font-ascii' style='color:#ff4545'><span class='font-ascii' style='font-weight:bolder'>Chaos Explosion</span></span>",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "abilityTree.nodeRed",
+            "customModelData": {
+              "rangeDispatch": [
+                174
+              ]
+            }
+          },
+          "format": "attribute"
+        },
+        "slot": 35,
+        "coordinates": {
+          "x": 9,
+          "y": 4
+        },
+        "description": [
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>When your <span class='font-ascii' style='color:#55FFFF'>Mana Bank <span class='font-default'></span>✺</span></span><span class='font-ascii' style='color:#AAAAAA'> reaches </span><span class='font-ascii' style='color:#FFFFFF'>120</span><span class='font-ascii' style='color:#AAAAAA'>,</span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>casting <span class='font-ascii' style='text-decoration: underline'>Arcane Transfer</span><span class='font-ascii' style='color:#AAAAAA'> will rapidly unleash</span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>the last <span class='font-ascii' style='color:#FFFFFF'>3 </span><span class='font-ascii' style='color:#AAAAAA'>spells you've cast in order.</span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#eb3dfe'><span class='font-ascii' style='font-weight:bolder'>Arcanist Archetype</span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Ability Points: <span class='font-ascii' style='color:#FFFFFF'>2</span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Min Arcanist Archetype: <span class='font-ascii' style='color:#FFFFFF'>8</span></span>"
+        ],
+        "requirements": {
+          "ARCHETYPE": {
+            "name": "arcane",
+            "amount": 8
+          },
+          "ABILITY_POINTS": 2
+        },
+        "links": [
+          "slownessSnake"
+        ],
+        "locks": null,
+        "page": 6
+      },
+      "timeDilation": {
+        "name": "<span class='font-ascii' style='color:#99e9ff'><span class='font-ascii' style='font-weight:bolder'>Time Dilation</span></span>",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "abilityTree.nodeBlue",
+            "customModelData": {
+              "rangeDispatch": [
+                170
+              ]
+            }
+          },
+          "format": "attribute"
+        },
+        "slot": 36,
+        "coordinates": {
+          "x": 1,
+          "y": 5
+        },
+        "description": [
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Creates an area of effect when sprinting</span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>that increases the walk speed of all</span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>allies the longer they run in it.</span>",
+          "<span class='font-ascii' style='color:#555555'>(You lose 30% Speed Bonus every second</span>",
+          "<span class='font-ascii' style='color:#555555'>once you stop running)</span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#FFFF55'><span class='font-common'></span> <span class='font-ascii' style='color:#AAAAAA'>Effect: </span><span class='font-ascii' style='color:#FFFFFF'>+10% </span><span class='font-ascii' style='color:#AAAAAA'>Walk Speed to Allies </span><span class='font-ascii' style='color:#555555'>(per 1s, +300% Max)</span></span></span>",
+          "<span class='font-ascii' style='color:#00AAAA'><span class='font-common'></span> <span class='font-ascii' style='color:#AAAAAA'>Area of Effect: </span><span class='font-ascii' style='color:#FFFFFF'>2 Blocks </span><span class='font-ascii' style='color:#AAAAAA'>(Circle-Shaped)</span></span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#60c5cd'><span class='font-ascii' style='font-weight:bolder'>Riftwalker Archetype</span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Ability Points: <span class='font-ascii' style='color:#FFFFFF'>2</span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Min Riftwalker Archetype: <span class='font-ascii' style='color:#FFFFFF'>5</span></span>"
+        ],
+        "requirements": {
+          "ARCHETYPE": {
+            "name": "blitz",
+            "amount": 5
+          },
+          "ABILITY_POINTS": 2
+        },
+        "links": [
+          "betterWinded2",
+          ""
+        ],
+        "locks": null,
+        "page": 6
+      },
+      "geyserSnake": {
+        "name": "<span class='font-ascii' style='color:#ffe14d'><span class='font-ascii' style='font-weight:bolder'>Gust</span></span>",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "abilityTree.nodeYellow",
+            "customModelData": {
+              "rangeDispatch": [
+                162
+              ]
+            }
+          },
+          "format": "attribute"
+        },
+        "slot": 38,
+        "coordinates": {
+          "x": 3,
+          "y": 5
+        },
+        "description": [
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'><span class='font-ascii' style='text-decoration: underline'>Ice Snake<span class='font-ascii' style='color:#AAAAAA'> will add </span><span class='font-ascii' style='color:#55FFFF'>+3 Winded <span class='font-ascii' style='color:#55FFFF'><span class='font-common'></span></span><span class='font-ascii' style='color:#AAAAAA'></span></span></span></span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>to enemies and deal more damage.</span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#FF5555'><span class='font-common'></span> <span class='font-ascii' style='color:#AAAAAA'>Total Damage: </span><span class='font-ascii' style='color:#FFFFFF'>+30% </span><span class='font-ascii' style='color:#555555'>(of your DPS)</span></span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>  <span class='font-ascii' style='margin-left: 20px'><span class='font-ascii' style='color:#555555'>(<span class='font-ascii' style='color:#FFAA00'><span class='font-common'></span> </span><span class='font-ascii' style='color:#555555'>Damage: </span><span class='font-ascii' style='color:#555555'>+15%</span><span class='font-ascii' style='color:#555555'>)</span></span></span></span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>  <span class='font-ascii' style='margin-left: 20px'><span class='font-ascii' style='color:#555555'>(<span class='font-ascii' style='color:#FFFFFF'><span class='font-common'></span> </span><span class='font-ascii' style='color:#555555'>Air: </span><span class='font-ascii' style='color:#555555'>+15%</span><span class='font-ascii' style='color:#555555'>)</span></span></span></span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#60c5cd'><span class='font-ascii' style='font-weight:bolder'>Riftwalker Archetype</span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Ability Points: <span class='font-ascii' style='color:#FFFFFF'>1</span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Required Ability: <span class='font-ascii' style='color:#FFFFFF'>Windsweeper</span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Min Riftwalker Archetype: <span class='font-ascii' style='color:#FFFFFF'>5</span></span>"
+        ],
+        "requirements": {
+          "NODE": "windSweeper",
+          "ARCHETYPE": {
+            "name": "blitz",
+            "amount": 5
+          },
+          "ABILITY_POINTS": 1
+        },
+        "links": [
+          "betterOphanim",
+          "strongerSunshower"
+        ],
+        "locks": null,
+        "page": 6
+      },
+      "betterOphanim": {
+        "name": "<span class='font-ascii' style='color:#ffffff'><span class='font-ascii' style='font-weight:bolder'>Augury</span></span>",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "abilityTree.nodeWhite",
+            "customModelData": {
+              "rangeDispatch": [
+                158
+              ]
+            }
+          },
+          "format": "attribute"
+        },
+        "slot": 40,
+        "coordinates": {
+          "x": 5,
+          "y": 5
+        },
+        "description": [
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Increase your maximum orbs</span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>from <span class='font-ascii' style='text-decoration: underline'>Ophanim</span><span class='font-ascii' style='color:#AAAAAA'> by </span><span class='font-ascii' style='color:#FFFFFF'>+1</span><span class='font-ascii' style='color:#AAAAAA'>.</span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#b8b0b0'><span class='font-ascii' style='font-weight:bolder'>Light Bender Archetype</span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Ability Points: <span class='font-ascii' style='color:#FFFFFF'>1</span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Required Ability: <span class='font-ascii' style='color:#FFFFFF'>Ophanim</span></span>"
+        ],
+        "requirements": {
+          "NODE": "ophanim",
+          "ABILITY_POINTS": 1
+        },
+        "links": [
+          "healthierOphanim2",
+          "geyserSnake",
+          "strongerSunshower"
+        ],
+        "locks": null,
+        "page": 6
+      },
+      "slownessSnake": {
+        "name": "<span class='font-ascii' style='color:#f747c2'><span class='font-ascii' style='font-weight:bolder'>Arctic Snake</span></span>",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "abilityTree.nodePurple",
+            "customModelData": {
+              "rangeDispatch": [
+                166
+              ]
+            }
+          },
+          "format": "attribute"
+        },
+        "slot": 43,
+        "coordinates": {
+          "x": 8,
+          "y": 5
+        },
+        "description": [
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'><span class='font-ascii' style='text-decoration: underline'>Ice Snake<span class='font-ascii' style='color:#AAAAAA'> will freeze enemies for </span><span class='font-ascii' style='color:#FFFFFF'>2s</span><span class='font-ascii' style='color:#AAAAAA'>.</span></span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#FFFF55'><span class='font-common'></span> <span class='font-ascii' style='color:#AAAAAA'>Effect: </span><span class='font-ascii' style='color:#FFFFFF'>100% </span><span class='font-ascii' style='color:#AAAAAA'>Slowness (<span class='font-ascii' style='color:#FF5555'><span class='font-common'></span></span><span class='font-ascii' style='color:#AAAAAA'>) to Enemies</span></span></span></span></span>",
+          "<span class='font-ascii' style='color:#FF55FF'><span class='font-common'></span> <span class='font-ascii' style='color:#AAAAAA'>Duration: </span><span class='font-ascii' style='color:#FFFFFF'>2s</span></span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Ability Points: <span class='font-ascii' style='color:#FFFFFF'>2</span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Required Ability: <span class='font-ascii' style='color:#FFFFFF'>Ice Snake</span></span>"
+        ],
+        "requirements": {
+          "NODE": "icesnake",
+          "ABILITY_POINTS": 2
+        },
+        "links": [
+          "moreManaBankCharges",
+          "moreManaBank3"
+        ],
+        "locks": null,
+        "page": 6
+      },
+      "strongerSunshower": {
+        "name": "<span class='font-ascii' style='color:#ffffff'><span class='font-ascii' style='font-weight:bolder'>Searing Light</span></span>",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "abilityTree.nodeWhite",
+            "customModelData": {
+              "rangeDispatch": [
+                158
+              ]
+            }
+          },
+          "format": "attribute"
+        },
+        "slot": 48,
+        "coordinates": {
+          "x": 4,
+          "y": 6
+        },
+        "description": [
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Increase the damage of <span class='font-ascii' style='text-decoration: underline'>Sunshower</span><span class='font-ascii' style='color:#AAAAAA'>.</span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#FF5555'><span class='font-common'></span> <span class='font-ascii' style='color:#AAAAAA'>Total Damage: </span><span class='font-ascii' style='color:#FFFFFF'>+80% </span><span class='font-ascii' style='color:#555555'>(of your DPS)</span></span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>  <span class='font-ascii' style='margin-left: 20px'><span class='font-ascii' style='color:#555555'>(<span class='font-ascii' style='color:#FFAA00'><span class='font-common'></span> </span><span class='font-ascii' style='color:#555555'>Damage: </span><span class='font-ascii' style='color:#555555'>+50%</span><span class='font-ascii' style='color:#555555'>)</span></span></span></span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>  <span class='font-ascii' style='margin-left: 20px'><span class='font-ascii' style='color:#555555'>(<span class='font-ascii' style='color:#55FFFF'><span class='font-common'></span> </span><span class='font-ascii' style='color:#555555'>Water: </span><span class='font-ascii' style='color:#555555'>+20%</span><span class='font-ascii' style='color:#555555'>)</span></span></span></span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>  <span class='font-ascii' style='margin-left: 20px'><span class='font-ascii' style='color:#555555'>(<span class='font-ascii' style='color:#FF5555'><span class='font-common'></span> </span><span class='font-ascii' style='color:#555555'>Fire: </span><span class='font-ascii' style='color:#555555'>+10%</span><span class='font-ascii' style='color:#555555'>)</span></span></span></span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#b8b0b0'><span class='font-ascii' style='font-weight:bolder'>Light Bender Archetype</span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Ability Points: <span class='font-ascii' style='color:#FFFFFF'>1</span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Required Ability: <span class='font-ascii' style='color:#FFFFFF'>Sunshower</span></span>"
+        ],
+        "requirements": {
+          "NODE": "sunshower",
+          "ABILITY_POINTS": 1
+        },
+        "links": null,
+        "locks": null,
+        "page": 6
+      },
+      "moreManaBankCharges": {
+        "name": "<span class='font-ascii' style='color:#ffe14d'><span class='font-ascii' style='font-weight:bolder'>Arcane Power</span></span>",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "abilityTree.nodeYellow",
+            "customModelData": {
+              "rangeDispatch": [
+                162
+              ]
+            }
+          },
+          "format": "attribute"
+        },
+        "slot": 51,
+        "coordinates": {
+          "x": 7,
+          "y": 6
+        },
+        "description": [
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'><span class='font-ascii' style='text-decoration: underline'>Meteor<span class='font-ascii' style='color:#AAAAAA'>, </span><span class='font-ascii' style='text-decoration: underline'>Ice Snake</span><span class='font-ascii' style='color:#AAAAAA'>, </span>and <span class='font-ascii' style='text-decoration: underline'>Wind Slash</span><span class='font-ascii' style='color:#AAAAAA'> will add </span><span class='font-ascii' style='color:#FFFFFF'>+8</span><span class='font-ascii' style='color:#AAAAAA'> Mana to</span></span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>your <span class='font-ascii' style='color:#55FFFF'>Mana Bank <span class='font-default'></span>✺</span></span><span class='font-ascii' style='color:#AAAAAA'> for each aggressive enemy you hit.</span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>With <span class='font-ascii' style='text-decoration: underline'>Thunderstorm</span><span class='font-ascii' style='color:#AAAAAA'>, </span><span class='font-ascii' style='text-decoration: underline'>Meteor</span><span class='font-ascii' style='color:#AAAAAA'> only adds </span><span class='font-ascii' style='color:#FFFFFF'>+2</span><span class='font-ascii' style='color:#AAAAAA'> Mana.</span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'><span class='font-ascii' style='text-decoration: underline'>Arcane Restoration<span class='font-ascii' style='color:#AAAAAA'> will restore mana </span><span class='font-ascii' style='color:#FFFFFF'>0.1s </span><span class='font-ascii' style='color:#AAAAAA'>faster. </span></span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#eb3dfe'><span class='font-ascii' style='font-weight:bolder'>Arcanist Archetype</span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Ability Points: <span class='font-ascii' style='color:#FFFFFF'>1</span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Required Ability: <span class='font-ascii' style='color:#FFFFFF'>Arcane Transfer</span></span>"
+        ],
+        "requirements": {
+          "NODE": "arcaneTransfer",
+          "ABILITY_POINTS": 1
+        },
+        "links": [
+          ""
+        ],
+        "locks": null,
+        "page": 6
+      }
+    },
+    "7": {
+      "betterWinded2": {
+        "name": "<span class='font-ascii' style='color:#ffffff'><span class='font-ascii' style='font-weight:bolder'>More Winded II</span></span>",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "abilityTree.nodeWhite",
+            "customModelData": {
+              "rangeDispatch": [
+                158
+              ]
+            }
+          },
+          "format": "attribute"
+        },
+        "slot": 9,
+        "coordinates": {
+          "x": 1,
+          "y": 2
+        },
+        "description": [
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Increase your maximum <span class='font-ascii' style='color:#55FFFF'>Winded <span class='font-ascii' style='color:#55FFFF'><span class='font-common'></span></span><span class='font-ascii' style='color:#AAAAAA'> by </span><span class='font-ascii' style='color:#FFFFFF'>+10</span><span class='font-ascii' style='color:#AAAAAA'>.</span></span></span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#60c5cd'><span class='font-ascii' style='font-weight:bolder'>Riftwalker Archetype</span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Ability Points: <span class='font-ascii' style='color:#FFFFFF'>1</span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Required Ability: <span class='font-ascii' style='color:#FFFFFF'>Windsweeper</span></span>"
+        ],
+        "requirements": {
+          "NODE": "windSweeper",
+          "ABILITY_POINTS": 1
+        },
+        "links": [
+          "devitalize",
+          "timelock",
+          "windcharged"
+        ],
+        "locks": null,
+        "page": 7
+      },
+      "devitalize": {
+        "name": "<span class='font-ascii' style='color:#f747c2'><span class='font-ascii' style='font-weight:bolder'>Devitalize</span></span>",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "abilityTree.nodePurple",
+            "customModelData": {
+              "rangeDispatch": [
+                166
+              ]
+            }
+          },
+          "format": "attribute"
+        },
+        "slot": 11,
+        "coordinates": {
+          "x": 3,
+          "y": 2
+        },
+        "description": [
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Enemies will deal <span class='font-ascii' style='color:#FFFFFF'>-0.5%</span><span class='font-ascii' style='color:#AAAAAA'> damage</span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>for every <span class='font-ascii' style='color:#55FFFF'>Winded <span class='font-ascii' style='color:#55FFFF'><span class='font-common'></span></span><span class='font-ascii' style='color:#AAAAAA'> they have.</span></span></span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#60c5cd'><span class='font-ascii' style='font-weight:bolder'>Riftwalker Archetype</span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Ability Points: <span class='font-ascii' style='color:#FFFFFF'>2</span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Min Riftwalker Archetype: <span class='font-ascii' style='color:#FFFFFF'>6</span></span>"
+        ],
+        "requirements": {
+          "ARCHETYPE": {
+            "name": "blitz",
+            "amount": 6
+          },
+          "ABILITY_POINTS": 2
+        },
+        "links": [
+          "betterOphanim2",
+          "healthierOphanim2",
+          "betterWinded2",
+          "windcharged"
+        ],
+        "locks": null,
+        "page": 7
+      },
+      "healthierOphanim2": {
+        "name": "<span class='font-ascii' style='color:#ffffff'><span class='font-ascii' style='font-weight:bolder'>Everlasting Light</span></span>",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "abilityTree.nodeWhite",
+            "customModelData": {
+              "rangeDispatch": [
+                158
+              ]
+            }
+          },
+          "format": "attribute"
+        },
+        "slot": 13,
+        "coordinates": {
+          "x": 5,
+          "y": 2
+        },
+        "description": [
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Increase the health of your orbs</span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>from <span class='font-ascii' style='text-decoration: underline'>Ophanim</span><span class='font-ascii' style='color:#AAAAAA'> by </span><span class='font-ascii' style='color:#FFFFFF'>+3000</span><span class='font-ascii' style='color:#AAAAAA'>.</span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#b8b0b0'><span class='font-ascii' style='font-weight:bolder'>Light Bender Archetype</span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Ability Points: <span class='font-ascii' style='color:#FFFFFF'>1</span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Required Ability: <span class='font-ascii' style='color:#FFFFFF'>Resilient Light</span></span>"
+        ],
+        "requirements": {
+          "NODE": "healthierOphanim1",
+          "ABILITY_POINTS": 1
+        },
+        "links": [
+          "betterOphanim2",
+          "massImmune",
+          "devitalize"
+        ],
+        "locks": null,
+        "page": 7
+      },
+      "moreManaBank3": {
+        "name": "<span class='font-ascii' style='color:#ffffff'><span class='font-ascii' style='font-weight:bolder'>Larger Mana Bank III</span></span>",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "abilityTree.nodeWhite",
+            "customModelData": {
+              "rangeDispatch": [
+                158
+              ]
+            }
+          },
+          "format": "attribute"
+        },
+        "slot": 16,
+        "coordinates": {
+          "x": 8,
+          "y": 2
+        },
+        "description": [
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Increase your maximum</span>",
+          "<span class='font-ascii' style='color:#55FFFF'>Mana Bank <span class='font-default'></span>✺</span><span class='font-ascii' style='color:#AAAAAA'> by </span><span class='font-ascii' style='color:#FFFFFF'>+30</span><span class='font-ascii' style='color:#AAAAAA'>.</span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#eb3dfe'><span class='font-ascii' style='font-weight:bolder'>Arcanist Archetype</span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Ability Points: <span class='font-ascii' style='color:#FFFFFF'>1</span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Required Ability: <span class='font-ascii' style='color:#FFFFFF'>Arcane Transfer</span></span>"
+        ],
+        "requirements": {
+          "NODE": "arcaneTransfer",
+          "ABILITY_POINTS": 1
+        },
+        "links": [
+          "arcaneOverflow"
+        ],
+        "locks": null,
+        "page": 7
+      },
+      "windcharged": {
+        "name": "<span class='font-ascii' style='color:#ffe14d'><span class='font-ascii' style='font-weight:bolder'>Windcharged</span></span>",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "abilityTree.nodeYellow",
+            "customModelData": {
+              "rangeDispatch": [
+                162
+              ]
+            }
+          },
+          "format": "attribute"
+        },
+        "slot": 19,
+        "coordinates": {
+          "x": 2,
+          "y": 3
+        },
+        "description": [
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Double <span class='font-ascii' style='text-decoration: underline'>Meteor</span><span class='font-ascii' style='color:#AAAAAA'>'s speed.</span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#FF5555'>Unlocking will block:</span>",
+          "<span class='font-ascii' style='color:#FF5555'>- <span class='font-ascii' style='color:#AAAAAA'>Ophanim</span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Ability Points: <span class='font-ascii' style='color:#FFFFFF'>1</span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Required Ability: <span class='font-ascii' style='color:#FFFFFF'>Meteor</span></span>"
+        ],
+        "requirements": {
+          "NODE": "meteor",
+          "ABILITY_POINTS": 1
+        },
+        "links": null,
+        "locks": [
+          "ophanim"
+        ],
+        "page": 7
+      },
+      "betterOphanim2": {
+        "name": "<span class='font-ascii' style='color:#99e9ff'><span class='font-ascii' style='font-weight:bolder'>Divination</span></span>",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "abilityTree.nodeBlue",
+            "customModelData": {
+              "rangeDispatch": [
+                170
+              ]
+            }
+          },
+          "format": "attribute"
+        },
+        "slot": 21,
+        "coordinates": {
+          "x": 4,
+          "y": 3
+        },
+        "description": [
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Increases your maximum orbs</span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>from <span class='font-ascii' style='text-decoration: underline'>Ophanim</span><span class='font-ascii' style='color:#AAAAAA'> by </span><span class='font-ascii' style='color:#FFFFFF'>+3</span><span class='font-ascii' style='color:#AAAAAA'> and</span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>reduces their damage.</span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#FF5555'><span class='font-common'></span> <span class='font-ascii' style='color:#AAAAAA'>Total Damage: </span><span class='font-ascii' style='color:#FF5555'>-30% </span><span class='font-ascii' style='color:#555555'>(of your DPS)</span></span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>  <span class='font-ascii' style='margin-left: 20px'><span class='font-ascii' style='color:#555555'>(<span class='font-ascii' style='color:#FFAA00'><span class='font-common'></span> </span><span class='font-ascii' style='color:#555555'>Damage: </span><span class='font-ascii' style='color:#555555'>-20%</span><span class='font-ascii' style='color:#555555'>)</span></span></span></span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>  <span class='font-ascii' style='margin-left: 20px'><span class='font-ascii' style='color:#555555'>(<span class='font-ascii' style='color:#55FFFF'><span class='font-common'></span> </span><span class='font-ascii' style='color:#555555'>Water: </span><span class='font-ascii' style='color:#555555'>-5%</span><span class='font-ascii' style='color:#555555'>)</span></span></span></span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>  <span class='font-ascii' style='margin-left: 20px'><span class='font-ascii' style='color:#555555'>(<span class='font-ascii' style='color:#FFFF55'><span class='font-common'></span> </span><span class='font-ascii' style='color:#555555'>Thunder: </span><span class='font-ascii' style='color:#555555'>-5%</span><span class='font-ascii' style='color:#555555'>)</span></span></span></span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#b8b0b0'><span class='font-ascii' style='font-weight:bolder'>Light Bender Archetype</span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Ability Points: <span class='font-ascii' style='color:#FFFFFF'>2</span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Required Ability: <span class='font-ascii' style='color:#FFFFFF'>Ophanim</span></span>"
+        ],
+        "requirements": {
+          "NODE": "ophanim",
+          "ABILITY_POINTS": 2
+        },
+        "links": [
+          ""
+        ],
+        "locks": null,
+        "page": 7
+      },
+      "massImmune": {
+        "name": "<span class='font-ascii' style='color:#ff4545'><span class='font-ascii' style='font-weight:bolder'>Sunflare</span></span>",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "abilityTree.nodeRed",
+            "customModelData": {
+              "rangeDispatch": [
+                174
+              ]
+            }
+          },
+          "format": "attribute"
+        },
+        "slot": 23,
+        "coordinates": {
+          "x": 6,
+          "y": 3
+        },
+        "description": [
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Healing <span class='font-ascii' style='color:#FFFFFF'>250%</span><span class='font-ascii' style='color:#AAAAAA'> of your max health within </span><span class='font-ascii' style='color:#FFFFFF'>10s</span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>will make your next <span class='font-ascii' style='text-decoration: underline'>Heal</span><span class='font-ascii' style='color:#AAAAAA'> activate </span><span class='font-ascii' style='text-decoration: underline'>Sunflare</span><span class='font-ascii' style='color:#AAAAAA'>.</span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>While <span class='font-ascii' style='text-decoration: underline'>Sunflare</span><span class='font-ascii' style='color:#AAAAAA'> is active, you will restore</span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>health and mana to all nearby allies, and</span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>your <span class='font-ascii' style='text-decoration: underline'>Ophanim</span><span class='font-ascii' style='color:#AAAAAA'> orbs will attack constantly.</span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#00AA00'><span class='font-common'></span> <span class='font-ascii' style='color:#AAAAAA'>Range: </span><span class='font-ascii' style='color:#FFFFFF'>12 Blocks</span></span></span>",
+          "<span class='font-ascii' style='color:#db5b3c'><span class='font-common'></span> <span class='font-ascii' style='color:#AAAAAA'>Health Regen: </span><span class='font-ascii' style='color:#FFFFFF'>5% per second </span><span class='font-ascii' style='color:#555555'>(of your max health)</span></span></span>",
+          "<span class='font-ascii' style='color:#66e6ff'><span class='font-common'></span> <span class='font-ascii' style='color:#AAAAAA'>Mana Regen: </span><span class='font-ascii' style='color:#FFFFFF'>5% per second </span><span class='font-ascii' style='color:#555555'>(of your max mana)</span></span></span>",
+          "<span class='font-ascii' style='color:#FF55FF'><span class='font-common'></span> <span class='font-ascii' style='color:#AAAAAA'>Duration: </span><span class='font-ascii' style='color:#FFFFFF'>10s</span></span></span>",
+          "<span class='font-ascii' style='color:#4dffc3'><span class='font-common'></span> <span class='font-ascii' style='color:#AAAAAA'>Cooldown: </span><span class='font-ascii' style='color:#FFFFFF'>20s</span></span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#b8b0b0'><span class='font-ascii' style='font-weight:bolder'>Light Bender Archetype</span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Ability Points: <span class='font-ascii' style='color:#FFFFFF'>2</span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Min Light Bender Archetype: <span class='font-ascii' style='color:#FFFFFF'>12</span></span>"
+        ],
+        "requirements": {
+          "ARCHETYPE": {
+            "name": "priest",
+            "amount": 12
+          },
+          "ABILITY_POINTS": 2
+        },
+        "links": [
+          "manastorm",
+          "betterLightDance"
+        ],
+        "locks": null,
+        "page": 7
+      },
+      "betterLightDance": {
+        "name": "<span class='font-ascii' style='color:#ffffff'><span class='font-ascii' style='font-weight:bolder'>Halo</span></span>",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "abilityTree.nodeWhite",
+            "customModelData": {
+              "rangeDispatch": [
+                158
+              ]
+            }
+          },
+          "format": "attribute"
+        },
+        "slot": 31,
+        "coordinates": {
+          "x": 5,
+          "y": 4
+        },
+        "description": [
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Increase your Max Orbs</span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>from <span class='font-ascii' style='text-decoration: underline'>Lightweaver</span><span class='font-ascii' style='color:#AAAAAA'> by </span><span class='font-ascii' style='color:#FFFFFF'>+2</span><span class='font-ascii' style='color:#AAAAAA'>.</span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#b8b0b0'><span class='font-ascii' style='font-weight:bolder'>Light Bender Archetype</span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Ability Points: <span class='font-ascii' style='color:#FFFFFF'>1</span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Required Ability: <span class='font-ascii' style='color:#FFFFFF'>Lightweaver</span></span>"
+        ],
+        "requirements": {
+          "NODE": "lightDance",
+          "ABILITY_POINTS": 1
+        },
+        "links": [
+          ""
+        ],
+        "locks": null,
+        "page": 7
+      },
+      "arcaneOverflow": {
+        "name": "<span class='font-ascii' style='color:#ff4545'><span class='font-ascii' style='font-weight:bolder'>Arcane Overflow</span></span>",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "abilityTree.nodeRed",
+            "customModelData": {
+              "rangeDispatch": [
+                174
+              ]
+            }
+          },
+          "format": "attribute"
+        },
+        "slot": 34,
+        "coordinates": {
+          "x": 8,
+          "y": 4
+        },
+        "description": [
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'><span class='font-ascii' style='text-decoration: underline'>Arcane Transfer<span class='font-ascii' style='color:#AAAAAA'> will allow you to overflow</span></span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>your mana over its maximum limits. (Max 300)</span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#eb3dfe'><span class='font-ascii' style='font-weight:bolder'>Arcanist Archetype</span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Ability Points: <span class='font-ascii' style='color:#FFFFFF'>2</span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Required Ability: <span class='font-ascii' style='color:#FFFFFF'>Arcane Transfer</span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Min Arcanist Archetype: <span class='font-ascii' style='color:#FFFFFF'>12</span></span>"
+        ],
+        "requirements": {
+          "NODE": "arcaneTransfer",
+          "ARCHETYPE": {
+            "name": "arcane",
+            "amount": 12
+          },
+          "ABILITY_POINTS": 2
+        },
+        "links": [
+          "betterChaosExplosion",
+          "manastorm"
+        ],
+        "locks": null,
+        "page": 7
+      },
+      "timelock": {
+        "name": "<span class='font-ascii' style='color:#ff4545'><span class='font-ascii' style='font-weight:bolder'>Timelock</span></span>",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "abilityTree.nodeRed",
+            "customModelData": {
+              "rangeDispatch": [
+                174
+              ]
+            }
+          },
+          "format": "attribute"
+        },
+        "slot": 36,
+        "coordinates": {
+          "x": 1,
+          "y": 5
+        },
+        "description": [
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Using <span class='font-ascii' style='text-decoration: underline'>Heal</span><span class='font-ascii' style='color:#AAAAAA'> while sneaking will absorb up to 60 </span></span>",
+          "<span class='font-ascii' style='color:#55FFFF'>Winded <span class='font-ascii' style='color:#55FFFF'><span class='font-common'></span> <span class='font-ascii' style='color:#AAAAAA'>from enemies, making you </span><span class='font-ascii' style='color:#55FFFF'>Timelocked </span><span class='font-ascii' style='color:#00AAAA'><span class='font-default'></span>⌚</span></span><span class='font-ascii' style='color:#AAAAAA'>.</span></span></span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#55FFFF'>Timelocked <span class='font-ascii' style='color:#00AAAA'><span class='font-default'></span>⌚</span></span><span class='font-ascii' style='color:#AAAAAA'> turns </span><span class='font-ascii' style='text-decoration: underline'>Teleport</span><span class='font-ascii' style='color:#AAAAAA'> into a deadly piercing</span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>ray, provides flight and prevents mana drain.</span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>All enemies will receive boosted damage as </span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>if they had the <span class='font-ascii' style='color:#55FFFF'>Winded <span class='font-ascii' style='color:#55FFFF'><span class='font-common'></span> </span><span class='font-ascii' style='color:#AAAAAA'>you absorbed.</span></span></span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#00AA00'><span class='font-common'></span> <span class='font-ascii' style='color:#AAAAAA'>Range: </span><span class='font-ascii' style='color:#FFFFFF'>12 Blocks</span></span></span>",
+          "<span class='font-ascii' style='color:#FF55FF'><span class='font-common'></span> <span class='font-ascii' style='color:#AAAAAA'>Duration: </span><span class='font-ascii' style='color:#FFFFFF'>+1.25s </span><span class='font-ascii' style='color:#555555'>(per 5 Winded absorbed, Max 7.5s)</span></span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#FF5555'>Unlocking will block:</span>",
+          "<span class='font-ascii' style='color:#FF5555'>- <span class='font-ascii' style='color:#AAAAAA'>Arcane Transfer</span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#60c5cd'><span class='font-ascii' style='font-weight:bolder'>Riftwalker Archetype</span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Ability Points: <span class='font-ascii' style='color:#FFFFFF'>2</span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Min Riftwalker Archetype: <span class='font-ascii' style='color:#FFFFFF'>12</span></span>"
+        ],
+        "requirements": {
+          "ARCHETYPE": {
+            "name": "blitz",
+            "amount": 12
+          },
+          "ABILITY_POINTS": 2
+        },
+        "links": [
+          "healCost2",
+          "innervate"
+        ],
+        "locks": [
+          "arcaneTransfer"
+        ],
+        "page": 7
+      },
+      "healCost2": {
+        "name": "<span class='font-ascii' style='color:#ffffff'><span class='font-ascii' style='font-weight:bolder'>Cheaper Heal II</span></span>",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "abilityTree.nodeWhite",
+            "customModelData": {
+              "rangeDispatch": [
+                158
+              ]
+            }
+          },
+          "format": "attribute"
+        },
+        "slot": 38,
+        "coordinates": {
+          "x": 3,
+          "y": 5
+        },
+        "description": [
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Reduce the mana cost of <span class='font-ascii' style='text-decoration: underline'>Heal</span><span class='font-ascii' style='color:#AAAAAA'>.</span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#66e6ff'><span class='font-common'></span> <span class='font-ascii' style='color:#AAAAAA'>Mana Cost: </span><span class='font-ascii' style='color:#FFFFFF'>-5</span></span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Ability Points: <span class='font-ascii' style='color:#FFFFFF'>1</span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Required Ability: <span class='font-ascii' style='color:#FFFFFF'>Heal</span></span>"
+        ],
+        "requirements": {
+          "NODE": "heal",
+          "ABILITY_POINTS": 1
+        },
+        "links": [
+          "manastorm",
+          "timelock"
+        ],
+        "locks": null,
+        "page": 7
+      },
+      "manastorm": {
+        "name": "<span class='font-ascii' style='color:#f747c2'><span class='font-ascii' style='font-weight:bolder'>Manastorm</span></span>",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "abilityTree.nodePurple",
+            "customModelData": {
+              "rangeDispatch": [
+                166
+              ]
+            }
+          },
+          "format": "attribute"
+        },
+        "slot": 41,
+        "coordinates": {
+          "x": 6,
+          "y": 5
+        },
+        "description": [
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>If you have more than <span class='font-ascii' style='color:#FFFFFF'>100</span><span class='font-ascii' style='color:#AAAAAA'></span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Mana, casting a spell will give</span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>you <span class='font-ascii' style='color:#FFFFFF'>+5 </span><span class='font-ascii' style='color:#AAAAAA'>Mana over </span><span class='font-ascii' style='color:#FFFFFF'>2s</span><span class='font-ascii' style='color:#AAAAAA'>.</span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#eb3dfe'><span class='font-ascii' style='font-weight:bolder'>Arcanist Archetype</span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Ability Points: <span class='font-ascii' style='color:#FFFFFF'>2</span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Min Arcanist Archetype: <span class='font-ascii' style='color:#FFFFFF'>3</span></span>"
+        ],
+        "requirements": {
+          "ARCHETYPE": {
+            "name": "arcane",
+            "amount": 3
+          },
+          "ABILITY_POINTS": 2
+        },
+        "links": [
+          "healCost2",
+          ""
+        ],
+        "locks": null,
+        "page": 7
+      },
+      "betterChaosExplosion": {
+        "name": "<span class='font-ascii' style='color:#ffffff'><span class='font-ascii' style='font-weight:bolder'>Memory Recollection</span></span>",
+        "icon": {
+          "value": {
+            "id": "minecraft:potion",
+            "name": "abilityTree.nodeWhite",
+            "customModelData": {
+              "rangeDispatch": [
+                158
+              ]
+            }
+          },
+          "format": "attribute"
+        },
+        "slot": 44,
+        "coordinates": {
+          "x": 9,
+          "y": 5
+        },
+        "description": [
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'><span class='font-ascii' style='text-decoration: underline'>Chaos Explosion<span class='font-ascii' style='color:#AAAAAA'> will cast </span><span class='font-ascii' style='color:#FFFFFF'>+2 </span><span class='font-ascii' style='color:#AAAAAA'>spells.</span></span></span>",
+          "</br>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Ability Points: <span class='font-ascii' style='color:#FFFFFF'>1</span></span>",
+          "<span class='font-ascii' style='color:#AAAAAA'>Required Ability: <span class='font-ascii' style='color:#FFFFFF'>Chaos Explosion</span></span>"
+        ],
+        "requirements": {
+          "NODE": "chaosExplosion",
+          "ABILITY_POINTS": 1
+        },
+        "links": null,
+        "locks": null,
+        "page": 7
+      }
+    }
+  }
+}
